@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kantier — UI Reference Document v2</title>
+<title>Kantier — UI Reference Document v3</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -16,18 +16,17 @@
 body { font-family: 'Barlow', sans-serif; background: var(--surface); color: var(--ink); }
 h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; }
 code { font-family: 'Courier New', monospace; font-size: 12px; background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; color: #C2410C; }
+a { color: var(--amber); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-.sidenav {
-  position: fixed; top: 0; left: 0; width: 260px; height: 100vh;
-  background: var(--ink); overflow-y: auto; z-index: 100; padding: 0 0 40px;
-}
+.sidenav { position: fixed; top: 0; left: 0; width: 260px; height: 100vh; background: var(--ink); overflow-y: auto; z-index: 100; padding: 0 0 40px; }
 .sidenav-logo { padding: 20px 20px 16px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 8px; }
 .sidenav-logo h1 { font-size: 22px; font-weight: 900; color: white; }
 .sidenav-logo h1 span { color: var(--amber); }
 .sidenav-logo p { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 3px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
 .nav-section { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.2); padding: 16px 20px 6px; }
 .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 20px; font-size: 13px; color: rgba(255,255,255,0.5); cursor: pointer; transition: all .15s; text-decoration: none; border-left: 3px solid transparent; }
-.nav-item:hover { color: white; background: rgba(255,255,255,0.04); }
+.nav-item:hover { color: white; background: rgba(255,255,255,0.04); text-decoration: none; }
 .nav-item.active { color: var(--amber); border-left-color: var(--amber); background: rgba(245,158,11,0.06); }
 .nav-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .main { margin-left: 260px; padding: 40px 48px; max-width: 1200px; }
@@ -37,31 +36,36 @@ code { font-family: 'Courier New', monospace; font-size: 12px; background: rgba(
 .section-title { font-size: 32px; font-weight: 900; text-transform: uppercase; letter-spacing: -.02em; }
 .section-sub { font-size: 14px; color: var(--muted); margin-top: 4px; line-height: 1.6; }
 
-.box { background: var(--ink); border-radius: 16px; padding: 32px 36px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.box { background: var(--ink); border-radius: 16px; padding: 28px 32px; margin-bottom: 20px; position: relative; overflow: hidden; }
 .box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--amber); }
-.box.green::before { background: var(--green); }
+.box.green::before { background: #22C55E; }
 .box.red::before { background: var(--red); }
 .box.blue::before { background: var(--blue); }
-.box h2 { font-size: 20px; font-weight: 900; color: white; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-.box p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 10px; }
+.box.purple::before { background: #8B5CF6; }
+.box h2 { font-size: 18px; font-weight: 900; color: white; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.box p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 8px; }
 .box p:last-child { margin-bottom: 0; }
 .box strong { color: rgba(255,255,255,0.85); }
 .box code { background: rgba(255,255,255,0.1); color: #FCD34D; }
-.tag { font-size: 10px; background: rgba(245,158,11,0.2); color: var(--amber); border-radius: 100px; padding: 3px 10px; letter-spacing: .08em; }
-.tag.red { background: rgba(220,38,38,0.2); color: #FCA5A5; }
-.tag.green { background: rgba(22,163,74,0.2); color: #86EFAC; }
-.tag.blue { background: rgba(59,130,246,0.2); color: #93C5FD; }
+.box ul { margin: 8px 0 8px 0; padding: 0; list-style: none; }
+.box ul li { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; padding-left: 16px; position: relative; }
+.box ul li::before { content: '→'; position: absolute; left: 0; color: var(--amber); font-weight: 800; }
+.tag { font-size: 10px; border-radius: 100px; padding: 3px 10px; letter-spacing: .08em; font-weight: 700; }
+.tag-amber { background: rgba(245,158,11,0.2); color: var(--amber); }
+.tag-red { background: rgba(220,38,38,0.2); color: #FCA5A5; }
+.tag-green { background: rgba(34,197,94,0.2); color: #86EFAC; }
+.tag-blue { background: rgba(59,130,246,0.2); color: #93C5FD; }
+.tag-purple { background: rgba(139,92,246,0.2); color: #C4B5FD; }
 
 .grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
 .grid2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-bottom: 24px; }
 .card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
 .card-label { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
 .card-value { font-size: 13px; color: var(--ink); font-weight: 500; line-height: 1.6; }
-.card-value a { color: var(--amber); text-decoration: none; }
 
 .task-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
 .task-table th { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 10px 16px; background: var(--surface); border-bottom: 2px solid var(--border); text-align: left; }
-.task-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.task-table td { padding: 11px 16px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
 .task-table tr:last-child td { border-bottom: none; }
 .task-table tr:hover td { background: var(--surface); }
 
@@ -71,545 +75,666 @@ code { font-family: 'Courier New', monospace; font-size: 12px; background: rgba(
 .badge-green { background: #DCFCE7; color: #166534; }
 .badge-blue { background: #DBEAFE; color: #1E40AF; }
 .badge-gray { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
-
-.step { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
-.step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--amber); color: var(--ink); font-weight: 900; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.step-body { flex: 1; }
-.step-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
-.step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.badge-purple { background: #F3E8FF; color: #6B21A8; }
 
 .file-tag { display: inline-block; font-size: 11px; background: #EFF6FF; color: #1D4ED8; border-radius: 4px; padding: 2px 8px; font-family: 'Courier New', monospace; margin: 2px 2px 2px 0; }
 .effort-tag { display: inline-block; font-size: 11px; background: var(--amber-lt); color: #92400E; border-radius: 4px; padding: 2px 8px; margin: 2px 2px 2px 0; font-weight: 600; }
 .done-tag { display: inline-block; font-size: 11px; background: #DCFCE7; color: #166534; border-radius: 4px; padding: 2px 8px; margin: 2px 2px 2px 0; font-weight: 700; }
 
-.pin-demo { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
-.pin { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 12px; color: white; border: 2px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.step { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+.step-num { width: 26px; height: 26px; border-radius: 50%; background: var(--amber); color: var(--ink); font-weight: 900; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step-body { flex: 1; }
+.step-title { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+.step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.pin-demo { display: inline-flex; align-items: center; gap: 6px; }
+.pin { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); font-weight: 900; font-size: 8px; color: white; }
+.pin span { transform: rotate(45deg); }
+
+.screenshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.screenshot-card { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.screenshot-card-header { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 12px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+.screenshot-card img { width: 100%; display: block; cursor: zoom-in; }
+.screenshot-card-notes { padding: 10px 16px; background: var(--surface); font-size: 12px; color: var(--slate); line-height: 1.6; }
 </style>
 </head>
 <body>
 
-<div class="lightbox" id="lightbox" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:1000;align-items:center;justify-content:center;cursor:zoom-out;">
-  <img id="lightbox-img" src="" style="max-width:90vw;max-height:90vh;border-radius:8px;">
+<div id="lb" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
+  <img id="lb-img" style="max-width:90vw;max-height:90vh;border-radius:8px;">
 </div>
 <script>
-function zoom(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').style.display='flex';}
-function setActive(el){document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');}
+function zoom(src){document.getElementById('lb-img').src=src;document.getElementById('lb').style.display='flex';}
+document.querySelectorAll('.screenshot-card img').forEach(img=>img.onclick=function(){zoom(this.src)});
 </script>
 
-<!-- SIDEBAR -->
 <nav class="sidenav">
   <div class="sidenav-logo">
     <h1>KANTIER<span>.</span></h1>
-    <p>UI Reference Document v2</p>
+    <p>Reference Document v3 — 3 Apr 2026</p>
   </div>
-  <div class="nav-section">Document</div>
-  <a class="nav-item active" href="#context" onclick="setActive(this)"><div class="nav-dot" style="background:#F59E0B"></div>Context for Claude</a>
-  <a class="nav-item" href="#platform" onclick="setActive(this)"><div class="nav-dot" style="background:#0D9488"></div>Platform Overview</a>
-  <a class="nav-item" href="#session" onclick="setActive(this)"><div class="nav-dot" style="background:#3B82F6"></div>Session 1 — What Was Done</a>
+  <div class="nav-section">Start Here</div>
+  <a class="nav-item" href="#claude-context"><div class="nav-dot" style="background:#F59E0B"></div>Instructions for Claude</a>
+  <a class="nav-item" href="#platform"><div class="nav-dot" style="background:#22C55E"></div>Platform Overview</a>
+  <a class="nav-item" href="#completed"><div class="nav-dot" style="background:#3B82F6"></div>All Completed Work</a>
 
-  <div class="nav-section">Active Bugs</div>
-  <a class="nav-item" href="#bugs-critical" onclick="setActive(this)"><div class="nav-dot" style="background:#DC2626"></div>Critical Bugs</a>
-  <a class="nav-item" href="#bugs-features" onclick="setActive(this)"><div class="nav-dot" style="background:#F59E0B"></div>Features to Build</a>
-  <a class="nav-item" href="#bugs-plan-viewer" onclick="setActive(this)"><div class="nav-dot" style="background:#8B5CF6"></div>Plan Viewer Tasks</a>
+  <div class="nav-section">Current State</div>
+  <a class="nav-item" href="#current-ui"><div class="nav-dot" style="background:#8B5CF6"></div>Current UI Screenshots</a>
+  <a class="nav-item" href="#data-model"><div class="nav-dot" style="background:#0D9488"></div>Data Model</a>
+  <a class="nav-item" href="#file-map"><div class="nav-dot" style="background:#0D9488"></div>File Map</a>
 
-  <div class="nav-section">How-To Guides</div>
-  <a class="nav-item" href="#guide-workflow" onclick="setActive(this)"><div class="nav-dot" style="background:#16A34A"></div>Working with Claude</a>
-  <a class="nav-item" href="#guide-deploy" onclick="setActive(this)"><div class="nav-dot" style="background:#16A34A"></div>Deploying Changes</a>
-  <a class="nav-item" href="#guide-files" onclick="setActive(this)"><div class="nav-dot" style="background:#16A34A"></div>File Map</a>
+  <div class="nav-section">Next Sessions</div>
+  <a class="nav-item" href="#bugs"><div class="nav-dot" style="background:#DC2626"></div>Active Bugs</a>
+  <a class="nav-item" href="#features"><div class="nav-dot" style="background:#F59E0B"></div>Features to Build</a>
+  <a class="nav-item" href="#raporte"><div class="nav-dot" style="background:#6366F1"></div>Raporte Page Plan</a>
+  <a class="nav-item" href="#foto"><div class="nav-dot" style="background:#6366F1"></div>Foto Page Plan</a>
 
-  <div class="nav-section">Fieldwire Reference</div>
-  <a class="nav-item" href="#fw-task-panel" onclick="setActive(this)"><div class="nav-dot" style="background:#6366F1"></div>Task Detail Panel</a>
-  <a class="nav-item" href="#fw-plan-viewer" onclick="setActive(this)"><div class="nav-dot" style="background:#6366F1"></div>Plan Viewer & Pins</a>
+  <div class="nav-section">How-To</div>
+  <a class="nav-item" href="#workflow"><div class="nav-dot" style="background:#16A34A"></div>Working with Claude</a>
+  <a class="nav-item" href="#deploy"><div class="nav-dot" style="background:#16A34A"></div>Deploying Changes</a>
+
+  <div class="nav-section">Reference</div>
+  <a class="nav-item" href="#fieldwire"><div class="nav-dot" style="background:#6366F1"></div>Fieldwire Comparison</a>
+  <a class="nav-item" href="#priorities"><div class="nav-dot" style="background:#6366F1"></div>Priority & Category System</a>
 </nav>
 
-<!-- MAIN -->
 <div class="main">
 
-  <!-- 00. CONTEXT -->
-  <div class="section" id="context">
-    <div class="section-header">
-      <div class="section-num">00</div>
-      <div>
-        <div class="section-title">Context for Claude</div>
-        <div class="section-sub">Read this first at the start of every new conversation about Kantier.</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h2>📋 Instructions for Claude <span class="tag">READ FIRST</span></h2>
-      <p>This is the <strong>living reference document</strong> for Kantier — Albania's first construction management platform. Aurora Baba (founder, architect, UCL London) is building this with Claude's help. She has no coding background, so all explanations must be clear and educational. Never run terminal commands without explaining what they do first.</p>
-      <p><strong>How to use this document:</strong> At the start of each session, Aurora will paste the raw GitHub URL of this document. Read it fully before starting work. Then ask Aurora which issue to tackle today.</p>
-      <p><strong>Key principles:</strong> (1) Always explain before doing. (2) Deliver complete files for download — no partial edits in chat. (3) Aurora applies files by: Cmd+A → Delete → Paste → Cmd+S in VS Code. (4) Push with git add . → git commit → git push from ~/kantier.</p>
-      <p><strong>GitHub raw URL for this doc:</strong> <code>https://raw.githubusercontent.com/aurorababa/KANTIER.-UI-REFERENCE-DOCUMENT/main/index.html</code></p>
-    </div>
-
-    <div class="grid3">
-      <div class="card">
-        <div class="card-label">Platform (live)</div>
-        <div class="card-value"><a href="https://kantier.vercel.app">kantier.vercel.app</a></div>
-      </div>
-      <div class="card">
-        <div class="card-label">Tech Stack</div>
-        <div class="card-value">Next.js 16.2 + Supabase<br>Vercel hosting</div>
-      </div>
-      <div class="card">
-        <div class="card-label">Document Version</div>
-        <div class="card-value">v2.0 — 1 April 2026<br>Updated after Session 1</div>
-      </div>
+<!-- 00 CLAUDE CONTEXT -->
+<div class="section" id="claude-context">
+  <div class="section-header">
+    <div class="section-num">00</div>
+    <div>
+      <div class="section-title">Instructions for Claude</div>
+      <div class="section-sub">Read this fully before starting any session. Everything needed to continue development is here.</div>
     </div>
   </div>
 
-  <!-- 01. PLATFORM -->
-  <div class="section" id="platform">
-    <div class="section-header">
-      <div class="section-num">01</div>
-      <div>
-        <div class="section-title">Platform Overview</div>
-        <div class="section-sub">What Kantier is, what's built, and the database structure.</div>
-      </div>
-    </div>
+  <div class="box">
+    <h2>📋 What is Kantier? <span class="tag tag-amber">READ FIRST</span></h2>
+    <p>Kantier is <strong>Albania's first construction site management SaaS platform</strong>, built by Aurora Baba (founder, architect, UCL London). It is modelled after Fieldwire but designed for Albanian construction teams. Aurora has no coding background — always explain before doing, never run commands without explaining what they do.</p>
+    <p><strong>Live URL:</strong> <a href="https://kantier.vercel.app">kantier.vercel.app</a> | <strong>Stack:</strong> Next.js 16.2 + Supabase + Vercel | <strong>GitHub:</strong> github.com/aurorababa/kantier</p>
+    <p><strong>Working method:</strong> Claude delivers complete files for download. Aurora applies them: Cmd+A → Delete → Paste → Cmd+S in VS Code. Deploy: <code>git add . && git commit -m "..." && git push</code> from <code>~/kantier</code>.</p>
+    <p><strong>This document URL:</strong> <code>https://kantier-ui-reference-document.vercel.app</code></p>
+  </div>
 
-    <div class="box green">
-      <h2>✅ Currently Built & Deployed</h2>
-      <p><strong>Dashboard</strong> — Light theme (Fieldwire-style). Stat cards (projects, tasks open/in-progress/done), project list with progress bars, recent tasks panel, status breakdown chart. Sidebar with project navigation.</p>
-      <p><strong>Project View (/projektet/[id])</strong> — Donut chart showing task completion %. Filter tabs (all/open/in-progress/done). Task list with priority color bars, status/category badges, overdue date highlighting. Full task detail panel opens on right when task selected.</p>
-      <p><strong>Task Detail Panel</strong> — Title edit, Status, Priority, Category, Assigned to, Start date, Deadline, Completion date (data_mbarimit), Cost, Manpower, Description, Checklist, Photos, Comments/Activity log. Plan link button if task has a pin.</p>
-      <p><strong>Plan Viewer (/planet)</strong> — PDF upload, zoom/pan, pin placement, pin click opens full task detail in right panel. Plans organized by category grid.</p>
-      <p><strong>PDF Zoom Fix</strong> — Render queue prevents canvas race condition. PDF loads once, re-renders only on scale/page change.</p>
-    </div>
+  <div class="box blue">
+    <h2>🧠 Key Design Decisions Made</h2>
+    <ul>
+      <li><strong>Light theme everywhere</strong> — white nav (#FFFFFF), light grey background (#F4F5F7), white panels. Matches Fieldwire's professional construction feel.</li>
+      <li><strong>Teardrop pins with Albanian category acronyms</strong> — EL=Elektrike, HI=Hidraulike, MU=Muraturë, DR=Dritare & Dyer, etc. Color = priority level.</li>
+      <li><strong>Priority system</strong> — Prioritet 1 (red), P2 (orange), P3 (yellow), Verifikuar (blue), Mbaruar (green), Ulët (gray). Old values urgjent/larte/mesem still supported for backward compatibility.</li>
+      <li><strong>Grayscale PDF thumbnail</strong> with colored teardrop pin on top — light gray range (80–245), pin stays full color. Same in both Planet and Detyrat views.</li>
+      <li><strong>Unified task detail</strong> — same fields in both Detyrat sidebar and Planet right panel: Status, Priority, Category, Assigned to, Start date, Deadline, Completion date, Cost, Manpower, Description, Checklist, Photos, Comments, Plan thumbnail.</li>
+      <li><strong>Scope creep tracking</strong> — data_afatit (planned deadline) vs data_mbarimit (actual completion). Delta = scope creep. Will be used in Reports.</li>
+    </ul>
+  </div>
 
-    <div class="box red">
-      <h2>🔧 Known Issues (as of Session 1 end)</h2>
-      <p><strong>1. Plan thumbnail not showing in task detail</strong> — The "Vendndodhja në plan" card shows in projekti/page.tsx but only navigates to the plan list, it does not show an actual thumbnail image of the plan with the pin location highlighted.</p>
-      <p><strong>2. Pin click label</strong> — When hovering or clicking a pin in the plan viewer, the task title should appear as a tooltip/label next to the pin (like Fieldwire). Currently no label shows.</p>
-      <p><strong>3. Pin click → full task modal</strong> — In the plan viewer, clicking a pin opens the detail in the right panel, but it should open the SAME full task modal as in Detyrat view (not just the side panel). These two views need to be unified.</p>
-      <p><strong>4. More priority levels</strong> — Fieldwire uses Priority 1, 2, 3, Completed, Verified. Kantier currently has Urgjent/Larte/Mesem/Ulet. Need to add more levels and match colors to pin colors.</p>
-      <p><strong>5. Related tasks</strong> — Ability to link tasks to each other (like Fieldwire's "Related Tasks" with + New task / + Existing task).</p>
-      <p><strong>6. @ mentions in comments</strong> — Fieldwire allows @plan and @person mentions in comments with autocomplete dropdown.</p>
-    </div>
+  <div class="box green">
+    <h2>✅ What is Working Right Now (3 April 2026)</h2>
+    <ul>
+      <li>Dashboard — light theme, stat cards, project list with progress bars, recent tasks</li>
+      <li>Detyrat (project tasks) — donut chart, filter tabs, task list with priority bars + category acronym badges, full task detail panel</li>
+      <li>Task detail panel — all fields save to Supabase on blur, photos upload to foto-kantier bucket, checklist, comments/activity log</li>
+      <li>Planet (plan viewer) — PDF upload, zoom/pan/scroll, teardrop pins with category acronyms, priority colors, pin label tooltip on select</li>
+      <li>Clicking a pin → full task detail in right panel (same fields as Detyrat)</li>
+      <li>Plan thumbnail in task detail — grayscale PDF with colored teardrop pin at exact location</li>
+      <li>Clicking thumbnail in Detyrat → navigates to Planet and auto-opens correct plan</li>
+      <li>+ Existing task — search modal when placing a pin to link an existing task</li>
+      <li>Priority dropdowns updated in both files</li>
+      <li>Category list unified: EL, HI, BE, SU, LY, MU, FA, PL, ME, DR, CA, IZ, GI, HV, AR, CI, ST, TJ</li>
+    </ul>
+  </div>
+</div>
 
-    <div class="grid3">
-      <div class="card">
-        <div class="card-label">Supabase Tables</div>
-        <div class="card-value" style="font-size:12px;line-height:1.9">
-          <code>projektet</code> — projects<br>
-          <code>planet</code> — plans (pdf_url, kategoria)<br>
-          <code>detyrat</code> — tasks<br>
-          &nbsp;&nbsp;↳ titulli, prioriteti, kategoria<br>
-          &nbsp;&nbsp;↳ projekti_id, plan_id<br>
-          &nbsp;&nbsp;↳ pin_x, pin_y, pin_faqja<br>
-          &nbsp;&nbsp;↳ statusi, krijuar_nga<br>
-          &nbsp;&nbsp;↳ foto_urls, checklist, komentet<br>
-          &nbsp;&nbsp;↳ data_fillimit, data_afatit<br>
-          &nbsp;&nbsp;↳ data_mbarimit (NEW), kostoja<br>
-          &nbsp;&nbsp;↳ njerezit_punojne, caktuar_email
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label">Priority Colors (current)</div>
-        <div class="card-value">
-          <div class="pin-demo">
-            <div class="pin" style="background:#DC2626">U</div>
-            <div class="pin" style="background:#EA580C">L</div>
-            <div class="pin" style="background:#F59E0B">M</div>
-            <div class="pin" style="background:#6B7A8D">U</div>
+<!-- 01 PLATFORM OVERVIEW -->
+<div class="section" id="platform">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">Platform Overview</div>
+      <div class="section-sub">Navigation structure and what each page does.</div>
+    </div>
+  </div>
+
+  <table class="task-table">
+    <thead><tr><th>Page / Route</th><th>What it does</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><code>/dashboard</code></td><td>Main overview — stat cards, project list, recent tasks, sidebar navigation with project shortcuts</td><td><span class="badge badge-green">✓ Working</span></td></tr>
+      <tr><td><code>/dashboard/projektet/[id]</code></td><td>Project view — Detyrat tab: donut chart, task list, task detail panel with all fields + plan thumbnail</td><td><span class="badge badge-green">✓ Working</span></td></tr>
+      <tr><td><code>/dashboard/projektet/[id]/planet</code></td><td>Plan viewer — PDF display, zoom/pan, teardrop pins, task detail right panel, + existing task search</td><td><span class="badge badge-green">✓ Working</span></td></tr>
+      <tr><td><code>/dashboard/projektet/[id]/foto</code></td><td>Photo gallery for the project — currently empty/placeholder</td><td><span class="badge badge-amber">Not built</span></td></tr>
+      <tr><td><code>/dashboard/projektet/[id]/raporte</code></td><td>Reports for the project — currently empty/placeholder</td><td><span class="badge badge-amber">Not built</span></td></tr>
+      <tr><td><code>/dashboard/detyrat</code></td><td>Global task list across all projects — sidebar nav routes here but page not built</td><td><span class="badge badge-amber">Not built</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 02 COMPLETED WORK -->
+<div class="section" id="completed">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">All Completed Work</div>
+      <div class="section-sub">Full log of every session — Session 1 (1 Apr) + Session 2 (2–3 Apr).</div>
+    </div>
+  </div>
+
+  <table class="task-table">
+    <thead><tr><th>Feature</th><th>File(s)</th><th>Session</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PDF zoom bug fix</strong> — render queue prevents canvas race condition on scroll zoom</td><td><span class="file-tag">planet/pdf-renderer.tsx</span></td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><strong>Dashboard light theme</strong> — white sidebar, #F4F5F7 bg, stat cards, project list with progress bars</td><td><span class="file-tag">dashboard/page.tsx</span></td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><strong>Project page light theme + task detail</strong> — donut chart, filter tabs, priority bars, full detail panel</td><td><span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><strong>Pin click → task detail</strong> — select tool, click pin, loads full Supabase task into right panel</td><td><span class="file-tag">planet/page.tsx</span></td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><strong>Completion date field</strong> — data_mbarimit separate from deadline (data_afatit)</td><td><span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><strong>Teardrop pins + Albanian acronyms</strong> — water-drop shape, EL/HI/MU etc., priority colors</td><td><span class="file-tag">planet/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Expanded priority system</strong> — P1/P2/P3/Verifikuar/Mbaruar/Ulët + backward compat</td><td><span class="file-tag">planet/page.tsx</span> <span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Planet light theme</strong> — white nav, #E8EAF0 canvas bg, white right panel, dark toolbar strip</td><td><span class="file-tag">planet/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Unified new task modal</strong> — all fields when placing pin (title, priority, category, dates, cost, description)</td><td><span class="file-tag">planet/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Same task detail in both views</strong> — planet right panel now has identical fields as Detyrat sidebar</td><td><span class="file-tag">planet/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Grayscale plan thumbnail with colored pin</strong> — renders PDF page 1, converts to gray range 80–245, draws teardrop pin on top</td><td><span class="file-tag">planet/page.tsx</span> <span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Thumbnail click → correct plan</strong> — passes planId in URL, planet page auto-opens that plan</td><td><span class="file-tag">planet/page.tsx</span> <span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>+ Existing task search modal</strong> — when placing pin, search all project tasks, link one to the pin location</td><td><span class="file-tag">planet/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Unified category list</strong> — same 18 categories in both files, with acronyms shown in badges</td><td><span class="file-tag">planet/page.tsx</span> <span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+      <tr><td><strong>Category acronym badges</strong> — task list rows show MU, DR, EL etc. instead of full name</td><td><span class="file-tag">projektet/[id]/page.tsx</span></td><td><span class="done-tag">S2</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 03 CURRENT UI SCREENSHOTS -->
+<div class="section" id="current-ui">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title">Current UI — What It Looks Like</div>
+      <div class="section-sub">Screenshots from Session 2 showing the working state as of 3 April 2026.</div>
+    </div>
+  </div>
+
+  <div class="screenshot-grid">
+    <div class="screenshot-card">
+      <div class="screenshot-card-header">🗺 Planet view — teardrop pins, light theme</div>
+      <div style="background:#E8EAF0;padding:16px;text-align:center;">
+        <div style="background:white;border-radius:8px;padding:20px;display:inline-block;text-align:left;width:100%;">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+            <div style="background:#1C2333;border-radius:6px;padding:6px 10px;display:flex;gap:6px;">
+              <div style="width:28px;height:28px;background:#F59E0B;border-radius:6px;"></div>
+            </div>
+            <div style="flex:1;height:2px;background:#E4E7EC;border-radius:2px;"></div>
           </div>
-          Urgjent · Lartë · Mesëm · Ulët<br>
-          <span style="font-size:12px;color:var(--muted);margin-top:6px;display:block">Need to add: Verifikuar, Mbaruar</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label">Storage Buckets</div>
-        <div class="card-value" style="font-size:12px;line-height:1.9">
-          <code>planet-pdf</code> — plan PDFs<br>
-          <code>foto-kantier</code> — task photos
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 02. SESSION 1 -->
-  <div class="section" id="session">
-    <div class="section-header">
-      <div class="section-num">02</div>
-      <div>
-        <div class="section-title">Session 1 — What Was Done</div>
-        <div class="section-sub">1 April 2026. Summary of all changes made and deployed.</div>
-      </div>
-    </div>
-
-    <table class="task-table">
-      <thead>
-        <tr><th>What</th><th>File Changed</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>PDF zoom bug fix</strong> — render queue prevents canvas race condition. PDF document cached, re-renders only when needed.</td>
-          <td><span class="file-tag">planet/pdf-renderer.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-        <tr>
-          <td><strong>Dashboard redesign</strong> — full light theme (white sidebar, #F4F5F7 bg), stat cards with colored icon badges, project list as clean table rows with progress bars.</td>
-          <td><span class="file-tag">dashboard/page.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-        <tr>
-          <td><strong>Project page redesign</strong> — light theme, donut chart, filter tabs, task list with priority bars, full task detail panel on right side.</td>
-          <td><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-        <tr>
-          <td><strong>Pin click → full detail panel</strong> — clicking a pin in plan viewer now loads full task from Supabase and shows complete detail panel on right (status, priority, fields, checklist, photos, comments).</td>
-          <td><span class="file-tag">planet/page.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-        <tr>
-          <td><strong>Completion date field</strong> — "Data e mbarimit" added to task attributes sidebar, separate from deadline.</td>
-          <td><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-        <tr>
-          <td><strong>Plan link in task detail</strong> — "Vendndodhja në plan" card appears in attributes when task has a plan pin. Clicking navigates to plan viewer.</td>
-          <td><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-        <tr>
-          <td><strong>Sidebar nav fix</strong> — Detyrat nav item now routes to /dashboard/detyrat (for future global task list page).</td>
-          <td><span class="file-tag">dashboard/page.tsx</span></td>
-          <td><span class="badge badge-green">✓ Deployed</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 03. CRITICAL BUGS -->
-  <div class="section" id="bugs-critical">
-    <div class="section-header">
-      <div class="section-num">03</div>
-      <div>
-        <div class="section-title">Critical Bugs to Fix Next</div>
-        <div class="section-sub">Ordered by priority. Start here at the next session.</div>
-      </div>
-    </div>
-
-    <table class="task-table">
-      <thead>
-        <tr><th>#</th><th>Bug</th><th>Where to fix</th><th>How</th><th>Effort</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="badge badge-red">P1</span></td>
-          <td><strong>Pin hover tooltip / label</strong><br>When hovering a pin on the plan, the task title should appear as a small label next to the pin (like Fieldwire). Currently nothing shows.</td>
-          <td><span class="file-tag">planet/page.tsx</span><br>Function: <code>drawOverlay()</code></td>
-          <td>In drawOverlay(), after drawing the circle, add ctx.fillText(p.titulli, px+18, py+4) with a white background rect behind it when isSelected or hovered.</td>
-          <td><span class="effort-tag">~1 hour</span></td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-red">P1</span></td>
-          <td><strong>Pin click → unified task modal</strong><br>Clicking a pin should open the same full task modal/panel as the Detyrat view. Currently the plan viewer has its own simplified right panel. The two need to share the same component.</td>
-          <td><span class="file-tag">planet/page.tsx</span><br><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td>Extract the task detail panel into a shared component <code>TaskDetailPanel.tsx</code>. Import it into both planet/page.tsx and projektet/[id]/page.tsx.</td>
-          <td><span class="effort-tag">~4 hours</span></td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-amber">P2</span></td>
-          <td><strong>Plan thumbnail in task detail</strong><br>When a task has a plan_id, the task detail should show a small thumbnail of the plan PDF with the pin location marked. Currently shows only a navigation button.</td>
-          <td><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td>Use pdfjs-dist to render page 1 of the plan PDF as a small canvas (120x80px). Overlay a dot at (pin_x * thumbScale, pin_y * thumbScale). Need to also store plan pdf_url on the task or join from planet table.</td>
-          <td><span class="effort-tag">~5 hours</span></td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-amber">P2</span></td>
-          <td><strong>More priority levels + color-coded pins</strong><br>Add Fieldwire-style priorities: Priority 1 (red), Priority 2 (orange), Priority 3 (yellow), Completed (green), Verified (blue). Pin colors must match exactly.</td>
-          <td><span class="file-tag">planet/page.tsx</span><br><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td>Update prioritetNgjyra map and pin color map to use same values. Update all select dropdowns. Add Verified/Completed states.</td>
-          <td><span class="effort-tag">~2 hours</span></td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-amber">P2</span></td>
-          <td><strong>Related tasks</strong><br>Ability to link tasks to each other. Show linked tasks in the detail panel. Like Fieldwire's "Related Tasks" section with + New task / + Existing task.</td>
-          <td><span class="file-tag">projektet/[id]/page.tsx</span><br>Supabase: add <code>related_task_ids</code> array column to detyrat</td>
-          <td>Add related_task_ids jsonb[] column in Supabase. In task detail, show linked tasks fetched by id. Add search modal to find and link existing tasks.</td>
-          <td><span class="effort-tag">~6 hours</span></td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-blue">P3</span></td>
-          <td><strong>@ mentions in comments</strong><br>When typing @ in the comment box, show a dropdown of team members and plan names to mention. Like Fieldwire's autocomplete.</td>
-          <td><span class="file-tag">projektet/[id]/page.tsx</span></td>
-          <td>Detect @ keypress in comment input, fetch anetaret list, show dropdown overlay, insert mention on select.</td>
-          <td><span class="effort-tag">~4 hours</span></td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-blue">P3</span></td>
-          <td><strong>Global task list page</strong><br>A dedicated /dashboard/detyrat page showing all tasks across all projects in a filterable table.</td>
-          <td>New file: <span class="file-tag">dashboard/detyrat/page.tsx</span></td>
-          <td>Create new page with table: Project, Title, Status, Priority, Category, Assignee, Deadline. Filter by project/status/category. Clicking a row opens the task detail.</td>
-          <td><span class="effort-tag">~5 hours</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 04. PLAN VIEWER -->
-  <div class="section" id="bugs-plan-viewer">
-    <div class="section-header">
-      <div class="section-num">04</div>
-      <div>
-        <div class="section-title">Plan Viewer — Specific Tasks</div>
-        <div class="section-sub">Detailed breakdown of what needs to change in planet/page.tsx</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h2>🗺 Plan Viewer Current State</h2>
-      <p>The plan viewer works well for basic use. PDF loads, zoom works (fixed in session 1), pins can be placed, clicking a pin in select mode opens a detail panel on the right. The right panel shows all task fields, checklist, photos, comments.</p>
-      <p><strong>What's missing compared to Fieldwire:</strong></p>
-      <p>→ <strong>Pin labels:</strong> Fieldwire shows a tooltip with the task title when you hover or select a pin. In drawOverlay() we draw circles but no text next to them.</p>
-      <p>→ <strong>Pin number:</strong> Fieldwire numbers each pin (#1, #2...). Our pins show "!" which is not informative.</p>
-      <p>→ <strong>Pin colors by priority:</strong> Fieldwire uses red/orange/yellow/green/blue exactly matching the priority level. Our colors are close but the priority system needs expanding.</p>
-      <p>→ <strong>Markup tools:</strong> Fieldwire has drawing tools (pen, arrow, text, shapes) for annotating PDFs. This is a larger future feature.</p>
-    </div>
-
-    <div class="box blue">
-      <h2>🔧 How to fix pin labels — step by step</h2>
-      <p>Open <code>src/app/dashboard/projektet/[id]/planet/page.tsx</code> and find the <code>drawOverlay()</code> function (around line 110). After the circle is drawn for each pin, add this code to draw the task title as a label:</p>
-      <p>The logic: if a pin is selected (isSelected), draw a white rounded rectangle next to the pin, then draw the task title text inside it. This is pure Canvas 2D API — no extra libraries needed.</p>
-      <p><strong>Code to add after ctx.stroke() inside the forEach:</strong></p>
-      <p><code>if (isSelected) {'{'} const label = p.titulli.substring(0,25); const lw = ctx.measureText(label).width + 16; ctx.fillStyle = 'white'; ctx.beginPath(); ctx.roundRect(px+18, py-12, lw, 24, 4); ctx.fill(); ctx.fillStyle = '#1C2333'; ctx.font = 'bold 11px sans-serif'; ctx.fillText(label, px+26, py+4); {'}'}</code></p>
-    </div>
-  </div>
-
-  <!-- 05. WORKFLOW GUIDE -->
-  <div class="section" id="guide-workflow">
-    <div class="section-header">
-      <div class="section-num">05</div>
-      <div>
-        <div class="section-title">How to Work with Claude</div>
-        <div class="section-sub">The best workflow for Aurora to make changes efficiently.</div>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">Start each session</div>
-        <div class="step-desc">Paste the raw GitHub URL of this document into the chat: <code>https://raw.githubusercontent.com/aurorababa/KANTIER.-UI-REFERENCE-DOCUMENT/main/index.html</code>. Claude will fetch it and have full context. Then say which task you want to work on today.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">Provide the file to edit</div>
-        <div class="step-desc">In VS Code, find the file in the left sidebar. Right-click it → "Copy Path". Then in terminal: <code>cp [paste path] ~/Desktop/filename.tsx</code>. Drag the file from Desktop into the Claude chat.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">Apply the fix</div>
-        <div class="step-desc">Claude will provide a complete fixed file to download. In VS Code, click the correct file in the sidebar. Press Cmd+A (select all) → Delete → Cmd+V (paste) → Cmd+S (save). Confirm 0 errors in the PROBLEMS tab at the bottom.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <div class="step-title">Deploy</div>
-        <div class="step-desc">In the terminal (make sure it shows <code>kantier %</code> not <code>kantier-website %</code>): <code>git add .</code> → <code>git commit -m "description"</code> → <code>git push</code>. Watch Vercel dashboard for the new deployment to appear and turn green.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">5</div>
-      <div class="step-body">
-        <div class="step-title">Test on Vercel</div>
-        <div class="step-desc">Go to <a href="https://kantier.vercel.app">kantier.vercel.app</a> and test the specific feature. Send Claude a screenshot if something looks wrong.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 06. DEPLOY GUIDE -->
-  <div class="section" id="guide-deploy">
-    <div class="section-header">
-      <div class="section-num">06</div>
-      <div>
-        <div class="section-title">Deployment Reference</div>
-        <div class="section-sub">Quick commands and troubleshooting.</div>
-      </div>
-    </div>
-
-    <div class="grid2">
-      <div class="card">
-        <div class="card-label">Deploy to Vercel</div>
-        <div class="card-value" style="font-size:12px;line-height:2">
-          <code>cd ~/kantier</code><br>
-          <code>git add .</code><br>
-          <code>git commit -m "description"</code><br>
-          <code>git push</code><br>
-          Then wait ~90 seconds for Vercel auto-deploy.
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label">Common mistakes</div>
-        <div class="card-value" style="font-size:12px;line-height:1.8">
-          Wrong folder: terminal shows <code>kantier-website %</code> — run <code>cd ~/kantier</code><br>
-          Editing downloaded file instead of project file — check the tab header in VS Code shows the full project path<br>
-          232 errors — you opened the downloaded file in VS Code, not the project file
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label">Run locally</div>
-        <div class="card-value" style="font-size:12px;line-height:2">
-          <code>cd ~/kantier</code><br>
-          <code>npm run dev</code><br>
-          Open: <code>http://localhost:3000</code>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-label">Check errors before pushing</div>
-        <div class="card-value" style="font-size:12px;line-height:1.8">
-          Look at PROBLEMS tab in VS Code bottom bar. Should show 0 errors in project files. Errors in downloaded files (showing ~/Downloads or ~/09. Kantier App path) are safe to ignore.
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 07. FILE MAP -->
-  <div class="section" id="guide-files">
-    <div class="section-header">
-      <div class="section-num">07</div>
-      <div>
-        <div class="section-title">Project File Map</div>
-        <div class="section-sub">Every important file in the Kantier project and what it does.</div>
-      </div>
-    </div>
-
-    <table class="task-table">
-      <thead>
-        <tr><th>File Path</th><th>What it is</th><th>Last changed</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="file-tag">src/app/dashboard/page.tsx</span></td>
-          <td>Main dashboard — sidebar, stat cards, project list, recent tasks</td>
-          <td><span class="done-tag">Session 1</span></td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/dashboard/projektet/[id]/page.tsx</span></td>
-          <td>Project view — donut chart, task list, full task detail panel</td>
-          <td><span class="done-tag">Session 1</span></td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/dashboard/projektet/[id]/planet/page.tsx</span></td>
-          <td>Plan viewer — PDF display, zoom, pins, pin detail panel</td>
-          <td><span class="done-tag">Session 1</span></td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/dashboard/projektet/[id]/planet/pdf-renderer.tsx</span></td>
-          <td>PDF rendering component — handles pdfjs, zoom, render queue</td>
-          <td><span class="done-tag">Session 1</span></td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/dashboard/projektet/[id]/foto/page.tsx</span></td>
-          <td>Photo gallery for project — not yet reviewed</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/dashboard/projektet/[id]/raporte/page.tsx</span></td>
-          <td>Reports page — not yet reviewed</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/login/page.tsx</span></td>
-          <td>Login page</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/lib/supabase.ts</span></td>
-          <td>Supabase client setup</td>
-          <td>—</td>
-        </tr>
-        <tr>
-          <td><span class="file-tag">src/app/globals.css</span></td>
-          <td>Global styles — input/select styling, scrollbars</td>
-          <td>—</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 08. FIELDWIRE TASK PANEL -->
-  <div class="section" id="fw-task-panel">
-    <div class="section-header">
-      <div class="section-num">08</div>
-      <div>
-        <div class="section-title">Fieldwire — Task Detail Panel</div>
-        <div class="section-sub">Reference for what the task detail should contain and look like.</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h2>📋 Fieldwire Task Panel Structure</h2>
-      <p><strong>Left side (main content):</strong> Title (editable), Related Tasks section (+ New task / + Existing task search), Checklist (+ New item / + Add checklist), Activity feed (comments + change log with timestamps and @mentions).</p>
-      <p><strong>Right side (attributes):</strong> Status (Priority 1/2/3/Completed/Verified + Delete), Category (dropdown), Assignee (person picker), Plan thumbnail (shows miniature of the plan with pin location), Location (text), Start date, End date, Manpower (hours), Cost (USD), Tags, Watchers.</p>
-      <p><strong>Key differences from Kantier current state:</strong> (1) Plan thumbnail is a real rendered image with the pin dot. (2) Status uses Priority 1/2/3 not text labels. (3) Activity log shows all field changes automatically, not just comments. (4) @mention autocomplete in comments.</p>
-    </div>
-
-    <div class="grid2">
-      <div class="card">
-        <div class="card-label">Fieldwire Priority System</div>
-        <div class="card-value">
-          <div class="pin-demo">
-            <div class="pin" style="background:#DC2626">1</div>
-            <div class="pin" style="background:#EA580C">2</div>
-            <div class="pin" style="background:#F59E0B">3</div>
-            <div class="pin" style="background:#22C55E">✓</div>
-            <div class="pin" style="background:#3B82F6">V</div>
+          <div style="display:flex;gap:8px;">
+            <div style="flex:1;background:#F0F2F5;border-radius:8px;height:140px;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:30px;left:60px;">
+                <div style="width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#DC2626;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">
+                  <span style="transform:rotate(45deg);font-size:7px;font-weight:900;color:white;font-family:sans-serif;">DR</span>
+                </div>
+              </div>
+              <div style="position:absolute;top:60px;left:110px;">
+                <div style="width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#F59E0B;display:flex;align-items:center;justify-content:center;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">
+                  <span style="transform:rotate(45deg);font-size:7px;font-weight:900;color:white;font-family:sans-serif;">MU</span>
+                </div>
+                <div style="position:absolute;top:-4px;left:26px;background:white;border-radius:4px;padding:3px 8px;font-size:10px;font-weight:700;color:#1C2333;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.1);border-left:3px solid #F59E0B;">Murature_K0</div>
+              </div>
+            </div>
+            <div style="width:200px;background:white;border:1px solid #E4E7EC;border-radius:8px;padding:10px;">
+              <div style="font-size:11px;font-weight:700;color:#1C2333;margin-bottom:8px;">Murature_K0</div>
+              <div style="font-size:10px;color:#9AA3B2;margin-bottom:6px;">STATUSI</div>
+              <div style="background:#EFF6FF;border-radius:5px;padding:4px 8px;font-size:10px;color:#3B82F6;font-weight:700;margin-bottom:6px;">● Hapur</div>
+              <div style="font-size:10px;color:#9AA3B2;margin-bottom:4px;">VENDNDODHJA NË PLAN</div>
+              <div style="background:#F0F2F5;border-radius:6px;height:50px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#9AA3B2;">📄 Plan thumbnail</div>
+            </div>
           </div>
-          Priority 1 (Critical) · Priority 2 (High) · Priority 3 (Normal) · Completed · Verified
         </div>
       </div>
-      <div class="card">
-        <div class="card-label">Kantier → Fieldwire mapping</div>
-        <div class="card-value" style="font-size:12px;line-height:1.9">
-          Urgjent → Priority 1 (red)<br>
-          Lartë → Priority 2 (orange)<br>
-          Mesëm → Priority 3 (yellow)<br>
-          Ulët → (remove or keep as low)<br>
-          + add: Verifikuar (blue)<br>
-          Mbaruar stays as status, not priority
+      <div class="screenshot-card-notes">Teardrop pins with category acronyms (DR=Dritare, MU=Muraturë). Selected pin shows white label. Right panel has full task detail with grayscale plan thumbnail.</div>
+    </div>
+
+    <div class="screenshot-card">
+      <div class="screenshot-card-header">📋 Detyrat view — task list + detail panel</div>
+      <div style="background:#F4F5F7;padding:16px;">
+        <div style="display:flex;gap:8px;">
+          <div style="width:180px;background:white;border:1px solid #E4E7EC;border-radius:8px;padding:10px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:conic-gradient(#3B82F6 0 25%,#F59E0B 25% 50%,#22C55E 50% 75%,#E4E7EC 75%);margin:0 auto 8px;"></div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <div style="background:#FFFBEB;border:1px solid #F59E0B;border-radius:7px;padding:6px 8px;font-size:10px;font-weight:600;color:#1C2333;">Murature_K0<br><span style="color:#9AA3B2;font-weight:400;">Hapur · <span style="background:#FEF3C7;color:#D97706;padding:1px 5px;border-radius:3px;font-size:9px;">MU</span></span></div>
+              <div style="background:white;border:1px solid #E4E7EC;border-radius:7px;padding:6px 8px;font-size:10px;color:#1C2333;">Dritare me grile<br><span style="color:#9AA3B2;font-weight:400;"><span style="background:#FEF3C7;color:#D97706;padding:1px 5px;border-radius:3px;font-size:9px;">DR</span></span></div>
+            </div>
+          </div>
+          <div style="flex:1;background:white;border:1px solid #E4E7EC;border-radius:8px;padding:10px;font-size:10px;">
+            <div style="font-weight:700;font-size:12px;margin-bottom:8px;color:#1C2333;">Dritare me grile</div>
+            <div style="color:#9AA3B2;margin-bottom:3px;">DATA FILLIMIT</div>
+            <div style="background:#F7F8FA;border:1px solid #E4E7EC;border-radius:5px;padding:4px 6px;margin-bottom:6px;">16/04/2026</div>
+            <div style="color:#9AA3B2;margin-bottom:3px;">VENDNDODHJA NË PLAN</div>
+            <div style="background:#F0F2F5;border-radius:6px;height:50px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#5A6474;text-align:center;">Grayscale PDF<br>with orange pin</div>
+          </div>
         </div>
+      </div>
+      <div class="screenshot-card-notes">Category acronym badges (MU, DR) in task list. Full detail panel with dates, thumbnail. Clicking thumbnail opens Planet view auto-focused on that plan.</div>
+    </div>
+  </div>
+
+  <div class="box purple">
+    <h2>🎯 Fieldwire features still missing from Kantier</h2>
+    <ul>
+      <li><strong>Auto-activity log</strong> — Fieldwire automatically records every change: "Changed start date to 3/3/26", "Changed priority to P2", "Aurora Baba uploaded photo". Kantier only has manual comments. Need to add auto-logging in saveTaskField.</li>
+      <li><strong>Assignee dropdown</strong> — Fieldwire shows project members in a dropdown. Kantier has a free-text email field. Need to replace with dropdown from anetaret table.</li>
+      <li><strong>Related tasks</strong> — Fieldwire shows linked tasks with + New task / + Existing task. Partially built (existing task search modal) but not linked to a related_task_ids field.</li>
+      <li><strong>Photo metadata</strong> — Fieldwire shows who uploaded a photo and when. Kantier stores only the URL. Need to store {url, email, timestamp} objects instead of plain strings.</li>
+      <li><strong>Link task immediately on creation</strong> — when creating a new task from Detyrat, offer to immediately link it to a plan location.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 04 DATA MODEL -->
+<div class="section" id="data-model">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title">Data Model</div>
+      <div class="section-sub">Supabase tables, fields, and storage buckets. Reference this before any feature that touches the database.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-label">detyrat (tasks) — all fields</div>
+      <div class="card-value" style="font-size:12px;line-height:2">
+        <code>id</code>, <code>titulli</code> (title)<br>
+        <code>pershkrimi</code> (description)<br>
+        <code>statusi</code>: hapur | ne_progres | mbaruar<br>
+        <code>prioriteti</code>: prioritet_1/2/3 | verifikuar | mbaruar_det | ulet<br>
+        <code>kategoria</code> (one of 18 categories)<br>
+        <code>projekti_id</code> → projektet.id<br>
+        <code>plan_id</code> → planet.id (nullable)<br>
+        <code>pin_x</code>, <code>pin_y</code>, <code>pin_faqja</code> (pin location)<br>
+        <code>krijuar_nga</code> (user id)<br>
+        <code>caktuar_email</code> (assigned to — text, needs dropdown)<br>
+        <code>data_fillimit</code> (start date)<br>
+        <code>data_afatit</code> (planned deadline)<br>
+        <code>data_mbarimit</code> (actual completion — scope creep calc)<br>
+        <code>kostoja</code> (cost in €)<br>
+        <code>njerezit_punojne</code> (manpower)<br>
+        <code>foto_urls</code> jsonb[] (⚠ needs migration to objects with metadata)<br>
+        <code>checklist</code> jsonb[] [{id, teksti, mbaruar}]<br>
+        <code>komentet</code> jsonb[] [{id, teksti, email, data}]<br>
+        <code>created_at</code>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Other tables + buckets</div>
+      <div class="card-value" style="font-size:12px;line-height:2">
+        <strong>projektet:</strong> id, emri, adresa, pershkrimi, statusi, krijuar_nga<br>
+        <strong>planet (plans):</strong> id, projekti_id, emri, kategoria, pdf_url, pershkrimi, krijuar_nga, markup<br>
+        <strong>anetaret (members):</strong> id, projekti_id, email, roli (menaxher/inxhinier/anetar/kontraktues)<br><br>
+        <strong>Storage buckets:</strong><br>
+        <code>planet-pdf</code> — plan PDF files<br>
+        <code>foto-kantier</code> — task photos<br><br>
+        <strong>⚠ Columns still needed:</strong><br>
+        <code>related_task_ids</code> jsonb[] on detyrat<br>
+        Migrate <code>foto_urls</code> from string[] to object[] with url, email, timestamp
       </div>
     </div>
   </div>
 
-  <!-- 09. FIELDWIRE PLAN VIEWER -->
-  <div class="section" id="fw-plan-viewer">
-    <div class="section-header">
-      <div class="section-num">09</div>
-      <div>
-        <div class="section-title">Fieldwire — Plan Viewer & Pins</div>
-        <div class="section-sub">How Fieldwire handles the plan viewer — reference for future improvements.</div>
-      </div>
-    </div>
+  <div class="box">
+    <h2>📸 Photo metadata migration plan</h2>
+    <p>Currently <code>foto_urls</code> stores plain strings: <code>["https://...jpg", "https://...jpg"]</code></p>
+    <p>Needs to become: <code>[{"url": "https://...", "email": "aurora@...", "data": "2026-04-03T10:22:00Z"}, ...]</code></p>
+    <p><strong>Migration approach:</strong> In Supabase SQL editor: <code>ALTER TABLE detyrat ALTER COLUMN foto_urls TYPE jsonb USING foto_urls::jsonb;</code> — this preserves existing data. Then update uploadPhotoToTask() in both planet/page.tsx and projektet/[id]/page.tsx to store objects instead of strings. The photo display component needs to read <code>f.url</code> instead of <code>f</code> directly.</p>
+  </div>
+</div>
 
-    <div class="box">
-      <h2>🗺 Fieldwire Plan Viewer Features</h2>
-      <p><strong>Toolbar (left side):</strong> Full screen, zoom in/out, pan, select, pin/task, markup tools (pen, line, arrow, rectangle, text, stamp), undo. Dark slim toolbar matching Kantier's current approach.</p>
-      <p><strong>Pin design:</strong> Colored circle with initials of assignee (e.g. "DR", "PL"). Priority color background. Shows task number (#12). On hover: tooltip with task title.</p>
-      <p><strong>Task list (right panel):</strong> Shows all tasks on current plan. Each row shows: assignee avatar, task number, plan ref, title. Clicking opens the task detail modal/overlay.</p>
-      <p><strong>Version control:</strong> Bottom bar shows plan name and version date. Can switch between versions.</p>
-      <p><strong>Attachment pins:</strong> Separate pin type for attaching PDFs (RFIs, specs) to a location on the plan. Shows a paperclip icon, clicking opens the attachment.</p>
-    </div>
-
-    <div class="box blue">
-      <h2>🎯 Next session — recommended order</h2>
-      <p><strong>1.</strong> Pin label tooltip (drawOverlay fix — ~1 hour, quick win)</p>
-      <p><strong>2.</strong> Expanded priority system with matching pin colors (~2 hours)</p>
-      <p><strong>3.</strong> Related tasks in task detail panel (~6 hours, needs Supabase column)</p>
-      <p><strong>4.</strong> Unified task detail component shared between Detyrat and Planet views (~4 hours)</p>
-      <p><strong>5.</strong> Plan thumbnail rendering in task detail (~5 hours)</p>
-      <p><strong>After those:</strong> @ mentions, global task list, markup tools, attachment pins, PDF thumbnails in plan grid.</p>
+<!-- 05 FILE MAP -->
+<div class="section" id="file-map">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <div class="section-title">Project File Map</div>
+      <div class="section-sub">Every important file — what it does and when it was last changed.</div>
     </div>
   </div>
+
+  <table class="task-table">
+    <thead><tr><th>File Path (from src/app/)</th><th>What it does</th><th>Last version</th></tr></thead>
+    <tbody>
+      <tr><td><span class="file-tag">dashboard/page.tsx</span></td><td>Main dashboard — sidebar, stat cards, project list, recent tasks. Light theme.</td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><span class="file-tag">dashboard/projektet/[id]/page.tsx</span></td><td>Project/Detyrat view — donut chart, task list, full detail panel. Has PlanThumbnail, PlanTaskThumbnail, KATEGORI_AKRONIM, PRIORITET_NGJYRA_PROJ components at top of file.</td><td><span class="done-tag">S2 v3</span></td></tr>
+      <tr><td><span class="file-tag">dashboard/projektet/[id]/planet/page.tsx</span></td><td>Plan viewer — PDF, pins, task detail. Has PlanThumbnail component at top. Accepts <code>?planId=xxx</code> URL param to auto-open a plan.</td><td><span class="done-tag">S2 v6</span></td></tr>
+      <tr><td><span class="file-tag">dashboard/projektet/[id]/planet/pdf-renderer.tsx</span></td><td>PDF rendering — pdfjs, zoom, render queue to prevent race conditions.</td><td><span class="done-tag">S1</span></td></tr>
+      <tr><td><span class="file-tag">dashboard/projektet/[id]/foto/page.tsx</span></td><td>Photo gallery — not yet built.</td><td><span class="badge badge-amber">Pending</span></td></tr>
+      <tr><td><span class="file-tag">dashboard/projektet/[id]/raporte/page.tsx</span></td><td>Reports — not yet built.</td><td><span class="badge badge-amber">Pending</span></td></tr>
+      <tr><td><span class="file-tag">login/page.tsx</span></td><td>Login page — not reviewed.</td><td>—</td></tr>
+      <tr><td><span class="file-tag">globals.css</span></td><td>Global styles.</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 06 ACTIVE BUGS -->
+<div class="section" id="bugs">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <div class="section-title">Active Bugs — Fix Next</div>
+      <div class="section-sub">Known issues as of 3 April 2026. Start each session by checking this list.</div>
+    </div>
+  </div>
+
+  <table class="task-table">
+    <thead><tr><th>Priority</th><th>Bug</th><th>Root cause</th><th>Fix approach</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-red">P1</span></td>
+        <td><strong>data_mbarimit (end date) still not saving reliably</strong><br>Date is entered but not persisted to Supabase on some inputs.</td>
+        <td>The <code>saveTaskField</code> comparison <code>current === normalized</code> can fail for date strings when one is ISO format and the other is YYYY-MM-DD. Also <code>loadData()</code> call after save might race-overwrite the state.</td>
+        <td>In saveTaskField: compare only the first 10 chars of date strings. Remove <code>loadData()</code> call after save in projekti page (it resets local state). Only call loadData on mount.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-amber">P2</span></td>
+        <td><strong>caktuar_email (assignee) is a free-text input</strong><br>Should be a dropdown of project members from anetaret table.</td>
+        <td>Not yet built. The anetaret table exists but is not queried in the task detail.</td>
+        <td>In loadData(), also fetch anetaret for this project. Replace the caktuar_email text input with a select populated from that list. Falls back to text if no members exist.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-amber">P2</span></td>
+        <td><strong>No auto-activity log</strong><br>Field changes are not recorded automatically. Only manual comments appear in Aktiviteti.</td>
+        <td>saveTaskField doesn't append to komentet when called.</td>
+        <td>In saveTaskField: after the Supabase update, append an activity entry to komentet with type: 'activity', field changed, old value, new value, user email, timestamp. Display activity entries differently (italic, gray) vs comments in the activity feed.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-amber">P2</span></td>
+        <td><strong>Photo metadata missing</strong><br>Photos stored as plain URL strings. No record of who uploaded or when.</td>
+        <td>foto_urls is string[] — needs to be object[] with {url, email, data}.</td>
+        <td>Supabase migration + update uploadPhotoToTask in both files. Photo display needs to read f.url. Show uploader initials + date under each photo thumbnail.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 07 FEATURES TO BUILD -->
+<div class="section" id="features">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div>
+      <div class="section-title">Features to Build — Next Sessions</div>
+      <div class="section-sub">Ordered by priority. Discuss with Aurora before starting each one.</div>
+    </div>
+  </div>
+
+  <table class="task-table">
+    <thead><tr><th>#</th><th>Feature</th><th>Files</th><th>Effort</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="badge badge-red">1</span></td>
+        <td><strong>Unified task modal — same component in Detyrat and Planet</strong><br>Aurora's request: pin click and task click should open the exact same modal/panel. Extract a shared TaskDetailPanel component used by both pages.</td>
+        <td><span class="file-tag">New: TaskDetailPanel.tsx</span></td>
+        <td><span class="effort-tag">~4h</span></td>
+        <td>Create <code>src/app/dashboard/projektet/[id]/components/TaskDetailPanel.tsx</code>. Import in both planet/page.tsx and page.tsx. Needs careful prop interface design.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-red">2</span></td>
+        <td><strong>Auto-activity log in task detail</strong><br>When saveTaskField is called, auto-append a log entry to komentet with the change details. Display differently from manual comments.</td>
+        <td><span class="file-tag">projektet/[id]/page.tsx</span> <span class="file-tag">planet/page.tsx</span></td>
+        <td><span class="effort-tag">~2h</span></td>
+        <td>Entry format: {id, type: 'activity', field, oldValue, newValue, email, data}. In activity feed: show as italic gray line "Changed [field] from X to Y · timestamp"</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-red">3</span></td>
+        <td><strong>Link task to plan when creating from Detyrat</strong><br>When creating a new task in the Detyrat view, offer a "Vendos në plan" button that opens the plan viewer to place a pin.</td>
+        <td><span class="file-tag">projektet/[id]/page.tsx</span></td>
+        <td><span class="effort-tag">~3h</span></td>
+        <td>After task creation, show a card: "Dëshironi ta vendosni në plan? → Hap Planet" with task ID in URL so planet page knows which task to link.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-amber">4</span></td>
+        <td><strong>Photo metadata — uploader + timestamp</strong><br>Migrate foto_urls to store objects. Show who uploaded + when under each photo.</td>
+        <td><span class="file-tag">projektet/[id]/page.tsx</span> <span class="file-tag">planet/page.tsx</span> + Supabase</td>
+        <td><span class="effort-tag">~3h</span></td>
+        <td>Run SQL migration first: <code>ALTER TABLE detyrat ALTER COLUMN foto_urls TYPE jsonb USING foto_urls::jsonb;</code> Existing string URLs still work as fallback.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-amber">5</span></td>
+        <td><strong>Related tasks</strong><br>Link tasks to each other in the detail panel. Show linked task titles. Needs related_task_ids column.</td>
+        <td><span class="file-tag">projektet/[id]/page.tsx</span> + Supabase</td>
+        <td><span class="effort-tag">~5h</span></td>
+        <td>Add <code>related_task_ids uuid[]</code> column to detyrat in Supabase. Show in detail panel: list of linked tasks, + New task, + Existing task search modal (already built for planet).</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-blue">6</span></td>
+        <td><strong>Assignee dropdown from project members</strong><br>Replace free-text caktuar_email with dropdown from anetaret table.</td>
+        <td><span class="file-tag">projektet/[id]/page.tsx</span> <span class="file-tag">planet/page.tsx</span></td>
+        <td><span class="effort-tag">~2h</span></td>
+        <td>In loadData(), query anetaret. Store in state. Replace input with select. Show member name + role in dropdown. Keep text fallback if no members.</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-blue">7</span></td>
+        <td><strong>Global task list page (/dashboard/detyrat)</strong><br>All tasks across all projects in one filterable table.</td>
+        <td><span class="file-tag">New: dashboard/detyrat/page.tsx</span></td>
+        <td><span class="effort-tag">~4h</span></td>
+        <td>Columns: project, title, status, priority, category, assignee, deadline. Filter by project / status / category. Click row → navigate to project and open task detail.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 08 RAPORTE PAGE -->
+<div class="section" id="raporte">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div>
+      <div class="section-title">Raporte Page — Plan</div>
+      <div class="section-sub">What the reports page should contain and how to build it.</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>📊 What Reports Need to Show</h2>
+    <p>The reports page lives at <code>/dashboard/projektet/[id]/raporte</code>. It reads from the <code>detyrat</code> table for the current project and calculates these metrics:</p>
+    <ul>
+      <li><strong>Tasks by status</strong> — bar or donut: Hapur / Në Progres / Mbaruar. Count and % of total.</li>
+      <li><strong>Overdue tasks</strong> — tasks where data_afatit &lt; today AND statusi ≠ mbaruar. List with task name, deadline, how many days overdue.</li>
+      <li><strong>Scope creep per task</strong> — tasks where data_mbarimit &gt; data_afatit. Shows planned vs actual date, delay in days. This is the most important construction metric.</li>
+      <li><strong>Cost by category</strong> — bar chart: EL / HI / MU etc. with total cost (€) per category.</li>
+      <li><strong>Manpower hours by category</strong> — same grouping as cost but shows njerezit_punojne values.</li>
+      <li><strong>Tasks per assignee</strong> — who has the most tasks, and what % are complete.</li>
+      <li><strong>Photo log</strong> — after foto_urls migration: chronological list of all task photos with uploader, date, task name, category.</li>
+    </ul>
+  </div>
+
+  <div class="box green">
+    <h2>🔧 Technical approach for Raporte</h2>
+    <p>Use a single Supabase query: <code>supabase.from('detyrat').select('*').eq('projekti_id', id)</code> then do all calculations in JavaScript — no complex SQL needed.</p>
+    <p><strong>Charts:</strong> Use inline SVG (no library needed). Simple bar charts can be built with rect elements sized to percentage values. The donut chart pattern is already in projektet/[id]/page.tsx — reuse it.</p>
+    <p><strong>Export:</strong> Add a "Shkarko PDF" button that calls <code>window.print()</code> with print-specific CSS (<code>@media print</code>). This lets the site manager share reports with clients without needing a PDF library.</p>
+    <p><strong>Build order:</strong> (1) Status breakdown + overdue list first. (2) Scope creep table. (3) Cost/manpower charts. (4) Photo log after the foto_urls migration.</p>
+  </div>
+</div>
+
+<!-- 09 FOTO PAGE -->
+<div class="section" id="foto">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div>
+      <div class="section-title">Foto Page — Plan</div>
+      <div class="section-sub">The Foto tab currently links to /foto but has no content. Here's what to build.</div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>📸 What the Foto Page Should Be</h2>
+    <p>The Foto page at <code>/dashboard/projektet/[id]/foto</code> should be a <strong>visual construction diary</strong> — every photo taken on site, organized chronologically and by category.</p>
+    <ul>
+      <li><strong>Photo grid</strong> — masonry or uniform grid of all task photos for this project. Each shows: thumbnail, task name, category acronym badge, date, uploader initials.</li>
+      <li><strong>Filter by category</strong> — EL / HI / MU tabs at top to filter photos by work type.</li>
+      <li><strong>Filter by date range</strong> — date picker to see photos from a specific period.</li>
+      <li><strong>Lightbox</strong> — click a photo to see full size with all metadata: task name, who took it, when, description.</li>
+      <li><strong>Link back to task</strong> — each photo card has a "→ Shiko detyrën" button that opens the task detail.</li>
+      <li><strong>Standalone upload</strong> — upload photos not linked to a specific task, just to the project's site diary.</li>
+    </ul>
+    <p><strong>Prerequisite:</strong> The foto_urls migration (see feature #4) must be done first so photos have uploader and timestamp metadata.</p>
+  </div>
+</div>
+
+<!-- 10 WORKFLOW -->
+<div class="section" id="workflow">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div>
+      <div class="section-title">Working with Claude</div>
+      <div class="section-sub">How Aurora and Claude work together efficiently.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <div class="step-title">Start each session</div>
+      <div class="step-desc">Paste this document's URL in the chat: <code>https://kantier-ui-reference-document.vercel.app</code>. Claude fetches it and has full context. Then say which feature to work on.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <div class="step-title">Provide files to edit</div>
+      <div class="step-desc">In VS Code, drag the file directly from the Explorer sidebar into the Claude chat. No terminal commands needed. Claude will tell you exactly which file it needs.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-title">Apply the fix</div>
+      <div class="step-desc">Download Claude's file. In VS Code: click the correct file in the sidebar → <strong>Cmd+A</strong> → <strong>Delete</strong> → <strong>Cmd+V</strong> → <strong>Cmd+S</strong>. Check PROBLEMS tab shows 0 errors.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <div class="step-title">Deploy</div>
+      <div class="step-desc">In Terminal (must show <code>kantier %</code> not <code>kantier-website %</code>): <code>git add . && git commit -m "description" && git push</code>. Wait ~90 seconds for Vercel.</div>
+    </div>
+  </div>
+
+  <div class="box red" style="margin-top:20px;">
+    <h2>⚠ Common Mistakes</h2>
+    <ul>
+      <li>Pasting the file into the wrong VS Code tab — always check the breadcrumb path at the top shows the correct file</li>
+      <li>232 errors in VS Code — you opened the downloaded file directly; errors are normal outside the project folder</li>
+      <li>Wrong terminal folder — must be in <code>~/kantier</code> not <code>~/kantier-website</code></li>
+      <li>Uploading the same file twice — Claude receives the last uploaded version; if two files are named page.tsx, only the last one is available</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 11 DEPLOY -->
+<div class="section" id="deploy">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div>
+      <div class="section-title">Deployment Reference</div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-label">Deploy command</div>
+      <div class="card-value" style="font-size:12px;line-height:2.2"><code>cd ~/kantier</code><br><code>git add .</code><br><code>git commit -m "description"</code><br><code>git push</code></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Run locally</div>
+      <div class="card-value" style="font-size:12px;line-height:2.2"><code>cd ~/kantier</code><br><code>npm run dev</code><br>Open: <code>http://localhost:3000</code></div>
+    </div>
+  </div>
+</div>
+
+<!-- 12 FIELDWIRE REFERENCE -->
+<div class="section" id="fieldwire">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div>
+      <div class="section-title">Fieldwire Reference</div>
+      <div class="section-sub">Key Fieldwire patterns that Kantier is modelling. Reference for design decisions.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-label">Task attributes panel (right side)</div>
+      <div class="card-value" style="font-size:12px;line-height:1.8">
+        Status (Priority dropdown) · Category · Assignee · Plan thumbnail with pin · Location text · Start date · End date · Manpower (hours) · Cost (USD) · Tags · Watchers<br><br>
+        <strong>Key difference from Kantier:</strong> Fieldwire's "Status" IS the priority (P1/P2/P3/Completed/Verified). Kantier separates these into Statusi and Prioriteti which gives more granularity.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Task main panel (left side in Fieldwire)</div>
+      <div class="card-value" style="font-size:12px;line-height:1.8">
+        Title (editable) · Related Tasks (+ New / + Existing) · Checklist (+ items, + full checklist) · Activity feed (auto-log of ALL changes + manual comments + @mentions)<br><br>
+        <strong>Kantier status:</strong> Has title, checklist, comments. Missing: related tasks column, auto-activity log, @mentions.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Plan thumbnail (Fieldwire)</div>
+      <div class="card-value" style="font-size:12px;line-height:1.8">
+        Grayscale PDF rendering of the plan page. Full color teardrop pin at the task location. Plan name + sheet number below. Clicking opens the plan viewer focused on that task's pin.<br><br>
+        <strong>Kantier status:</strong> ✓ Working — grayscale PDF, colored pin, plan name, click navigation.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Pin design (Fieldwire)</div>
+      <div class="card-value" style="font-size:12px;line-height:1.8">
+        Teardrop shape. Initials of assignee OR category abbreviation. Priority color fill. On hover: tooltip with task title + task number (#12). Right panel shows numbered task list.<br><br>
+        <strong>Kantier status:</strong> ✓ Teardrop shape. ✓ Category acronym. ✓ Priority colors. ✓ Label on select. ✗ Assignee initials option missing.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 13 PRIORITY & CATEGORY -->
+<div class="section" id="priorities">
+  <div class="section-header">
+    <div class="section-num">13</div>
+    <div>
+      <div class="section-title">Priority & Category System</div>
+      <div class="section-sub">Complete reference for colors, values, and acronyms used across all files.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="card-label">Priority values + colors</div>
+      <div class="card-value" style="font-size:12px;line-height:2">
+        <span style="color:#DC2626;font-weight:700;">■</span> <code>prioritet_1</code> #DC2626 (red — critical)<br>
+        <span style="color:#EA580C;font-weight:700;">■</span> <code>prioritet_2</code> #EA580C (orange — high)<br>
+        <span style="color:#F59E0B;font-weight:700;">■</span> <code>prioritet_3</code> #F59E0B (yellow — normal)<br>
+        <span style="color:#3B82F6;font-weight:700;">■</span> <code>verifikuar</code> #3B82F6 (blue — verified)<br>
+        <span style="color:#22C55E;font-weight:700;">■</span> <code>mbaruar_det</code> #22C55E (green — done)<br>
+        <span style="color:#94A3B8;font-weight:700;">■</span> <code>ulet</code> #94A3B8 (gray — low)<br>
+        <em style="color:var(--muted)">Legacy: urgjent=red, larte=orange, mesem=yellow (still supported)</em>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Category acronyms (Albanian)</div>
+      <div class="card-value" style="font-size:12px;line-height:1.9;columns:2;gap:16px;">
+        EL = Elektrike<br>
+        HI = Hidraulike<br>
+        BE = Beton<br>
+        SU = Suvatim<br>
+        LY = Lyerje<br>
+        MU = Muraturë<br>
+        FA = Fasadë<br>
+        PL = Shtresa pllakash<br>
+        ME = Instalime metalike<br>
+        DR = Dritare & Dyer<br>
+        CA = Çati<br>
+        IZ = Izolim<br>
+        GI = Gips<br>
+        HV = HVAC<br>
+        AR = Arkitekturë<br>
+        CI = Civile<br>
+        ST = Strukturale<br>
+        TJ = Tjetër
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
 </body>
