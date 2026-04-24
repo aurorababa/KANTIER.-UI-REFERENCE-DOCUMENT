@@ -3,522 +3,838 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Reference Document v11</title>
+<title>Kantier UI Reference v12</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1C2333; --bg: #F4F5F7; --border: #E4E7EC; --muted: #9AA3B2;
-    --amber: #F59E0B; --amber-bg: #FFFBEB; --green: #16A34A; --green-bg: #F0FDF4;
-    --blue: #3B82F6; --blue-bg: #EFF6FF; --red: #DC2626; --red-bg: #FEF2F2;
-    --purple: #7C3AED; --purple-bg: #F5F3FF; --teal: #0D9488; --teal-bg: #F0FDFA;
-    --orange: #EA580C; --orange-bg: #FFF7ED; --sky: #0EA5E9; --sky-bg: #F0F9FF;
+    --amber: #F59E0B;
+    --amber-dim: #92600A;
+    --ink: #1C2333;
+    --ink-mid: #3D4B63;
+    --ink-soft: #5A6474;
+    --ink-faint: #9AA3B2;
+    --bg: #F4F5F7;
+    --surface: #FFFFFF;
+    --border: #E4E7EC;
+    --green: #22C55E;
+    --blue: #3B82F6;
+    --red: #EF4444;
+    --orange: #F97316;
+    --purple: #8B5CF6;
+    --teal: #0D9488;
+    --mono: 'IBM Plex Mono', monospace;
+    --cond: 'Barlow Condensed', sans-serif;
+    --body: 'Barlow', sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; }
-  a { color: var(--blue); text-decoration: none; }
-  .site-header { background: var(--ink); color: white; padding: 40px 48px 32px; }
-  .site-header .logo { font-size: 28px; font-weight: 900; letter-spacing: 0.05em; color: var(--amber); margin-bottom: 6px; }
-  .site-header .subtitle { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
-  .badges { display: flex; gap: 8px; flex-wrap: wrap; }
-  .badge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
-  .badge-amber { background: var(--amber); color: var(--ink); }
-  .badge-green { background: var(--green); color: white; }
-  .badge-blue { background: var(--blue); color: white; }
-  .badge-red { background: var(--red); color: white; }
-  .badge-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
-  .layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
-  .sidebar { background: white; border-right: 1px solid var(--border); padding: 24px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-  .sidebar-group { padding: 16px 20px 8px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
-  .sidebar a { display: block; padding: 6px 20px; font-size: 12px; color: var(--muted); font-weight: 500; }
-  .sidebar a:hover { color: var(--ink); background: var(--bg); text-decoration: none; }
-  .main { padding: 40px 48px; max-width: 960px; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--body); background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; }
+
+  /* Layout */
+  .layout { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--ink); padding: 0; border-right: 1px solid #2D3748; }
+  .sidebar::-webkit-scrollbar { width: 4px; } .sidebar::-webkit-scrollbar-thumb { background: #3D4B63; }
+  .main { padding: 48px 56px; max-width: 980px; }
+
+  /* Sidebar */
+  .sidebar-header { padding: 24px 20px 16px; border-bottom: 1px solid #2D3748; }
+  .sidebar-logo { font-family: var(--cond); font-size: 20px; font-weight: 900; color: var(--amber); letter-spacing: 0.05em; }
+  .sidebar-ver { font-family: var(--mono); font-size: 10px; color: #5A6474; margin-top: 3px; }
+  .sidebar-section { padding: 8px 0; border-bottom: 1px solid #2D3748; }
+  .sidebar-section-label { font-family: var(--mono); font-size: 9px; font-weight: 600; color: #3D4B63; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px 4px; }
+  .sidebar a { display: block; padding: 5px 20px; font-size: 12px; color: #9AA3B2; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+  .sidebar a:hover { color: var(--amber); background: rgba(245,158,11,0.06); border-left-color: var(--amber); }
+  .sidebar-status { padding: 16px 20px; }
+  .status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .dot-green { background: var(--green); } .dot-amber { background: var(--amber); } .dot-red { background: var(--red); }
+  .status-line { font-size: 11px; color: #5A6474; margin-bottom: 4px; }
+
+  /* Header */
+  .doc-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid var(--border); }
+  .doc-version { font-family: var(--mono); font-size: 11px; color: var(--amber); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .doc-title { font-family: var(--cond); font-size: 42px; font-weight: 900; color: var(--ink); line-height: 1; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .doc-subtitle { font-size: 15px; color: var(--ink-soft); }
+  .doc-tags { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+  .tag-green { background: #DCFCE7; color: #15803D; }
+  .tag-amber { background: #FEF3C7; color: #92600A; }
+  .tag-blue { background: #DBEAFE; color: #1D4ED8; }
+  .tag-gray { background: #F1F5F9; color: #475569; }
+
+  /* Section */
   .section { margin-bottom: 56px; }
-  .section-num { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--amber); margin-bottom: 6px; }
-  h2 { font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
-  h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin: 20px 0 10px; }
-  p { margin-bottom: 12px; color: var(--ink); }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
-  th { background: var(--bg); padding: 8px 12px; text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
-  td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .section-label { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .section-title { font-family: var(--cond); font-size: 26px; font-weight: 800; color: var(--ink); letter-spacing: 0.02em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  h3 { font-family: var(--cond); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: 0.03em; margin: 24px 0 10px; text-transform: uppercase; }
+  p { color: var(--ink-mid); margin-bottom: 12px; }
+
+  /* Alert boxes */
+  .alert { border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; display: flex; gap: 10px; }
+  .alert-red { background: #FEF2F2; border: 1px solid #FECACA; }
+  .alert-green { background: #F0FDF4; border: 1px solid #BBF7D0; }
+  .alert-amber { background: #FFFBEB; border: 1px solid #FDE68A; }
+  .alert-blue { background: #EFF6FF; border: 1px solid #BFDBFE; }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .alert-body { flex: 1; }
+  .alert-title { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .alert-red .alert-title { color: #DC2626; }
+  .alert-green .alert-title { color: #15803D; }
+  .alert-amber .alert-title { color: #92600A; }
+  .alert-blue .alert-title { color: #1D4ED8; }
+  .alert-text { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 12px; }
+  th { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); padding: 8px 12px; text-align: left; background: var(--bg); border-bottom: 1px solid var(--border); }
+  td { padding: 9px 12px; border-bottom: 1px solid #F0F2F5; color: var(--ink-mid); vertical-align: top; }
   tr:last-child td { border-bottom: none; }
-  pre { background: var(--ink); color: #E4E7EC; border-radius: 8px; padding: 16px 20px; font-size: 12px; overflow-x: auto; margin-bottom: 16px; line-height: 1.7; }
-  code { font-family: 'SF Mono', 'Fira Code', monospace; }
-  p code, td code, li code { background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font-size: 11px; color: var(--red); font-family: 'SF Mono', monospace; }
-  .chip { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-right: 4px; }
-  .chip-done { background: var(--green-bg); color: var(--green); }
-  .chip-next { background: var(--amber-bg); color: #92400E; }
-  .chip-future { background: var(--bg); color: var(--muted); }
-  .chip-p1 { background: var(--red-bg); color: var(--red); }
-  .chip-p2 { background: var(--orange-bg); color: var(--orange); }
-  .chip-p3 { background: var(--amber-bg); color: #92400E; }
-  .chip-bug { background: var(--red-bg); color: var(--red); }
-  .doc-rpt { background: var(--amber-bg); color: #92400E; }
-  .doc-rdt { background: var(--sky-bg); color: #0369A1; }
-  .doc-rfi { background: var(--blue-bg); color: #1D4ED8; }
-  .doc-ins { background: var(--green-bg); color: #166534; }
-  .doc-cor { background: var(--red-bg); color: var(--red); }
-  .doc-dco { background: var(--purple-bg); color: var(--purple); }
-  .doc-ncr { background: var(--orange-bg); color: var(--orange); }
-  .doc-sub { background: var(--teal-bg); color: var(--teal); }
-  .callout { border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; border-left: 4px solid; }
-  .callout-amber { background: var(--amber-bg); border-color: var(--amber); }
-  .callout-red { background: var(--red-bg); border-color: var(--red); }
-  .callout-green { background: var(--green-bg); border-color: var(--green); }
-  .callout-blue { background: var(--blue-bg); border-color: var(--blue); }
-  .file-row { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); gap: 12px; font-size: 12px; }
+  tr:hover td { background: #FAFBFC; }
+  .table-wrap { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+
+  /* Code */
+  pre { background: var(--ink); color: #E2E8F0; padding: 20px; border-radius: 8px; overflow-x: auto; margin-bottom: 16px; font-family: var(--mono); font-size: 11px; line-height: 1.7; }
+  code { font-family: var(--mono); font-size: 11px; background: #F1F5F9; color: #1D4ED8; padding: 1px 5px; border-radius: 3px; }
+  pre code { background: none; color: inherit; padding: 0; }
+  .comment { color: #64748B; }
+  .kw { color: #93C5FD; }
+  .str { color: #86EFAC; }
+  .fn { color: #FCD34D; }
+
+  /* Status badges */
+  .badge { display: inline-flex; align-items: center; gap: 4px; font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 4px; }
+  .badge-done { background: #DCFCE7; color: #15803D; }
+  .badge-progress { background: #FEF3C7; color: #92600A; }
+  .badge-pending { background: #F1F5F9; color: #64748B; }
+  .badge-new { background: #DBEAFE; color: #1D4ED8; }
+
+  /* Route cards */
+  .route-grid { display: grid; gap: 8px; }
+  .route-card { display: grid; grid-template-columns: auto 1fr; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .route-status { width: 6px; background: var(--green); }
+  .route-body { padding: 12px 14px; }
+  .route-path { font-family: var(--mono); font-size: 11px; color: var(--blue); font-weight: 600; margin-bottom: 4px; }
+  .route-desc { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+
+  /* File map */
+  .file-row { display: grid; grid-template-columns: 260px 1fr 80px; gap: 0; padding: 8px 12px; border-bottom: 1px solid #F0F2F5; align-items: center; font-size: 11px; }
   .file-row:last-child { border-bottom: none; }
-  .file-name { font-family: monospace; font-weight: 700; color: var(--ink); min-width: 300px; }
-  .file-arrow { color: var(--muted); }
-  .file-path { font-family: monospace; font-size: 11px; color: var(--muted); flex: 1; }
-  .file-lines { font-size: 11px; color: var(--muted); white-space: nowrap; }
-  footer { background: var(--ink); color: rgba(255,255,255,0.4); padding: 24px 48px; font-size: 11px; margin-top: 40px; }
+  .file-name { font-family: var(--mono); color: var(--blue); font-weight: 600; }
+  .file-path { color: var(--ink-soft); font-family: var(--mono); font-size: 10px; }
+  .file-lines { font-family: var(--mono); color: var(--ink-faint); font-size: 10px; text-align: right; }
+
+  /* Roadmap */
+  .roadmap-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid #F0F2F5; }
+  .roadmap-item:last-child { border-bottom: none; }
+  .roadmap-priority { font-family: var(--mono); font-size: 10px; font-weight: 700; width: 28px; flex-shrink: 0; margin-top: 2px; }
+  .p1 { color: var(--red); } .p2 { color: var(--orange); } .p3 { color: var(--amber); }
+  .roadmap-content { flex: 1; }
+  .roadmap-title { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 3px; }
+  .roadmap-desc { font-size: 12px; color: var(--ink-soft); }
+
+  /* SQL blocks */
+  .sql-block { background: #0F172A; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; font-family: var(--mono); font-size: 11px; line-height: 1.8; color: #CBD5E1; overflow-x: auto; }
+  .sql-comment { color: #475569; }
+  .sql-kw { color: #7DD3FC; }
+  .sql-str { color: #86EFAC; }
+
+  /* Permission table */
+  .perm-check { color: var(--green); font-weight: 700; }
+  .perm-partial { color: var(--amber); font-weight: 700; }
+  .perm-no { color: #CBD5E1; }
 </style>
 </head>
 <body>
 
-<div class="site-header">
-  <div class="logo">KANTIER.</div>
-  <div class="subtitle">v11 — 24 April 2026 · S1–S10 Complete · Albania's First Construction Site Management SaaS</div>
-  <div class="badges">
-    <span class="badge badge-amber">v11</span>
-    <span class="badge badge-green">S10 Complete</span>
-    <span class="badge badge-blue">8 Doc Types</span>
-    <span class="badge badge-red">1 Build Error Pending</span>
-    <span class="badge badge-outline">Next.js 16.2 + Supabase + Vercel</span>
-    <span class="badge badge-outline">kantier.vercel.app</span>
-  </div>
-</div>
-
 <div class="layout">
+
+<!-- SIDEBAR -->
 <nav class="sidebar">
-  <div class="sidebar-group">Start Here</div>
-  <a href="#claude-context">Instructions for Claude</a>
-  <a href="#pending-fix">⚠ Pending Build Fix</a>
-  <a href="#platform">Platform Overview</a>
-  <a href="#completed">All Completed Work</a>
-  <div class="sidebar-group">Current State</div>
-  <a href="#data-model">Data Model</a>
-  <a href="#file-map">File Map + Naming</a>
-  <a href="#bugs">Active Bugs</a>
-  <div class="sidebar-group">Next Steps</div>
-  <a href="#strategy">Strategy & Roadmap</a>
-  <a href="#features">Features to Build</a>
-  <div class="sidebar-group">Business</div>
-  <a href="#pricing">Pricing + Trial</a>
-  <a href="#grants">Grants & Funding</a>
-  <a href="#ai-strategy">AI Strategy</a>
-  <a href="#doc-analysis">Document Analysis</a>
-  <div class="sidebar-group">How-To</div>
-  <a href="#workflow">Working with Claude</a>
-  <a href="#deploy">Deploying Changes</a>
-  <div class="sidebar-group">Reference</div>
-  <a href="#priorities">Priority & Category System</a>
-  <a href="#design">Design Decisions</a>
-  <a href="#documents">Document System</a>
-  <a href="#test-project">Test Project</a>
+  <div class="sidebar-header">
+    <div class="sidebar-logo">KANTIER.</div>
+    <div class="sidebar-ver">UI Reference v12 · 24 Apr 2026</div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Start Here</div>
+    <a href="#claude">Instructions for Claude</a>
+    <a href="#state">Current State</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Platform</div>
+    <a href="#overview">Platform Overview</a>
+    <a href="#s11">S11 Completed Work</a>
+    <a href="#filemap">File Map</a>
+    <a href="#datamodel">Data Model</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Next Steps</div>
+    <a href="#roadmap">S12 Roadmap</a>
+    <a href="#permissions">Permission System</a>
+    <a href="#planet">Planet Page Improvements</a>
+    <a href="#features">Features Queue</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Business</div>
+    <a href="#pricing">Pricing + Trial</a>
+    <a href="#fundraising">Fundraising Plan</a>
+    <a href="#grants">Grants</a>
+    <a href="#ai">AI Strategy</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-label">Reference</div>
+    <a href="#rules">Critical Rules</a>
+    <a href="#bugs">Active Bugs</a>
+    <a href="#sql">SQL Applied S11</a>
+    <a href="#design">Design Decisions</a>
+    <a href="#docs">Document Types</a>
+    <a href="#roles">Roles & Categories</a>
+    <a href="#testproject">Test Accounts</a>
+    <a href="#deploy">Deploy</a>
+  </div>
+
+  <div class="sidebar-status">
+    <div class="status-line"><span class="status-dot dot-green"></span>Build passing</div>
+    <div class="status-line"><span class="status-dot dot-green"></span>S11 deployed</div>
+    <div class="status-line"><span class="status-dot dot-amber"></span>S12 planning</div>
+  </div>
 </nav>
 
+<!-- MAIN -->
 <main class="main">
 
-<!-- 00 -->
-<div class="section" id="claude-context">
-  <div class="section-num">00</div>
-  <h2>Instructions for Claude — Read First</h2>
-  <div class="callout callout-amber">
-    <strong>Working method:</strong> Claude delivers complete files named with the convention in Section 09. Aurora applies <strong>Cmd+A → Delete → Paste → Cmd+S</strong> in the correct VS Code tab. Always verify the breadcrumb path before pasting. Deploy: <code>cd ~/kantier && git add . && git commit -m "..." && git push</code>
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-version">UI REFERENCE DOCUMENT · VERSION 12</div>
+    <div class="doc-title">KANTIER.</div>
+    <div class="doc-subtitle">Albania's First Construction Site Management SaaS · S1–S11 Complete</div>
+    <div class="doc-tags">
+      <span class="tag tag-green">✓ Build Passing</span>
+      <span class="tag tag-green">✓ S11 Complete</span>
+      <span class="tag tag-blue">Next.js 16.2 + Supabase + Vercel</span>
+      <span class="tag tag-amber">S12 Planning</span>
+      <span class="tag tag-gray">kantier.vercel.app</span>
+    </div>
   </div>
-  <div class="callout callout-red">
-    <strong>⚠ TURBOPACK RULE:</strong> Never use template literals (<code>`${var}`</code>) directly inside JSX children of <code>&lt;option&gt;</code> tags. Use string concatenation instead: <code>{'name' + ' ' + 'surname'}</code> or array join: <code>{[a, b].filter(Boolean).join(' ')}</code>. Turbopack (Next.js 16.2) fails to parse backtick templates inside JSX option text content.
+
+  <!-- 00 INSTRUCTIONS FOR CLAUDE -->
+  <div class="section" id="claude">
+    <div class="section-label">00</div>
+    <div class="section-title">Instructions for Claude — Read First</div>
+
+    <div class="alert alert-blue">
+      <div class="alert-icon">🤖</div>
+      <div class="alert-body">
+        <div class="alert-title">Working Method</div>
+        <div class="alert-text">Claude delivers complete files named with the convention in Section 04. Aurora applies <strong>Cmd+A → Delete → Paste → Cmd+S</strong> in the correct VS Code tab. Always verify the breadcrumb path before pasting. Deploy: <code>cd ~/kantier && git add . && git commit -m "..." && git push</code></div>
+      </div>
+    </div>
+
+    <div class="alert alert-amber">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-body">
+        <div class="alert-title">TURBOPACK RULE — Never Break</div>
+        <div class="alert-text">Never use template literals (<code>`${var}`</code>) directly inside JSX children of <code>&lt;option&gt;</code> tags. Use array join instead: <code>{[a.profiles?.emri, a.profiles?.mbiemri].filter(Boolean).join(' ') || a.email?.split('@')[0]}</code> and role: <code>{a.roli ? ' (' + a.roli + ')' : ''}</code></div>
+      </div>
+    </div>
+
+    <h3>What is Kantier?</h3>
+    <p>Albania's first construction site management SaaS built by Aurora Baba (architect, UCL London, no coding background). Stack: Next.js 16.2 + Supabase + Vercel. Claude acts as a <strong>PMP-accredited construction PM</strong> familiar with Procore, Fieldwire, PlanRadar.</p>
+
+    <h3>Critical Rules</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rule</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td><code>Never call loadData() after field saves</code></td><td>Race condition — dates snap back. Update local state with setSelectedTask + setDetyrat instead.</td></tr>
+          <tr><td><code>Date inputs save on onChange, not onBlur</code></td><td>onBlur races with loadData() re-fetch.</td></tr>
+          <tr><td><code>File naming convention is mandatory</code></td><td>See Section 04. Route-based name prevents wrong-tab mistakes.</td></tr>
+          <tr><td><code>params.id must be typed</code></td><td><code>const projektId = params.id as string</code>. Never inline.</td></tr>
+          <tr><td><code>No sed on TypeScript files</code></td><td>sed breaks on special chars. Use str_replace tool only.</td></tr>
+          <tr><td><code>Upload files one at a time</code></td><td>Multiple uploads overwrite each other. Wait for line count confirmation.</td></tr>
+          <tr><td><code>PDF only, no Word export</code></td><td>Word is editable — defeats ISO 9001 document control.</td></tr>
+          <tr><td><code>No template literals in JSX option text</code></td><td>Turbopack build fails. Use <code>[a, b].filter(Boolean).join(' ')</code></td></tr>
+          <tr><td><code>foto_urls stores objects, not plain strings</code></td><td>Parse with: <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></td></tr>
+          <tr><td><code>Trial logic is inlined in each file</code></td><td>Do NOT import from @/lib/trial — import caused resolution issues in this Turbopack version.</td></tr>
+          <tr><td><code>confirm() is blocked on Vercel</code></td><td>Use inline state-based confirmation UI instead of browser confirm() dialog.</td></tr>
+          <tr><td><code>RLS policies use user_id = auth.uid()</code></td><td>Email-based RLS fails silently. Always match on user_id. Trigger auto-fills user_id on anetaret insert.</td></tr>
+          <tr><td><code>profiles RLS allows all authenticated reads</code></td><td>CREATE POLICY "profiles_read_all" ON profiles FOR SELECT TO authenticated USING (true);</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <h3>What is Kantier?</h3>
-  <p>Albania's first construction site management SaaS built by Aurora Baba (architect, UCL London, no coding background). Stack: Next.js 16.2 + Supabase + Vercel. Claude acts as a <strong>PMP-accredited construction PM</strong> familiar with Procore, Fieldwire, PlanRadar.</p>
-  <h3>Critical Rules — Never Break These</h3>
-  <table>
-    <tr><th>Rule</th><th>Reason</th></tr>
-    <tr><td><strong>Never call loadData() after field saves</strong></td><td>Race condition — dates snap back. Update local state with setSelectedTask + setDetyrat instead.</td></tr>
-    <tr><td><strong>Date inputs save on onChange, not onBlur</strong></td><td>onBlur races with loadData() re-fetch.</td></tr>
-    <tr><td><strong>File naming convention is mandatory</strong></td><td>See Section 09. Route-based name prevents wrong-tab mistakes.</td></tr>
-    <tr><td><strong>params.id must be typed</strong></td><td><code>const params = useParams()</code> then <code>const projektId = params.id as string</code>. Never inline.</td></tr>
-    <tr><td><strong>No sed on TypeScript files</strong></td><td>sed breaks on special chars. Use str_replace tool only.</td></tr>
-    <tr><td><strong>Upload files one at a time</strong></td><td>Multiple uploads overwrite each other. Wait for line count confirmation.</td></tr>
-    <tr><td><strong>PDF only, no Word export</strong></td><td>Word is editable — defeats ISO 9001 document control.</td></tr>
-    <tr><td><strong>No template literals in JSX option text</strong></td><td>Turbopack build fails. Use <code>{[a, b].filter(Boolean).join(' ')}</code> instead.</td></tr>
-    <tr><td><strong>foto_urls stores objects, not plain strings</strong></td><td>Parse with: <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></td></tr>
-    <tr><td><strong>Sidebar nav: Dashboard + Njerëzit only</strong></td><td>Other routes are project-scoped — they 404 as global routes.</td></tr>
-    <tr><td><strong>Trial logic is inlined in each file</strong></td><td>Do NOT import from @/lib/trial or @/components/PaywallModal — these files exist on disk but caused import resolution issues. Keep trial logic inline.</td></tr>
-    <tr><td><strong>anetaret has email column (added S10)</strong></td><td>Run <code>NOTIFY pgrst, 'reload schema'</code> in Supabase SQL if schema cache errors appear.</td></tr>
-  </table>
-</div>
 
-<!-- 00b PENDING FIX -->
-<div class="section" id="pending-fix">
-  <div class="section-num">00b</div>
-  <h2>⚠ Pending Build Fix — Start Next Session Here</h2>
-  <div class="callout callout-red">
-    <strong>Build is currently failing.</strong> The last deployed commit has a Turbopack parse error in <code>projektet_id_page.tsx</code>. Fix this first before any other work.
+  <!-- 01 CURRENT STATE -->
+  <div class="section" id="state">
+    <div class="section-label">01</div>
+    <div class="section-title">Current State — 24 April 2026</div>
+
+    <div class="alert alert-green">
+      <div class="alert-icon">✅</div>
+      <div class="alert-body">
+        <div class="alert-title">Build Passing · S11 Deployed · Collaboration Working</div>
+        <div class="alert-text">S11 fixed the JSX corruption, RLS policies, member access, assignee names, invite flow, Safari select styling, planet page assignee, and confirm() delete bug. Two test accounts are collaborating successfully on Projekt_Test03.</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Account</th><th>Role</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><code>aurora-ark@hotmail.com</code></td><td>Admin / Owner</td><td>Created Projekt_Test03. Full access to all 3 projects.</td></tr>
+          <tr><td><code>aurora.ark@gmail.com</code></td><td>Inxhinier / Arkitekt</td><td>Invited to Projekt_Test03. Can see project, tasks, plans, documents, activity feed.</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <h3>Error</h3>
-  <pre><code>./src/app/dashboard/projektet/[id]/page.tsx:1330:20
-Expected '&lt;/', got 'jsx text'
-Parsing ecmascript source code failed</code></pre>
-  <h3>Root cause</h3>
-  <p>Template literals inside <code>&lt;option&gt;</code> JSX text content. Turbopack cannot parse backticks in that position.</p>
-  <h3>Fix — replace these two option lines</h3>
-  <p>Find both occurrences of the broken pattern and replace with the safe version:</p>
-  <pre><code>// BROKEN — causes Turbopack build failure:
-&lt;option key={a.id} value={a.email}&gt;{a.profiles?.emri && a.profiles?.mbiemri ? `${a.profiles.emri} ${a.profiles.mbiemri}` : a.profiles?.emri || a.email?.split('@')[0]}{a.roli ? ` (${a.roli})` : ''}&lt;/option&gt;
 
-// FIXED — use array join + string concat:
-&lt;option key={a.id} value={a.email}&gt;{[a.profiles?.emri, a.profiles?.mbiemri].filter(Boolean).join(' ') || a.email?.split('@')[0]}{a.roli ? ' (' + a.roli + ')' : ''}&lt;/option&gt;</code></pre>
-  <p>There are <strong>two occurrences</strong> — one in the task detail panel (~line 1164) and one in the new task form (~line 1284). Both must be fixed.</p>
-  <p>After fixing, verify line count is ~1331, then deploy.</p>
-</div>
+  <!-- 02 PLATFORM OVERVIEW -->
+  <div class="section" id="overview">
+    <div class="section-label">02</div>
+    <div class="section-title">Platform Overview</div>
 
-<!-- 01 -->
-<div class="section" id="platform">
-  <div class="section-num">01</div>
-  <h2>Platform Overview — 24 April 2026</h2>
-  <table>
-    <tr><th>Status</th><th>Route</th><th>Description</th></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard</code></td><td>Project grid (2-col, color accent, mini donut). "My tasks" panel. Activity feed. Open-items alert. Trial banner (3-day countdown). Shows projects created by user OR invited to via anetaret. Sidebar: Dashboard + Njerëzit + project shortcuts. Profile avatar + full name in sidebar.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/profili</code></td><td>Profile page — photo upload, name, email (read-only), role dropdown (6 predefined + "Tjetër" free text), phone. Account info section. Plan card (Basic/Pro) showing included/locked features. Upgrade → Pro button (mailto).</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/njerezit</code></td><td>Global people page — members across all projects. Search + filter. Role dropdown (live edit, 6 roles). Remove member. "+ Shto Anëtar" modal — project selector, email, role. Error shows inline with × dismiss. Invite writes to anetaret.email column.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]</code></td><td>Detyrat — Lista/Gantt/Metrika toggle. Assignee dropdown from anetaret (shows full name from profiles). Trial paywall gates: Gantt, Metrika, Foto, Raporte, Dokumentet tabs show 🔒 when trial expired. ?taskId= query param auto-opens task.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/planet</code></td><td>Plan viewer — retina PDF, teardrop pins, task detail, sheet # + name, thumbnails, back button.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/foto</code></td><td>Photo gallery — date-grouped grid, lightbox, task panel, "Hap detyrën →" via ?taskId=, activity logging, drag-drop upload. Paywall gates access when trial expired.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/raporte</code></td><td>8 doc types: RPT · RDT · RFI · INS · COR · DCO · NCR · SUB. ISO 9001 cover. Draft + Issue flow.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/dokumentet</code></td><td>Document register — all 8 types, filter, inline workflow, doc → detail page.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/detaje</code></td><td>Project details — PMBOK fields. Stable since S3.</td></tr>
-  </table>
-</div>
+    <div class="route-grid">
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard</div><div class="route-desc">Project grid (2-col, color accent, mini donut). "My tasks" panel. Activity feed. Open-items alert. Trial banner. Shows projects created by user OR invited to via anetaret. Sidebar: Dashboard + Njerëzit + project shortcuts. Profile avatar + full name.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/profili</div><div class="route-desc">Profile page — photo upload, name, email (read-only), role dropdown (6 predefined + "Tjetër" free text), phone. Account info section. Plan card (Basic/Pro). Upgrade → Pro button (mailto).</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/njerezit</div><div class="route-desc">Global people page. Member table shows full name (Aurora Baba) primary + email secondary + avatar initials. Inline role editor. Inline confirmation delete (no confirm() dialog). Task count scoped to owned projects. "+ Shto Anëtar" writes to anetaret with trigger auto-filling user_id.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/projektet/[id]</div><div class="route-desc">Detyrat — Lista/Gantt/Metrika toggle. Assignee shows "Aurora Baba · Inxhinier" format. Task comments, photos, checklist synced between accounts. Activity log records all changes. Trial paywall gates: Gantt, Metrika, Foto, Raporte, Dokumentet.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/projektet/[id]/planet</div><div class="route-desc">Plan viewer — retina PDF, teardrop pins, task detail panel. Assignee dropdown from anetaret (same member list as Detyrat). New task + edit task both show "Name · Role" dropdown.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/projektet/[id]/foto</div><div class="route-desc">Photo gallery — date-grouped grid, lightbox, task panel, activity logging, drag-drop upload. Paywall gates access when trial expired.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/projektet/[id]/raporte</div><div class="route-desc">8 doc types: RPT · RDT · RFI · INS · COR · DCO · NCR · SUB. ISO 9001 cover. Draft + Issue flow.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/projektet/[id]/dokumentet</div><div class="route-desc">Document register — all 8 types, filter by type + status, inline workflow dropdowns, doc → detail page.</div></div></div>
+      <div class="route-card"><div class="route-status"></div><div class="route-body"><div class="route-path">/dashboard/projektet/[id]/detaje</div><div class="route-desc">Project details — PMBOK fields. Stable since S3.</div></div></div>
+    </div>
+  </div>
 
-<!-- 02 -->
-<div class="section" id="completed">
-  <div class="section-num">02</div>
-  <h2>All Completed Work — S1 through S10</h2>
-  <h3>S1–S9 (unchanged from v10)</h3>
-  <p>PDF zoom, dashboard theme, Detyrat, teardrop pins, 8 doc types, register, writing guides, plan thumbnails, NCR, SUB, HSE, RLS fixes, 5-level priority, Gantt, Metrika, Foto page, dashboard redesign.</p>
-  <h3>S10 (late session) — 23–24 April 2026</h3>
-  <table>
-    <tr><th>Feature</th><th>File(s)</th></tr>
-    <tr><td><strong>Profili page</strong> — /dashboard/profili. Photo upload (foto-kantier bucket, avatars/{id}.ext). Name + email + role dropdown (6 roles + Tjetër free text) + phone. Account info. Plan card with Basic/Pro locked features. Upgrade → Pro mailto button.</td><td><code>profili_page.tsx</code> (new)</td></tr>
-    <tr><td><strong>Sidebar profile</strong> — shows avatar photo + full name (emri + mbiemri from profiles table). Clicking navigates to /dashboard/profili. Shows "Admin · Ver profilin" subtitle.</td><td><code>dashboard_page.tsx</code></td></tr>
-    <tr><td><strong>Dashboard data scoping</strong> — loads projects user created PLUS projects they're invited to via anetaret.email (ilike match). Deduplicates by id.</td><td><code>dashboard_page.tsx</code></td></tr>
-    <tr><td><strong>Trial system (3 days)</strong> — inlined getTrialStatus() + PaywallModal in each file (NOT imported from @/lib/trial). Trial banner on dashboard during trial. Red expiry banner after. Gates: new project creation, Njerëzit nav, Gantt/Metrika views, Foto/Raporte/Dokumentet tabs.</td><td><code>dashboard_page.tsx</code>, <code>projektet_id_page.tsx</code>, <code>projektet_id_foto_page.tsx</code></td></tr>
-    <tr><td><strong>anetaret.email column added</strong> — ALTER TABLE anetaret ADD COLUMN email text. Enables invite-by-email workflow without requiring prior registration.</td><td>Supabase SQL</td></tr>
-    <tr><td><strong>Invite modal fixed</strong> — error shows inline with × dismiss button. Form stays visible after error (was replacing form with error). Role options synced: 6 roles in both invite modal and inline role editor.</td><td><code>njerezit_page.tsx</code></td></tr>
-    <tr><td><strong>Assignee dropdown</strong> — "Caktuar tek" replaced free-text input with &lt;select&gt; from anetaret. Shows full name (profiles.emri + mbiemri) with role in parens. Both task detail panel and new task form. Saves email string to caktuar_email.</td><td><code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Role system</strong> — 6 predefined roles: 👷 Menaxher Projekti · 📐 Inxhinier / Arkitekt · 🔨 Punëtor Kantieri · 📋 Kontraktues · 🏢 Klient · 🔍 Mbikëqyrës. DB values: menaxher, inxhinier, anetar, kontraktues, klient, mbikequyres. Consistent across profili page, njerezit page, invite modal.</td><td>All people-related files</td></tr>
-    <tr><td><strong>Supabase auth fixes</strong> — Site URL: https://kantier.vercel.app. Redirect URL: https://kantier.vercel.app/**. Sign ups enabled. Schema cache refreshed via NOTIFY pgrst.</td><td>Supabase dashboard</td></tr>
-    <tr><td><strong>profiles table RLS</strong> — policies for SELECT/INSERT/UPDATE using auth.uid() = id. Columns: titulli, telefoni, avatar_url, updated_at all added.</td><td>Supabase SQL</td></tr>
-  </table>
-</div>
+  <!-- 03 S11 COMPLETED -->
+  <div class="section" id="s11">
+    <div class="section-label">03</div>
+    <div class="section-title">S11 Completed Work — 24 April 2026</div>
 
-<!-- 03 -->
-<div class="section" id="data-model">
-  <div class="section-num">03</div>
-  <h2>Data Model — Supabase Tables</h2>
-  <h3>anetaret (members) — UPDATED S10</h3>
-  <pre><code>id, projekti_id, user_id (nullable), roli, created_at
-email text  ← ADDED S10: enables invite-by-email before registration
-Roles (DB values): menaxher | inxhinier | anetar | kontraktues | klient | mbikequyres</code></pre>
-  <h3>profiles — UPDATED S10</h3>
-  <pre><code>id (= auth.uid), emri, mbiemri
-titulli text    ← ADDED S10 (role/job title)
-telefoni text   ← ADDED S10
-avatar_url text ← ADDED S10 (stored in foto-kantier bucket at avatars/{id}.ext)
-updated_at timestamptz ← ADDED S10
-RLS: SELECT/INSERT/UPDATE all scoped to auth.uid() = id</code></pre>
-  <h3>detyrat (tasks)</h3>
-  <pre><code>id, titulli, pershkrimi
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>File(s)</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><strong>JSX corruption fix</strong> — repaired corrupted line 1164 in projektet_id_page.tsx that caused 31 TypeScript errors. Missing closing tags for anetaret.map, select, div. All 31 errors resolved.</td><td><code>projektet_id_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>RLS policies</strong> — DROP + recreate projektet_member_read and detyrat_member_read using <code>user_id = auth.uid()</code> (email-based policies failed silently). Members can now read projects and tasks.</td><td>Supabase SQL</td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Auto-fill trigger</strong> — Postgres trigger fills anetaret.user_id automatically on INSERT by matching email to auth.users. No code change needed on invite.</td><td>Supabase SQL</td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>DELETE RLS policy</strong> — project owners can delete members. anetaret_delete policy added.</td><td>Supabase SQL</td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>profiles_read_all policy</strong> — authenticated users can read all profiles (needed for member name display across accounts). Root cause of aurora.ark showing as email instead of Aurora Baba.</td><td>Supabase SQL</td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Member name display</strong> — Njerëzit page shows full name primary + email secondary + correct initials in avatar. Per-project cards same. Uses direct profiles lookup by user_id.</td><td><code>njerezit_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Assignee names</strong> — "Caktuar tek" dropdown in Detyrat and Planet pages shows "Aurora Baba · Inxhinier" format. Task list chip shows name + avatar circle. memberDisplayName() + memberOptionLabel() helpers.</td><td><code>projektet_id_page.tsx</code>, <code>projektet_id_planet_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>inviteMember now real</strong> — was previously a fake toast message. Now actually inserts into anetaret, checks for duplicates, reloads data.</td><td><code>projektet_id_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Inline delete confirmation</strong> — replaced browser confirm() (blocked by Vercel) with inline "Jeni i sigurt? Po · Jo" pill that appears in place of the × button.</td><td><code>njerezit_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Safari select fix</strong> — added <code>-webkit-appearance: none</code> to globals.css for all select, input[type="date/text/email/number"], textarea. Removes Safari's 3D gradient bubble style.</td><td><code>globals.css</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Task collaboration</strong> — detyrat UPDATE + INSERT RLS policies added. Members can add comments, upload photos, update task status. Activity syncs between accounts.</td><td>Supabase SQL</td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Planet assignee dropdown</strong> — both new task modal and existing task edit panel on plans page use member dropdown instead of free-text input.</td><td><code>projektet_id_planet_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>Task count scope fix</strong> — njerezit_page detyrat query now scoped to owned projects only (was fetching all tasks globally).</td><td><code>njerezit_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+          <tr><td><strong>params.id fix</strong> — all pages now use <code>const projektId = params.id as string</code> consistently. Remaining inline params.id references replaced.</td><td><code>projektet_id_page.tsx</code></td><td><span class="badge badge-done">✓ Done</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>SQL Applied in S11</h3>
+    <div class="sql-block">
+<span class="sql-comment">-- RLS: members can read projects they belong to</span>
+DROP POLICY IF EXISTS "projektet_member_read" ON projektet;
+CREATE POLICY "projektet_member_read" ON projektet
+  FOR SELECT TO authenticated
+  USING (
+    krijuar_nga = auth.uid()
+    OR id IN (SELECT projekti_id FROM anetaret WHERE user_id = auth.uid())
+  );
+
+<span class="sql-comment">-- RLS: members can read tasks in their projects</span>
+DROP POLICY IF EXISTS "detyrat_member_read" ON detyrat;
+CREATE POLICY "detyrat_member_read" ON detyrat
+  FOR SELECT TO authenticated
+  USING (
+    projekti_id IN (SELECT id FROM projektet WHERE krijuar_nga = auth.uid())
+    OR projekti_id IN (SELECT projekti_id FROM anetaret WHERE user_id = auth.uid())
+  );
+
+<span class="sql-comment">-- RLS: members can update and insert tasks</span>
+CREATE POLICY "detyrat_member_update" ON detyrat FOR UPDATE TO authenticated
+  USING (projekti_id IN (SELECT id FROM projektet WHERE krijuar_nga = auth.uid())
+    OR projekti_id IN (SELECT projekti_id FROM anetaret WHERE user_id = auth.uid()));
+
+CREATE POLICY "detyrat_member_insert" ON detyrat FOR INSERT TO authenticated
+  WITH CHECK (projekti_id IN (SELECT id FROM projektet WHERE krijuar_nga = auth.uid())
+    OR projekti_id IN (SELECT projekti_id FROM anetaret WHERE user_id = auth.uid()));
+
+<span class="sql-comment">-- RLS: owners can delete members</span>
+CREATE POLICY "anetaret_delete" ON anetaret FOR DELETE TO authenticated
+  USING (projekti_id IN (SELECT id FROM projektet WHERE krijuar_nga = auth.uid()));
+
+<span class="sql-comment">-- RLS: all authenticated users can read profiles (needed for name display)</span>
+CREATE POLICY "profiles_read_all" ON profiles FOR SELECT TO authenticated USING (true);
+
+<span class="sql-comment">-- Trigger: auto-fill user_id when member invited by email</span>
+CREATE OR REPLACE FUNCTION fill_anetaret_user_id()
+RETURNS TRIGGER AS $$
+BEGIN
+  IF NEW.user_id IS NULL THEN
+    SELECT id INTO NEW.user_id FROM auth.users
+    WHERE LOWER(email) = LOWER(NEW.email) LIMIT 1;
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS anetaret_fill_user_id ON anetaret;
+CREATE TRIGGER anetaret_fill_user_id
+  BEFORE INSERT ON anetaret
+  FOR EACH ROW EXECUTE FUNCTION fill_anetaret_user_id();
+
+<span class="sql-comment">-- FK for profiles join</span>
+ALTER TABLE anetaret ADD CONSTRAINT anetaret_user_id_fkey
+  FOREIGN KEY (user_id) REFERENCES auth.users(id);
+    </div>
+  </div>
+
+  <!-- 04 FILE MAP -->
+  <div class="section" id="filemap">
+    <div class="section-label">04</div>
+    <div class="section-title">File Map + Naming Convention</div>
+
+    <p><strong>Rule:</strong> Route path → replace <code>/</code> with <code>_</code> → add <code>_page.tsx</code>. Dynamic segments like <code>[id]</code> → <code>id</code>. Never deliver a file just named "page.tsx".</p>
+
+    <div class="table-wrap">
+      <div class="file-row" style="background:#F7F8FA;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.1em;color:var(--ink-faint);text-transform:uppercase;padding:8px 12px;">
+        <div>Delivered Name</div><div>VS Code Path</div><div>Lines</div>
+      </div>
+      <div class="file-row"><div class="file-name">dashboard_page.tsx</div><div class="file-path">src/app/dashboard/page.tsx</div><div class="file-lines">~620</div></div>
+      <div class="file-row"><div class="file-name">profili_page.tsx</div><div class="file-path">src/app/dashboard/profili/page.tsx</div><div class="file-lines">~310</div></div>
+      <div class="file-row"><div class="file-name">njerezit_page.tsx</div><div class="file-path">src/app/dashboard/njerezit/page.tsx</div><div class="file-lines">~501</div></div>
+      <div class="file-row"><div class="file-name">projektet_id_page.tsx</div><div class="file-path">src/app/dashboard/projektet/[id]/page.tsx</div><div class="file-lines">~1374</div></div>
+      <div class="file-row"><div class="file-name">projektet_id_foto_page.tsx</div><div class="file-path">src/app/dashboard/projektet/[id]/foto/page.tsx</div><div class="file-lines">~528</div></div>
+      <div class="file-row"><div class="file-name">projektet_id_planet_page.tsx</div><div class="file-path">src/app/dashboard/projektet/[id]/planet/page.tsx</div><div class="file-lines">~1320</div></div>
+      <div class="file-row"><div class="file-name">projektet_id_raporte_page.tsx</div><div class="file-path">src/app/dashboard/projektet/[id]/raporte/page.tsx</div><div class="file-lines">~2358</div></div>
+      <div class="file-row"><div class="file-name">projektet_id_dokumentet_page.tsx</div><div class="file-path">src/app/dashboard/projektet/[id]/dokumentet/page.tsx</div><div class="file-lines">~436</div></div>
+      <div class="file-row"><div class="file-name">projektet_id_dokumentet_docid_page.tsx</div><div class="file-path">src/app/dashboard/projektet/[id]/dokumentet/[docId]/page.tsx</div><div class="file-lines">~682</div></div>
+      <div class="file-row"><div class="file-name">globals.css</div><div class="file-path">src/app/globals.css</div><div class="file-lines">~88</div></div>
+    </div>
+  </div>
+
+  <!-- 05 DATA MODEL -->
+  <div class="section" id="datamodel">
+    <div class="section-label">05</div>
+    <div class="section-title">Data Model — Supabase Tables</div>
+
+    <h3>anetaret (members) — Updated S11</h3>
+    <pre><code>id, projekti_id, roli, created_at
+email text          ← invite-by-email (ADDED S10)
+user_id uuid        ← FK to auth.users(id), nullable for pending invites (ADDED S11)
+                    ← auto-filled by trigger on INSERT when email matches auth.users</code></pre>
+
+    <h3>profiles — Updated S10</h3>
+    <pre><code>id (= auth.uid), emri, mbiemri
+titulli text        ← role/job title (ADDED S10)
+telefoni text       ← (ADDED S10)
+avatar_url text     ← foto-kantier bucket at avatars/{id}.ext (ADDED S10)
+updated_at timestamptz
+RLS: SELECT all authenticated (UPDATED S11) · INSERT/UPDATE scoped to auth.uid() = id</code></pre>
+
+    <h3>detyrat (tasks)</h3>
+    <pre><code>id, titulli, pershkrimi
 statusi: hapur | ne_progres | mbaruar
 prioriteti: prioritet_1 | prioritet_2 | prioritet_3 | verifikuar | mbaruar_det
-kategoria  (18 categories)
+kategoria  (18 categories — see Section 14)
 projekti_id, plan_id (nullable), pin_x, pin_y, pin_faqja
-krijuar_nga, caktuar_email  ← now saved from anetaret dropdown (stores email string)
-data_fillimit, data_afatit  ← used by Gantt
-foto_urls jsonb[]   → {url, email, data} objects
-checklist jsonb[]   → [{id, teksti, mbaruar}]
-komentet jsonb[]    → [{id, teksti, email, data, type?}]
+krijuar_nga, caktuar_email   ← stores email string from member dropdown
+data_fillimit, data_afatit   ← used by Gantt
+foto_urls jsonb[]    → {url, email, data} objects
+checklist jsonb[]    → [{id, teksti, mbaruar}]
+komentet jsonb[]     → [{id, teksti, email, data, type?}]
   type: 'activity' = auto-log (italic gray + pencil icon)
-  no type = manual comment</code></pre>
-  <h3>trial logic (inline, no DB)</h3>
-  <pre><code>// Inlined in dashboard_page.tsx, projektet_id_page.tsx, projektet_id_foto_page.tsx
-const TRIAL_DAYS = 3
-function getTrialStatus(createdAt: string) {
-  const elapsed = (Date.now() - new Date(createdAt).getTime()) / (1000*60*60*24)
-  const daysLeft = Math.max(0, Math.ceil(TRIAL_DAYS - elapsed))
-  return { isTrialActive: elapsed < TRIAL_DAYS, isPro: false,
-           hasAccess: elapsed < TRIAL_DAYS, daysLeft,
-           trialExpired: elapsed >= TRIAL_DAYS }
-}
-// Phase 4: add profiles.plani column and check it in isPro</code></pre>
-  <h3>Other tables (unchanged)</h3>
-  <pre><code>projektet: id, emri, adresa, krijuar_nga, kodi_projektit, klienti, ...
+  no type = manual comment (chat bubble style)</code></pre>
+
+    <h3>Other tables (stable)</h3>
+    <pre><code>projektet: id, emri, adresa, krijuar_nga, kodi_projektit, klienti, ...
 dokumentet: id, projekti_id, tipi, numri, statusi_workflow, form_data jsonb, activity_log jsonb[]
 planet: id, projekti_id, emri, pdf_url, markup jsonb ({thumbnail: "data:image/jpeg..."})
 Storage: planet-pdf (PUBLIC), foto-kantier (PUBLIC)
   avatars/{user.id}.{ext}  ← profile photos</code></pre>
-</div>
-
-<!-- 04 -->
-<div class="section" id="file-map">
-  <div class="section-num">04</div>
-  <h2>File Map + Naming Convention</h2>
-  <div class="callout callout-amber"><strong>Rule:</strong> Route path → replace <code>/</code> with <code>_</code> → add <code>_page.tsx</code>. Dynamic segments like <code>[id]</code> → <code>id</code>. Never deliver a file just named "page.tsx".</div>
-  <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px;">
-    <div class="file-row" style="background: var(--bg);"><span class="file-name">Delivered name</span><span class="file-arrow">→</span><span class="file-path">VS Code path</span><span class="file-lines">Lines (S10)</span></div>
-    <div class="file-row"><span class="file-name">dashboard_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/page.tsx</span><span class="file-lines">~607</span></div>
-    <div class="file-row"><span class="file-name">profili_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/profili/page.tsx</span><span class="file-lines">~310 (new S10)</span></div>
-    <div class="file-row"><span class="file-name">njerezit_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/njerezit/page.tsx</span><span class="file-lines">~443</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/page.tsx</span><span class="file-lines">~1331 ⚠ build error</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_foto_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/foto/page.tsx</span><span class="file-lines">~528</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_planet_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/planet/page.tsx</span><span class="file-lines">~1294 (stable S9)</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_raporte_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/raporte/page.tsx</span><span class="file-lines">~2358 (stable S9)</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_dokumentet_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/dokumentet/page.tsx</span><span class="file-lines">~436</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_dokumentet_docid_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/dokumentet/[docId]/page.tsx</span><span class="file-lines">~682</span></div>
   </div>
-  <h3>New files added S10</h3>
-  <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px;">
-    <div class="file-row"><span class="file-name">src/lib/trial.ts</span><span class="file-arrow">→</span><span class="file-path">Trial utility (EXISTS on disk but do NOT import — use inline version)</span><span class="file-lines">~15</span></div>
-    <div class="file-row"><span class="file-name">src/components/PaywallModal.tsx</span><span class="file-arrow">→</span><span class="file-path">Paywall modal (EXISTS on disk but do NOT import — use inline version)</span><span class="file-lines">~50</span></div>
+
+  <!-- 06 S12 ROADMAP -->
+  <div class="section" id="roadmap">
+    <div class="section-label">06</div>
+    <div class="section-title">S12 Roadmap — Next Session</div>
+
+    <div class="alert alert-blue">
+      <div class="alert-icon">📋</div>
+      <div class="alert-body">
+        <div class="alert-title">Agreed priorities before permissions</div>
+        <div class="alert-text">Planet page improvements → Raporte page improvements → Task linking → then permission system → then fundraising/visibility plan.</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="roadmap-item">
+        <div class="roadmap-priority p1">P1</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">"Të miat" filter tab on Detyrat</div>
+          <div class="roadmap-desc">Add a filter tab alongside Hapura/Në Progres/Mbaruara that shows only tasks assigned to the current user. One file change, 30 min.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p1">P1</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Planet page — PDF improvements</div>
+          <div class="roadmap-desc">Better zoom controls, sheet navigation between PDF pages, pin clustering when zoomed out, filter pins by category/status/assignee.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p1">P1</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Task linking (detyrat)</div>
+          <div class="roadmap-desc">Link tasks to each other — "Varet nga" (blocked by) and "Lidhet me" (related to) relationships. Shows in task detail panel. Used for Gantt dependency arrows and RFI → task flow.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p1">P1</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Raporte page improvements</div>
+          <div class="roadmap-desc">AI Daily Report (claude-sonnet-4-6 + VisualCrossing weather → Albanian RDT narrative). Auto-pull tasks completed today. One-click issue as RDT.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p2">P2</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Permission system (S12c)</div>
+          <div class="roadmap-desc">4-level access: Menaxher (full) · Inxhinier (full tasks, no doc issuing) · Punëtor/Kontraktues (own tasks only, no Dokumentet) · Klient (view only, issued docs). See Section 07.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p2">P2</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Invite email via Resend</div>
+          <div class="roadmap-desc">When member added in Njerëzit, send branded email: "Aurora Baba ju fton të bashkoheni me Projekt_Test03 në Kantier" + optional note + Login button. Like Fieldwire.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p2">P2</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Fundraising + visibility plan</div>
+          <div class="roadmap-desc">Product Hunt launch prep, LinkedIn content series, grant applications (Microsoft for Startups, WB EDIF), demo video script.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p3">P3</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">Stripe payments</div>
+          <div class="roadmap-desc">€49/project/month. Connect to profiles.plani column. Gate features on plani value instead of trial days.</div>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-priority p3">P3</div>
+        <div class="roadmap-content">
+          <div class="roadmap-title">@mentions + notifications</div>
+          <div class="roadmap-desc">notifikime table + Supabase Edge Functions + Resend email. @name in task comments triggers notification.</div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- 05 -->
-<div class="section" id="bugs">
-  <div class="section-num">05</div>
-  <h2>Active Bugs</h2>
-  <div class="callout callout-red"><strong>🔴 BUILD FAILING:</strong> projektet_id_page.tsx has Turbopack parse error. Fix described in Section 00b. Must fix before any other work next session.</div>
-  <table>
-    <tr><th>Priority</th><th>Bug</th><th>Root Cause</th><th>Fix</th></tr>
-    <tr><td><span class="chip chip-p1">P1 🔴</span></td><td><strong>Build failing — template literal in JSX option</strong></td><td>Backtick templates in &lt;option&gt; text content, Turbopack can't parse</td><td>Replace with <code>[a, b].filter(Boolean).join(' ')</code> — see Section 00b</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Invited project not appearing on member's dashboard</strong></td><td>ilike query fix deployed but build is failing so not live yet</td><td>Will resolve once build error is fixed</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Assignee shows email not full name in task list badge</strong></td><td>Fix deployed but build failing</td><td>Will resolve once build error is fixed</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Old documents show DRAFT in PDF</strong></td><td>Pre-S9 docs saved with statusi='draft'</td><td>Recreate docs or update via Supabase dashboard</td></tr>
-  </table>
-</div>
+  <!-- 07 PERMISSION SYSTEM -->
+  <div class="section" id="permissions">
+    <div class="section-label">07</div>
+    <div class="section-title">Permission System — Design (S12c)</div>
 
-<!-- 06 -->
-<div class="section" id="strategy">
-  <div class="section-num">06</div>
-  <h2>Strategy &amp; Roadmap</h2>
-  <table>
-    <tr><th>Phase</th><th>Goal</th><th>Status</th></tr>
-    <tr><td><strong>Phase 1+2</strong></td><td>Core workflow — 8 doc types, plans, tasks, writing guides</td><td><span class="chip chip-done">✓ Complete</span></td></tr>
-    <tr><td><strong>Phase 3</strong></td><td>UX + collaboration + monetisation</td><td><span class="chip chip-next">In Progress</span></td></tr>
-    <tr><td><strong>Phase 4</strong></td><td>Stripe payments, proper multi-tenant RLS, weekly auto-report</td><td><span class="chip chip-future">Upcoming</span></td></tr>
-    <tr><td><strong>Phase 5</strong></td><td>AI features, semantic search, photo tagging, SSO</td><td><span class="chip chip-future">Future</span></td></tr>
-  </table>
-  <h3>Phase 3 remaining (next session priorities)</h3>
-  <p><strong>1.</strong> Fix build error (Section 00b) — 10 min<br>
-  <strong>2.</strong> Verify invited project shows on member dashboard<br>
-  <strong>3.</strong> AI Daily Report — <code>/api/ai-report</code>, claude-sonnet-4-6, VisualCrossing weather → Albanian narrative<br>
-  <strong>4.</strong> Planet page — user-specific access (member can only see project they're invited to)<br>
-  <strong>5.</strong> @mentions in task comments + notifikime table</p>
-</div>
+    <p>Based on Fieldwire (Admin/Member/Follower) + Procore (tool-level permissions) + Albanian construction reality. 4 levels stored in <code>anetaret.roli</code> (already exists).</p>
 
-<!-- 07 -->
-<div class="section" id="features">
-  <div class="section-num">07</div>
-  <h2>Features to Build</h2>
-  <table>
-    <tr><th>Priority</th><th>Feature</th><th>Notes</th></tr>
-    <tr><td><span class="chip chip-p1">P1</span></td><td><strong>Fix build error</strong></td><td>See Section 00b. 10 min fix.</td></tr>
-    <tr><td><span class="chip chip-p1">P1</span></td><td><strong>AI Daily Report</strong></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian narrative. ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars.</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Stripe payments</strong></td><td>€49/project/month. Connect to profiles.plani column. Gate features based on plani value instead of trial days.</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>@mentions + notifications</strong></td><td>notifikime table + Supabase Edge Functions + Resend email. See collaboration architecture.</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Weekly auto-report email</strong></td><td>Every Friday, auto-generate RPT PDF → email klienti.</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Punch list module</strong></td><td>Location on plan, photo, trade, status. Formal closeout PDF.</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Meeting Minutes (MTG)</strong></td><td>Attendees, decisions, action items → creates tasks automatically.</td></tr>
-  </table>
-</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Roli</th><th>Detyrat</th><th>Planet</th><th>Dokumentet</th><th>Detaje Projekti</th><th>Njerëzit</th></tr></thead>
+        <tbody>
+          <tr><td><strong>menaxher</strong></td><td class="perm-check">✓ Full</td><td class="perm-check">✓ Full</td><td class="perm-check">✓ Draft + Issue</td><td class="perm-check">✓ Edit</td><td class="perm-check">✓ Invite/Remove</td></tr>
+          <tr><td><strong>inxhinier</strong></td><td class="perm-check">✓ Full</td><td class="perm-check">✓ Full</td><td class="perm-partial">◑ Read + Draft</td><td class="perm-partial">◑ Read only</td><td class="perm-no">✗ View only</td></tr>
+          <tr><td><strong>anetar / kontraktues</strong></td><td class="perm-partial">◑ Own tasks only</td><td class="perm-partial">◑ View only</td><td class="perm-no">✗ No access</td><td class="perm-no">✗ No access</td><td class="perm-no">✗ No access</td></tr>
+          <tr><td><strong>klient</strong></td><td class="perm-partial">◑ View only</td><td class="perm-partial">◑ View only</td><td class="perm-partial">◑ Issued docs only</td><td class="perm-partial">◑ Read only</td><td class="perm-no">✗ No access</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-<!-- 08 -->
-<div class="section" id="workflow">
-  <div class="section-num">08</div>
-  <h2>Working with Claude</h2>
-  <div class="callout callout-blue"><strong>Start each session:</strong> Paste URL <strong>https://kantier-ui-reference-document.vercel.app</strong> — Claude fetches full context. State the phase and feature to work on.</div>
-  <h3>Common Mistakes</h3>
-  <table>
-    <tr><th>Mistake</th><th>Prevention</th></tr>
-    <tr><td>Wrong VS Code tab</td><td>Always check breadcrumb before pasting</td></tr>
-    <tr><td>Template literals in JSX option text</td><td>Use <code>[a, b].filter(Boolean).join(' ')</code></td></tr>
-    <tr><td>Importing from @/lib/trial</td><td>Keep trial logic inlined — the import works locally but caused issues</td></tr>
-    <tr><td>Multiple files uploaded at once</td><td>Upload one at a time, wait for line count</td></tr>
-    <tr><td>Wrong terminal directory</td><td>Must be <code>~/kantier</code> not <code>~/kantier-website</code></td></tr>
-    <tr><td>Forgetting to update this doc</td><td>Update on GitHub after every session</td></tr>
-  </table>
-</div>
+    <div class="alert alert-amber">
+      <div class="alert-icon">⚡</div>
+      <div class="alert-body">
+        <div class="alert-title">Implementation approach</div>
+        <div class="alert-text">Enforce at two layers: (1) Supabase RLS — row-level filter for anetar/kontraktues to only see own tasks; (2) UI — hide tabs/buttons based on role fetched from anetaret for the current project. Middleware route guards for hard blocks (Dokumentet for anetar).</div>
+      </div>
+    </div>
+  </div>
 
-<!-- 09 -->
-<div class="section" id="deploy">
-  <div class="section-num">09</div>
-  <h2>Deployment Reference</h2>
-  <pre><code>cd ~/kantier && git add . && git commit -m "S11: description" && git push</code></pre>
-  <h3>Supabase SQL applied in S10</h3>
-  <pre><code>-- anetaret email column
-ALTER TABLE anetaret ADD COLUMN IF NOT EXISTS email text;
+  <!-- 08 PLANET IMPROVEMENTS -->
+  <div class="section" id="planet">
+    <div class="section-label">08</div>
+    <div class="section-title">Planet Page — Improvements Queue</div>
 
--- profiles new columns
-ALTER TABLE profiles
-  ADD COLUMN IF NOT EXISTS titulli text,
-  ADD COLUMN IF NOT EXISTS telefoni text,
-  ADD COLUMN IF NOT EXISTS avatar_url text,
-  ADD COLUMN IF NOT EXISTS updated_at timestamptz;
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Priority</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Filter pins by category / status / assignee</td><td><span class="badge badge-new">P1</span></td><td>Dropdown filter panel — show only Elektrike pins, or only aurora.ark's pins, etc.</td></tr>
+          <tr><td>Better zoom controls</td><td><span class="badge badge-new">P1</span></td><td>+/− buttons, fit-to-screen button, double-click to zoom in.</td></tr>
+          <tr><td>Sheet navigation (multi-page PDF)</td><td><span class="badge badge-new">P1</span></td><td>Navigate between floor plan pages within the same PDF. Currently only first page shown.</td></tr>
+          <tr><td>Pin count badge on thumbnail</td><td><span class="badge badge-pending">P2</span></td><td>Show number of open tasks on each sheet thumbnail.</td></tr>
+          <tr><td>Pin clustering</td><td><span class="badge badge-pending">P2</span></td><td>When zoomed out, group nearby pins into a count bubble.</td></tr>
+          <tr><td>Markup tools</td><td><span class="badge badge-pending">P3</span></td><td>Draw arrows, circles, rectangles on the plan. Save to markup jsonb.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
--- profiles RLS
-DROP POLICY IF EXISTS "profiles_update_own" ON profiles;
-DROP POLICY IF EXISTS "profiles_insert_own" ON profiles;
-DROP POLICY IF EXISTS "profiles_select_own" ON profiles;
-CREATE POLICY "profiles_update_own" ON profiles FOR UPDATE TO authenticated USING (auth.uid() = id);
-CREATE POLICY "profiles_insert_own" ON profiles FOR INSERT TO authenticated WITH CHECK (auth.uid() = id);
-CREATE POLICY "profiles_select_own" ON profiles FOR SELECT TO authenticated USING (auth.uid() = id);
+  <!-- 09 ACTIVE BUGS -->
+  <div class="section" id="bugs">
+    <div class="section-label">09</div>
+    <div class="section-title">Active Bugs</div>
 
--- Schema cache refresh (run if PGRST204 errors appear)
-NOTIFY pgrst, 'reload schema';
+    <div class="alert alert-green">
+      <div class="alert-icon">✅</div>
+      <div class="alert-body">
+        <div class="alert-title">No critical bugs — build passing</div>
+        <div class="alert-text">All S11 bugs resolved. Build is passing. Both test accounts collaborating successfully.</div>
+      </div>
+    </div>
 
--- Auth settings (Supabase dashboard)
--- Site URL: https://kantier.vercel.app
--- Redirect URL: https://kantier.vercel.app/**
--- Sign ups: enabled</code></pre>
-</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Priority</th><th>Bug</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-progress">P2</span></td><td><strong>Task count shows 3 instead of 2 for aurora.ark</strong> — DB shows 3 tasks assigned to aurora.ark@gmail.com across all projects. The count is actually correct — one task is in a different project (54f667dd). If this is intentional task data, no bug. Verify by checking detyrat for project 54f667dd.</td><td>Investigate</td></tr>
+          <tr><td><span class="badge badge-pending">P3</span></td><td><strong>Old documents show DRAFT in PDF</strong> — pre-S9 docs saved with statusi='draft'. Recreate docs or update via Supabase dashboard.</td><td>Low priority</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-<!-- 10 -->
-<div class="section" id="pricing">
-  <div class="section-num">10</div>
-  <h2>Pricing + Trial System</h2>
-  <h3>Trial (implemented S10)</h3>
-  <p>3-day trial from account creation date (<code>user.created_at</code>). Computed client-side — no DB column. After trial expires, locked features show paywall modal. Trial banner shows on dashboard during active trial.</p>
-  <h3>Locked after trial (Basic free tier)</h3>
-  <p>8 doc types · Gantt view · Metrika view · Foto page · Creating 2nd+ project · Njerëzit nav · Raporte tab · Dokumentet tab</p>
-  <h3>Free forever (Basic)</h3>
-  <p>Dashboard · 1 project · Task list (Lista view) · Planet · Detaje</p>
-  <h3>Plans</h3>
-  <table>
-    <tr><th>Tier</th><th>Price</th><th>Target</th></tr>
-    <tr><td><strong>Basic</strong></td><td>Free (3-day trial of Pro features)</td><td>Solo testing</td></tr>
-    <tr><td><strong>Pro ⭐</strong></td><td>€49/project/month</td><td>Individual architects + contractors</td></tr>
-    <tr><td><strong>Business</strong></td><td>€149/month</td><td>General contractors + PM firms</td></tr>
-    <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Balfin, Fusha, Gjikuria + regional expansion</td></tr>
-  </table>
-  <p><strong>Phase 4:</strong> Add <code>profiles.plani</code> column. Connect to Stripe. Gate features based on plani value instead of trial days.</p>
-</div>
+  <!-- 10 PRICING -->
+  <div class="section" id="pricing">
+    <div class="section-label">10</div>
+    <div class="section-title">Pricing + Trial System</div>
 
-<!-- 11 -->
-<div class="section" id="grants">
-  <div class="section-num">11</div>
-  <h2>Grants &amp; Funding</h2>
-  <p>Non-dilutive first: Microsoft for Startups (rolling, apply now), WB EDIF (open), EBRD Star Venture (monitor). Then equity: Seedcamp, YC (after traction).</p>
-  <p><strong>Grant narrative:</strong> Albania's construction sector generates €3B+ annual output but operates on paper, WhatsApp, and Excel. Kantier is the first ISO 9001-aligned construction management platform for the Western Balkans — where Procore is unaffordable and Fieldwire is not localised.</p>
-</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tier</th><th>Price</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Basic</strong></td><td>Free (3-day trial of Pro)</td><td>Solo testing, small contractors</td></tr>
+          <tr><td><strong>Pro ⭐</strong></td><td>€49/project/month</td><td>Individual architects + contractors</td></tr>
+          <tr><td><strong>Business</strong></td><td>€149/month</td><td>General contractors + PM firms</td></tr>
+          <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Balfin, Fusha, Gjikuria + regional expansion</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-<!-- 12 -->
-<div class="section" id="ai-strategy">
-  <div class="section-num">12</div>
-  <h2>AI Strategy</h2>
-  <table>
-    <tr><th>Feature</th><th>Status</th><th>Notes</th></tr>
-    <tr><td>Writing Guides</td><td><span class="chip chip-done">✓ Live</span></td><td>All 8 doc types. Zero API cost.</td></tr>
-    <tr><td>AI Daily Report</td><td><span class="chip chip-next">Phase 3 PRO</span></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian narrative.</td></tr>
-    <tr><td>AI RFI Writer</td><td><span class="chip chip-next">Phase 3 PRO</span></td><td>Informal description → proper ISO RFI.</td></tr>
-    <tr><td>Semantic Search</td><td><span class="chip chip-future">Phase 5</span></td><td>pgvector on Supabase.</td></tr>
-    <tr><td>Photo AI Tagging</td><td><span class="chip chip-future">Phase 5</span></td><td>Claude suggests category + trade + task link on upload.</td></tr>
-  </table>
-  <pre><code>// AI Daily Report API route — Phase 3
-// src/app/api/ai-report/route.ts
-// model: 'claude-sonnet-4-6', max_tokens: 1000
-// ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars</code></pre>
-</div>
+    <h3>Locked after trial (Basic free tier)</h3>
+    <p>8 doc types · Gantt view · Metrika view · Foto page · Creating 2nd+ project · Njerëzit nav · Raporte tab · Dokumentet tab</p>
 
-<!-- 13 -->
-<div class="section" id="doc-analysis">
-  <div class="section-num">13</div>
-  <h2>Document Types — 8 Total</h2>
-  <table>
-    <tr><th>Type</th><th>Name</th><th>Color</th><th>Added</th></tr>
-    <tr><td><span class="chip doc-rpt">RPT</span></td><td>Raport Progresi</td><td>#F59E0B</td><td>S3</td></tr>
-    <tr><td><span class="chip doc-rdt">RDT</span></td><td>Raport Ditor + HSE + photos</td><td>#0EA5E9</td><td>S8</td></tr>
-    <tr><td><span class="chip doc-rfi">RFI</span></td><td>Kërkesë Informacioni</td><td>#3B82F6</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-ins">INS</span></td><td>Raport Inspektimi</td><td>#16A34A</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-cor">COR</span></td><td>Ndryshim Kostoje</td><td>#DC2626</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-dco">DCO</span></td><td>Ndryshim Dizajni</td><td>#7C3AED</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-ncr">NCR ✦</span></td><td>Raport Mospërputhje</td><td>#EA580C</td><td>S9</td></tr>
-    <tr><td><span class="chip doc-sub">SUB ✦</span></td><td>Regjistrim Materialesh</td><td>#0D9488</td><td>S9</td></tr>
-  </table>
-</div>
+    <h3>Free forever (Basic)</h3>
+    <p>Dashboard · 1 project · Task list (Lista view) · Planet · Detaje</p>
 
-<!-- 14 -->
-<div class="section" id="priorities">
-  <div class="section-num">14</div>
-  <h2>Priority &amp; Category System</h2>
-  <h3>Roles — 6 predefined</h3>
-  <table>
-    <tr><th>DB value</th><th>Label</th><th>Icon</th></tr>
-    <tr><td><code>menaxher</code></td><td>Menaxher Projekti</td><td>👷</td></tr>
-    <tr><td><code>inxhinier</code></td><td>Inxhinier / Arkitekt</td><td>📐</td></tr>
-    <tr><td><code>anetar</code></td><td>Punëtor Kantieri</td><td>🔨</td></tr>
-    <tr><td><code>kontraktues</code></td><td>Kontraktues</td><td>📋</td></tr>
-    <tr><td><code>klient</code></td><td>Klient</td><td>🏢</td></tr>
-    <tr><td><code>mbikequyres</code></td><td>Mbikëqyrës</td><td>🔍</td></tr>
-  </table>
-  <h3>Priority values</h3>
-  <pre><code>prioritet_1 → P1 Kritik (#DC2626)  prioritet_2 → P2 I lartë (#EA580C)
-prioritet_3 → P3 Normal (#F59E0B)   verifikuar → Verifikuar (#3B82F6)
-mbaruar_det → Mbaruar (#22C55E)     (legacy: ulet/urgjent/larte/mesem — color maps only)</code></pre>
-  <h3>Category acronyms — 18 total</h3>
-  <pre><code>EL=Elektrike · HI=Hidraulike · BE=Beton · SU=Suvatim · LY=Lyerje
-MU=Muraturë · FA=Fasadë · PL=Shtresa pllakash · ME=Instalime metalike
-DR=Dritare & Dyer · CA=Çati · IZ=Izolim · GI=Gips · HV=HVAC
-AR=Arkitekturë · CI=Civile · ST=Strukturale · TJ=Tjetër</code></pre>
-</div>
+    <p><strong>Phase 4:</strong> Add <code>profiles.plani</code> column. Connect to Stripe. Gate features based on plani value instead of trial days.</p>
+  </div>
 
-<!-- 15 -->
-<div class="section" id="design">
-  <div class="section-num">15</div>
-  <h2>Design Decisions — Locked</h2>
-  <table>
-    <tr><th>Decision</th><th>Rationale</th></tr>
-    <tr><td>Light theme — white nav, #F4F5F7 bg, #1C2333 ink</td><td>Matches Fieldwire. No dark mode.</td></tr>
-    <tr><td>Trial logic inlined per file</td><td>External @/lib/trial import caused resolution issues in this Turbopack version. Keep inline until resolved.</td></tr>
-    <tr><td>anetaret stores email (not just user_id)</td><td>Enables pre-registration invite workflow. user_id nullable for pending invites.</td></tr>
-    <tr><td>Assignee dropdown from anetaret</td><td>Replaces free-text caktuar_email. Shows full name from profiles join. Stores email string.</td></tr>
-    <tr><td>Profile photo in foto-kantier bucket</td><td>Reuses existing bucket. Path: avatars/{user.id}.{ext}. Upsert on re-upload.</td></tr>
-    <tr><td>Per-project pricing, not per-user</td><td>Construction sites have many workers. Per-user kills adoption.</td></tr>
-    <tr><td>No template literals in JSX option text</td><td>Turbopack 16.2 parse error. Use array join or string concat.</td></tr>
-    <tr><td>Gantt uses 38px/day</td><td>Fixed density, 1-year span centred on today. Drag-to-pan.</td></tr>
-    <tr><td>foto_urls as {url,email,data} objects</td><td>Parser handles all 3 legacy formats (string, object, JSON-string).</td></tr>
-    <tr><td>Sidebar nav: Dashboard + Njerëzit only</td><td>Other routes are project-scoped — 404 as global routes.</td></tr>
-  </table>
-</div>
+  <!-- 11 FUNDRAISING -->
+  <div class="section" id="fundraising">
+    <div class="section-label">11</div>
+    <div class="section-title">Fundraising + Visibility Plan</div>
 
-<!-- 16 -->
-<div class="section" id="documents">
-  <div class="section-num">16</div>
-  <h2>Document System</h2>
-  <p>Shared ISO 9001 header on all 8 types. Format: <code>TYPE-YEAR-CODE-NNN</code> (e.g. NCR-2026-PT03-001). Each type has own sequence. "Shkarko Draft" = print only. "Regjistro &amp; Lësho" = generate number → save to DB → print.</p>
-</div>
+    <div class="alert alert-amber">
+      <div class="alert-icon">🎯</div>
+      <div class="alert-body">
+        <div class="alert-title">To be built in S12</div>
+        <div class="alert-text">Fundraising and visibility strategy to be developed as a dedicated session after Planet + Raporte + Task linking improvements are complete.</div>
+      </div>
+    </div>
 
-<!-- 17 -->
-<div class="section" id="test-project">
-  <div class="section-num">17</div>
-  <h2>Test Project &amp; Accounts</h2>
-  <h3>Projekt_Test03 — Net Zero House, USA</h3>
-  <p>93 drawings. kodi_projektit: PT03. Klienti: NET ZERO_USA. Firma: Baba Construction.</p>
-  <h3>Supabase accounts</h3>
-  <table>
-    <tr><th>Email</th><th>Role</th><th>Notes</th></tr>
-    <tr><td>aurora-ark@hotmail.com</td><td>Admin / Owner</td><td>Main account. Created Projekt_Test03.</td></tr>
-    <tr><td>aurora.ark@gmail.com</td><td>Inxhinier / Arkitekt</td><td>Test account. Invited to Projekt_Test03 via anetaret.</td></tr>
-  </table>
-  <p><strong>Known issue:</strong> Test account may not see Projekt_Test03 on dashboard yet — pending build fix deployment.</p>
-</div>
+    <h3>Grant narrative (use this in all applications)</h3>
+    <p>Albania's construction sector generates €3B+ annual output but operates on paper, WhatsApp, and Excel. Kantier is the first ISO 9001-aligned construction management platform for the Western Balkans — where Procore is unaffordable ($375/user/month) and Fieldwire is not localised. Built by a UCL-trained architect with real site experience.</p>
+
+    <h3>Non-dilutive grants (apply now)</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Grant</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Microsoft for Startups</td><td>$150k Azure credits</td><td><span class="badge badge-new">Apply Now</span></td></tr>
+          <tr><td>WB EDIF (Western Balkans)</td><td>€50–150k</td><td><span class="badge badge-new">Open</span></td></tr>
+          <tr><td>EBRD Star Venture</td><td>€50k + mentorship</td><td><span class="badge badge-pending">Monitor</span></td></tr>
+          <tr><td>Anthropic Startup Program</td><td>API credits</td><td><span class="badge badge-new">AI Report qualifies</span></td></tr>
+          <tr><td>EIC Accelerator</td><td>€2.5M</td><td><span class="badge badge-pending">After traction</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Equity (after traction)</h3>
+    <p>Seedcamp (London, Western Balkans focus), Y Combinator (after 3 paying customers), Local Albanian VCs (Starta VC).</p>
+
+    <h3>Visibility channels to develop</h3>
+    <p>Product Hunt launch · LinkedIn content series (Albanian construction digitization) · Architecture firms in Albania direct outreach · Demo video for grant applications · GitHub public repo for credibility</p>
+  </div>
+
+  <!-- 12 AI STRATEGY -->
+  <div class="section" id="ai">
+    <div class="section-label">12</div>
+    <div class="section-title">AI Strategy</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Feature</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Writing Guides</td><td><span class="badge badge-done">✓ Live</span></td><td>All 8 doc types. Zero API cost.</td></tr>
+          <tr><td>AI Daily Report</td><td><span class="badge badge-progress">S12 P1</span></td><td>/api/ai-report. claude-sonnet-4-6. Tasks completed today + VisualCrossing weather → Albanian RDT narrative.</td></tr>
+          <tr><td>AI RFI Writer</td><td><span class="badge badge-pending">Phase 3</span></td><td>Informal description → proper ISO RFI format.</td></tr>
+          <tr><td>Semantic Search</td><td><span class="badge badge-pending">Phase 5</span></td><td>pgvector on Supabase.</td></tr>
+          <tr><td>Photo AI Tagging</td><td><span class="badge badge-pending">Phase 5</span></td><td>Claude suggests category + trade + task link on upload.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <pre><code><span class="comment">// AI Daily Report API route — src/app/api/ai-report/route.ts</span>
+<span class="comment">// model: 'claude-sonnet-4-6', max_tokens: 1000</span>
+<span class="comment">// ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars</span>
+<span class="comment">// Pulls: tasks completed today + tasks overdue + weather for project location</span>
+<span class="comment">// Outputs: Albanian narrative → auto-fills RDT form fields</span></code></pre>
+  </div>
+
+  <!-- 13 DESIGN DECISIONS -->
+  <div class="section" id="design">
+    <div class="section-label">13</div>
+    <div class="section-title">Design Decisions — Locked</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Decision</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Light theme — white nav, #F4F5F7 bg, #1C2333 ink</td><td>Matches Fieldwire. No dark mode.</td></tr>
+          <tr><td>Trial logic inlined per file</td><td>External @/lib/trial import caused resolution issues in this Turbopack version.</td></tr>
+          <tr><td>anetaret stores email (not just user_id)</td><td>Enables pre-registration invite workflow. user_id nullable for pending invites.</td></tr>
+          <tr><td>Assignee dropdown from anetaret</td><td>Shows "Aurora Baba · Inxhinier" format. Stores email string. memberOptionLabel() helper.</td></tr>
+          <tr><td>RLS uses user_id = auth.uid()</td><td>Email-based RLS failed silently. user_id auto-filled by trigger on INSERT.</td></tr>
+          <tr><td>profiles RLS allows all authenticated reads</td><td>Required for member name display across accounts.</td></tr>
+          <tr><td>-webkit-appearance: none on all selects globally</td><td>Removes Safari 3D gradient bubble. Applied in globals.css.</td></tr>
+          <tr><td>Inline confirmation instead of confirm()</td><td>Browser confirm() is blocked on Vercel sandbox. Use state-based "Jeni i sigurt? Po · Jo" pill.</td></tr>
+          <tr><td>Per-project pricing, not per-user</td><td>Construction sites have many workers. Per-user kills adoption.</td></tr>
+          <tr><td>Gantt uses 38px/day</td><td>Fixed density, 1-year span centred on today. Drag-to-pan.</td></tr>
+          <tr><td>foto_urls as {url,email,data} objects</td><td>Parser handles all 3 legacy formats (string, object, JSON-string).</td></tr>
+          <tr><td>Sidebar nav: Dashboard + Njerëzit only</td><td>Other routes are project-scoped — 404 as global routes.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 14 DOCUMENT TYPES -->
+  <div class="section" id="docs">
+    <div class="section-label">14</div>
+    <div class="section-title">Document Types — 8 Total</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Code</th><th>Name</th><th>Color</th><th>Added</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:#F59E0B">RPT</strong></td><td>Raport Progresi</td><td>#F59E0B</td><td>S3</td></tr>
+          <tr><td><strong style="color:#0EA5E9">RDT</strong></td><td>Raport Ditor + HSE + photos</td><td>#0EA5E9</td><td>S8</td></tr>
+          <tr><td><strong style="color:#3B82F6">RFI</strong></td><td>Kërkesë Informacioni</td><td>#3B82F6</td><td>S5</td></tr>
+          <tr><td><strong style="color:#16A34A">INS</strong></td><td>Raport Inspektimi</td><td>#16A34A</td><td>S5</td></tr>
+          <tr><td><strong style="color:#DC2626">COR</strong></td><td>Ndryshim Kostoje</td><td>#DC2626</td><td>S5</td></tr>
+          <tr><td><strong style="color:#7C3AED">DCO</strong></td><td>Ndryshim Dizajni</td><td>#7C3AED</td><td>S5</td></tr>
+          <tr><td><strong style="color:#EA580C">NCR ✦</strong></td><td>Raport Mospërputhje</td><td>#EA580C</td><td>S9</td></tr>
+          <tr><td><strong style="color:#0D9488">SUB ✦</strong></td><td>Regjistrim Materialesh</td><td>#0D9488</td><td>S9</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 15 ROLES & CATEGORIES -->
+  <div class="section" id="roles">
+    <div class="section-label">15</div>
+    <div class="section-title">Roles & Category System</div>
+
+    <h3>Roles — 6 predefined</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>DB value</th><th>Label</th><th>Icon</th></tr></thead>
+        <tbody>
+          <tr><td><code>menaxher</code></td><td>Menaxher Projekti</td><td>👷</td></tr>
+          <tr><td><code>inxhinier</code></td><td>Inxhinier / Arkitekt</td><td>📐</td></tr>
+          <tr><td><code>anetar</code></td><td>Punëtor Kantieri</td><td>🔨</td></tr>
+          <tr><td><code>kontraktues</code></td><td>Kontraktues</td><td>📋</td></tr>
+          <tr><td><code>klient</code></td><td>Klient</td><td>🏢</td></tr>
+          <tr><td><code>mbikequyres</code></td><td>Mbikëqyrës</td><td>🔍</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Priority values</h3>
+    <pre><code>prioritet_1 → P1 Kritik (#DC2626)    prioritet_2 → P2 I lartë (#EA580C)
+prioritet_3 → P3 Normal (#F59E0B)    verifikuar → Verifikuar (#3B82F6)
+mbaruar_det → Mbaruar (#22C55E)
+(legacy: ulet/urgjent/larte/mesem — color maps only, no new tasks)</code></pre>
+
+    <h3>Category acronyms — 18 total</h3>
+    <pre><code>EL=Elektrike  HI=Hidraulike  BE=Beton     SU=Suvatim   LY=Lyerje
+MU=Muraturë   FA=Fasadë      PL=Shtresa   ME=Metalike  DR=Dritare & Dyer
+CA=Çati       IZ=Izolim      GI=Gips      HV=HVAC      AR=Arkitekturë
+CI=Civile     ST=Strukturale TJ=Tjetër</code></pre>
+  </div>
+
+  <!-- 16 TEST ACCOUNTS -->
+  <div class="section" id="testproject">
+    <div class="section-label">16</div>
+    <div class="section-title">Test Project & Accounts</div>
+
+    <h3>Projekt_Test03 — Net Zero House, USA</h3>
+    <p>93 drawings. kodi_projektit: PT03. Klienti: NET ZERO_USA. Firma: Baba Construction. 21 detyra, 18 hapura, 2 në progres, 1 mbaruar.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Email</th><th>Name</th><th>Role</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>aurora-ark@hotmail.com</code></td><td>MAj22 Test03</td><td>Admin / Owner</td><td>Created all 3 test projects. Full access.</td></tr>
+          <tr><td><code>aurora.ark@gmail.com</code></td><td>Aurora Baba</td><td>Inxhinier / Arkitekt</td><td>Invited to Projekt_Test03. Sees 1 project, 2 assigned tasks, full activity feed.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 17 DEPLOY -->
+  <div class="section" id="deploy">
+    <div class="section-label">17</div>
+    <div class="section-title">Deployment Reference</div>
+
+    <pre><code><span class="comment"># Standard deploy</span>
+cd ~/kantier && git add . && git commit -m "S12: description" && git push
+
+<span class="comment"># Session naming: S11, S12, etc. — always increment</span>
+<span class="comment"># Vercel auto-deploys from main branch on push</span></code></pre>
+
+    <h3>Common mistakes</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Mistake</th><th>Prevention</th></tr></thead>
+        <tbody>
+          <tr><td>Wrong VS Code tab</td><td>Always check breadcrumb before pasting</td></tr>
+          <tr><td>Template literals in JSX option text</td><td>Use <code>[a, b].filter(Boolean).join(' ')</code></td></tr>
+          <tr><td>Importing from @/lib/trial</td><td>Keep trial logic inlined</td></tr>
+          <tr><td>Multiple files uploaded at once</td><td>Upload one at a time, wait for line count</td></tr>
+          <tr><td>Wrong terminal directory</td><td>Must be <code>~/kantier</code> not <code>~/kantier-website</code></td></tr>
+          <tr><td>Forgetting to update this doc</td><td>Update on GitHub after every session</td></tr>
+          <tr><td>Using confirm() for delete</td><td>Use inline confirmation state instead</td></tr>
+          <tr><td>RLS using email match instead of user_id</td><td>Always use <code>user_id = auth.uid()</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="padding: 48px 0 24px; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); border-top: 1px solid var(--border); text-align: center;">
+    KANTIER. · UI Reference Document v12 · 24 April 2026 · S1–S11 Complete · Build Passing
+  </div>
 
 </main>
 </div>
-
-<footer>
-  KANTIER. · UI Reference Document v11 · 24 April 2026 · S1–S10 Complete · Build error pending fix
-</footer>
 
 </body>
 </html>
