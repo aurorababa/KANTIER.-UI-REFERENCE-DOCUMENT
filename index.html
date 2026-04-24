@@ -3,34 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UI Reference Document v10</title>
+<title>UI Reference Document v11</title>
 <style>
   :root {
-    --ink: #1C2333;
-    --bg: #F4F5F7;
-    --border: #E4E7EC;
-    --muted: #9AA3B2;
-    --amber: #F59E0B;
-    --amber-bg: #FFFBEB;
-    --green: #16A34A;
-    --green-bg: #F0FDF4;
-    --blue: #3B82F6;
-    --blue-bg: #EFF6FF;
-    --red: #DC2626;
-    --red-bg: #FEF2F2;
-    --purple: #7C3AED;
-    --purple-bg: #F5F3FF;
-    --teal: #0D9488;
-    --teal-bg: #F0FDFA;
-    --orange: #EA580C;
-    --orange-bg: #FFF7ED;
-    --sky: #0EA5E9;
-    --sky-bg: #F0F9FF;
+    --ink: #1C2333; --bg: #F4F5F7; --border: #E4E7EC; --muted: #9AA3B2;
+    --amber: #F59E0B; --amber-bg: #FFFBEB; --green: #16A34A; --green-bg: #F0FDF4;
+    --blue: #3B82F6; --blue-bg: #EFF6FF; --red: #DC2626; --red-bg: #FEF2F2;
+    --purple: #7C3AED; --purple-bg: #F5F3FF; --teal: #0D9488; --teal-bg: #F0FDFA;
+    --orange: #EA580C; --orange-bg: #FFF7ED; --sky: #0EA5E9; --sky-bg: #F0F9FF;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; }
   a { color: var(--blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
   .site-header { background: var(--ink); color: white; padding: 40px 48px 32px; }
   .site-header .logo { font-size: 28px; font-weight: 900; letter-spacing: 0.05em; color: var(--amber); margin-bottom: 6px; }
   .site-header .subtitle { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
@@ -39,6 +23,7 @@
   .badge-amber { background: var(--amber); color: var(--ink); }
   .badge-green { background: var(--green); color: white; }
   .badge-blue { background: var(--blue); color: white; }
+  .badge-red { background: var(--red); color: white; }
   .badge-outline { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
   .layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
   .sidebar { background: white; border-right: 1px solid var(--border); padding: 24px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
@@ -50,7 +35,6 @@
   .section-num { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.14em; color: var(--amber); margin-bottom: 6px; }
   h2 { font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
   h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin: 20px 0 10px; }
-  h4 { font-size: 13px; font-weight: 700; color: var(--muted); margin: 16px 0 8px; text-transform: uppercase; letter-spacing: 0.06em; }
   p { margin-bottom: 12px; color: var(--ink); }
   table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 20px; }
   th { background: var(--bg); padding: 8px 12px; text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--border); }
@@ -66,6 +50,7 @@
   .chip-p1 { background: var(--red-bg); color: var(--red); }
   .chip-p2 { background: var(--orange-bg); color: var(--orange); }
   .chip-p3 { background: var(--amber-bg); color: #92400E; }
+  .chip-bug { background: var(--red-bg); color: var(--red); }
   .doc-rpt { background: var(--amber-bg); color: #92400E; }
   .doc-rdt { background: var(--sky-bg); color: #0369A1; }
   .doc-rfi { background: var(--blue-bg); color: #1D4ED8; }
@@ -79,7 +64,6 @@
   .callout-red { background: var(--red-bg); border-color: var(--red); }
   .callout-green { background: var(--green-bg); border-color: var(--green); }
   .callout-blue { background: var(--blue-bg); border-color: var(--blue); }
-  .callout strong { font-weight: 700; }
   .file-row { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--border); gap: 12px; font-size: 12px; }
   .file-row:last-child { border-bottom: none; }
   .file-name { font-family: monospace; font-weight: 700; color: var(--ink); min-width: 300px; }
@@ -93,14 +77,14 @@
 
 <div class="site-header">
   <div class="logo">KANTIER.</div>
-  <div class="subtitle">v10 — 22 April 2026 · S1–S10 Complete · Albania's First Construction Site Management SaaS</div>
+  <div class="subtitle">v11 — 24 April 2026 · S1–S10 Complete · Albania's First Construction Site Management SaaS</div>
   <div class="badges">
-    <span class="badge badge-amber">v10</span>
+    <span class="badge badge-amber">v11</span>
     <span class="badge badge-green">S10 Complete</span>
     <span class="badge badge-blue">8 Doc Types</span>
+    <span class="badge badge-red">1 Build Error Pending</span>
     <span class="badge badge-outline">Next.js 16.2 + Supabase + Vercel</span>
     <span class="badge badge-outline">kantier.vercel.app</span>
-    <span class="badge badge-outline">github.com/aurorababa/kantier</span>
   </div>
 </div>
 
@@ -108,6 +92,7 @@
 <nav class="sidebar">
   <div class="sidebar-group">Start Here</div>
   <a href="#claude-context">Instructions for Claude</a>
+  <a href="#pending-fix">⚠ Pending Build Fix</a>
   <a href="#platform">Platform Overview</a>
   <a href="#completed">All Completed Work</a>
   <div class="sidebar-group">Current State</div>
@@ -116,19 +101,15 @@
   <a href="#bugs">Active Bugs</a>
   <div class="sidebar-group">Next Steps</div>
   <a href="#strategy">Strategy & Roadmap</a>
-  <a href="#collaboration">Collaboration Architecture</a>
   <a href="#features">Features to Build</a>
   <div class="sidebar-group">Business</div>
-  <a href="#construction-workflow">Construction Lifecycle</a>
-  <a href="#pricing">Pricing Plans</a>
+  <a href="#pricing">Pricing + Trial</a>
   <a href="#grants">Grants & Funding</a>
   <a href="#ai-strategy">AI Strategy</a>
   <a href="#doc-analysis">Document Analysis</a>
-  <a href="#website">Website & Marketing</a>
   <div class="sidebar-group">How-To</div>
   <a href="#workflow">Working with Claude</a>
   <a href="#deploy">Deploying Changes</a>
-  <a href="#naming">File Naming Convention</a>
   <div class="sidebar-group">Reference</div>
   <a href="#priorities">Priority & Category System</a>
   <a href="#design">Design Decisions</a>
@@ -145,41 +126,68 @@
   <div class="callout callout-amber">
     <strong>Working method:</strong> Claude delivers complete files named with the convention in Section 09. Aurora applies <strong>Cmd+A → Delete → Paste → Cmd+S</strong> in the correct VS Code tab. Always verify the breadcrumb path before pasting. Deploy: <code>cd ~/kantier && git add . && git commit -m "..." && git push</code>
   </div>
+  <div class="callout callout-red">
+    <strong>⚠ TURBOPACK RULE:</strong> Never use template literals (<code>`${var}`</code>) directly inside JSX children of <code>&lt;option&gt;</code> tags. Use string concatenation instead: <code>{'name' + ' ' + 'surname'}</code> or array join: <code>{[a, b].filter(Boolean).join(' ')}</code>. Turbopack (Next.js 16.2) fails to parse backtick templates inside JSX option text content.
+  </div>
   <h3>What is Kantier?</h3>
-  <p>Albania's first construction site management SaaS built by Aurora Baba (architect, UCL London, no coding background). Stack: Next.js 16.2 + Supabase + Vercel. Claude acts as a <strong>PMP-accredited construction PM</strong> familiar with Procore, Fieldwire, PlanRadar. PMBOK and ISO 9001 standards apply to all document decisions.</p>
+  <p>Albania's first construction site management SaaS built by Aurora Baba (architect, UCL London, no coding background). Stack: Next.js 16.2 + Supabase + Vercel. Claude acts as a <strong>PMP-accredited construction PM</strong> familiar with Procore, Fieldwire, PlanRadar.</p>
   <h3>Critical Rules — Never Break These</h3>
   <table>
     <tr><th>Rule</th><th>Reason</th></tr>
-    <tr><td><strong>Never call loadData() after field saves</strong></td><td>Race condition — dates snap back to DB value. Update local state with setSelectedTask + setDetyrat instead.</td></tr>
-    <tr><td><strong>Date inputs save on onChange, not onBlur</strong></td><td>onBlur races with loadData() re-fetch. onChange is immediate.</td></tr>
-    <tr><td><strong>File naming convention is mandatory</strong></td><td>See Section 09. All files are named page.tsx in VS Code — the route-based name prevents wrong-tab mistakes.</td></tr>
-    <tr><td><strong>params.id must be typed</strong></td><td>Line 1: <code>const params = useParams()</code> then line 2: <code>const projektId = params.id as string</code>. Never inline.</td></tr>
-    <tr><td><strong>No sed on TypeScript files</strong></td><td>sed breaks on special chars. Use Python string replace or str_replace tool.</td></tr>
-    <tr><td><strong>Upload files one at a time</strong></td><td>Multiple uploads overwrite each other. Wait for line count confirmation before next upload.</td></tr>
+    <tr><td><strong>Never call loadData() after field saves</strong></td><td>Race condition — dates snap back. Update local state with setSelectedTask + setDetyrat instead.</td></tr>
+    <tr><td><strong>Date inputs save on onChange, not onBlur</strong></td><td>onBlur races with loadData() re-fetch.</td></tr>
+    <tr><td><strong>File naming convention is mandatory</strong></td><td>See Section 09. Route-based name prevents wrong-tab mistakes.</td></tr>
+    <tr><td><strong>params.id must be typed</strong></td><td><code>const params = useParams()</code> then <code>const projektId = params.id as string</code>. Never inline.</td></tr>
+    <tr><td><strong>No sed on TypeScript files</strong></td><td>sed breaks on special chars. Use str_replace tool only.</td></tr>
+    <tr><td><strong>Upload files one at a time</strong></td><td>Multiple uploads overwrite each other. Wait for line count confirmation.</td></tr>
     <tr><td><strong>PDF only, no Word export</strong></td><td>Word is editable — defeats ISO 9001 document control.</td></tr>
-    <tr><td><strong>data_mbarimit hidden from UI</strong></td><td>Field preserved in DB but never shown to users.</td></tr>
-    <tr><td><strong>Shkarko Draft ≠ Regjistro &amp; Lësho</strong></td><td>"Shkarko Draft" prints only — no DB save. "Regjistro &amp; Lësho" generates fresh number, saves to DB, sets statusi=issued, then prints. Never conflate the two.</td></tr>
-    <tr><td><strong>planet/markup stores thumbnail</strong></td><td>markup jsonb field stores <code>{thumbnail: "data:image/jpeg..."}</code>. Always check <code>Array.isArray(plan.markup)</code> before spreading — old rows are <code>[]</code>.</td></tr>
-    <tr><td><strong>foto_urls stores objects, not plain strings</strong></td><td>Each entry is <code>{url, email, data}</code>. Parse with: <code>typeof v === 'string' &amp;&amp; v.startsWith('{') ? JSON.parse(v).url : (v?.url || v)</code>. Never use raw entry as img src.</td></tr>
-    <tr><td><strong>Sidebar nav: Dashboard + Njerëzit only</strong></td><td>Detyrat/Planet/Raportet are project-specific routes — they 404 as global routes. Sidebar links only to /dashboard and /dashboard/njerezit.</td></tr>
+    <tr><td><strong>No template literals in JSX option text</strong></td><td>Turbopack build fails. Use <code>{[a, b].filter(Boolean).join(' ')}</code> instead.</td></tr>
+    <tr><td><strong>foto_urls stores objects, not plain strings</strong></td><td>Parse with: <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></td></tr>
+    <tr><td><strong>Sidebar nav: Dashboard + Njerëzit only</strong></td><td>Other routes are project-scoped — they 404 as global routes.</td></tr>
+    <tr><td><strong>Trial logic is inlined in each file</strong></td><td>Do NOT import from @/lib/trial or @/components/PaywallModal — these files exist on disk but caused import resolution issues. Keep trial logic inline.</td></tr>
+    <tr><td><strong>anetaret has email column (added S10)</strong></td><td>Run <code>NOTIFY pgrst, 'reload schema'</code> in Supabase SQL if schema cache errors appear.</td></tr>
   </table>
+</div>
+
+<!-- 00b PENDING FIX -->
+<div class="section" id="pending-fix">
+  <div class="section-num">00b</div>
+  <h2>⚠ Pending Build Fix — Start Next Session Here</h2>
+  <div class="callout callout-red">
+    <strong>Build is currently failing.</strong> The last deployed commit has a Turbopack parse error in <code>projektet_id_page.tsx</code>. Fix this first before any other work.
+  </div>
+  <h3>Error</h3>
+  <pre><code>./src/app/dashboard/projektet/[id]/page.tsx:1330:20
+Expected '&lt;/', got 'jsx text'
+Parsing ecmascript source code failed</code></pre>
+  <h3>Root cause</h3>
+  <p>Template literals inside <code>&lt;option&gt;</code> JSX text content. Turbopack cannot parse backticks in that position.</p>
+  <h3>Fix — replace these two option lines</h3>
+  <p>Find both occurrences of the broken pattern and replace with the safe version:</p>
+  <pre><code>// BROKEN — causes Turbopack build failure:
+&lt;option key={a.id} value={a.email}&gt;{a.profiles?.emri && a.profiles?.mbiemri ? `${a.profiles.emri} ${a.profiles.mbiemri}` : a.profiles?.emri || a.email?.split('@')[0]}{a.roli ? ` (${a.roli})` : ''}&lt;/option&gt;
+
+// FIXED — use array join + string concat:
+&lt;option key={a.id} value={a.email}&gt;{[a.profiles?.emri, a.profiles?.mbiemri].filter(Boolean).join(' ') || a.email?.split('@')[0]}{a.roli ? ' (' + a.roli + ')' : ''}&lt;/option&gt;</code></pre>
+  <p>There are <strong>two occurrences</strong> — one in the task detail panel (~line 1164) and one in the new task form (~line 1284). Both must be fixed.</p>
+  <p>After fixing, verify line count is ~1331, then deploy.</p>
 </div>
 
 <!-- 01 -->
 <div class="section" id="platform">
   <div class="section-num">01</div>
-  <h2>Platform Overview — 22 April 2026</h2>
+  <h2>Platform Overview — 24 April 2026</h2>
   <table>
     <tr><th>Status</th><th>Route</th><th>Description</th></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard</code></td><td>Project grid cards (2-col, color accent, mini donut, progress bar, RFI/COR badges). "My tasks" panel (assigned to current user, overdue first). Activity feed (last 12 actions across all projects). Open-items alert strip. Sidebar: Dashboard + Njerëzit + project shortcuts.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/njerezit</code></td><td>Global people page — all members across all projects. Search + filter by project. Role dropdown (live edit). Remove member (×). Per-project card grid. "+ Shto Anëtar" modal with project selector.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]</code></td><td>Detyrat — 3-view toggle: <strong>Lista</strong> (existing list), <strong>Gantt</strong> (scrollable timeline, drag-to-pan, ◀▶ nav, SOT button), <strong>Metrika</strong> (status donut, priority bars, category bars, 8-week sparkline). ?taskId= query param auto-opens task from Foto link.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/planet</code></td><td>Plan viewer — retina PDF, teardrop pins, task detail panel, sheet # + name, thumbnails, back button, inline rename.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/foto</code></td><td>Photo gallery — date-grouped grid, lightbox with task panel, "Hap detyrën →" navigates to task via ?taskId=, upload logs activity entry to komentet, drag-and-drop multi-upload.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/raporte</code></td><td><strong>8 doc types: RPT · RDT · RFI · INS · COR · DCO · NCR · SUB.</strong> ISO 9001 cover. Shkarko Draft + Regjistro &amp; Lësho. Writing guides + AI placeholders.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/dokumentet</code></td><td>Document register — all 8 types, filter, inline workflow, summary tiles, doc → detail page.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/dokumentet/[docId]</code></td><td>Document detail — two-panel. Workflow stepper, activity log. Clean PDF print.</td></tr>
-    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/detaje</code></td><td>Project details — PMBOK fields. Unchanged since S3.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard</code></td><td>Project grid (2-col, color accent, mini donut). "My tasks" panel. Activity feed. Open-items alert. Trial banner (3-day countdown). Shows projects created by user OR invited to via anetaret. Sidebar: Dashboard + Njerëzit + project shortcuts. Profile avatar + full name in sidebar.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/profili</code></td><td>Profile page — photo upload, name, email (read-only), role dropdown (6 predefined + "Tjetër" free text), phone. Account info section. Plan card (Basic/Pro) showing included/locked features. Upgrade → Pro button (mailto).</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/njerezit</code></td><td>Global people page — members across all projects. Search + filter. Role dropdown (live edit, 6 roles). Remove member. "+ Shto Anëtar" modal — project selector, email, role. Error shows inline with × dismiss. Invite writes to anetaret.email column.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]</code></td><td>Detyrat — Lista/Gantt/Metrika toggle. Assignee dropdown from anetaret (shows full name from profiles). Trial paywall gates: Gantt, Metrika, Foto, Raporte, Dokumentet tabs show 🔒 when trial expired. ?taskId= query param auto-opens task.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/planet</code></td><td>Plan viewer — retina PDF, teardrop pins, task detail, sheet # + name, thumbnails, back button.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/foto</code></td><td>Photo gallery — date-grouped grid, lightbox, task panel, "Hap detyrën →" via ?taskId=, activity logging, drag-drop upload. Paywall gates access when trial expired.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/raporte</code></td><td>8 doc types: RPT · RDT · RFI · INS · COR · DCO · NCR · SUB. ISO 9001 cover. Draft + Issue flow.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/dokumentet</code></td><td>Document register — all 8 types, filter, inline workflow, doc → detail page.</td></tr>
+    <tr><td><span class="chip chip-done">✓</span></td><td><code>/dashboard/projektet/[id]/detaje</code></td><td>Project details — PMBOK fields. Stable since S3.</td></tr>
   </table>
 </div>
 
@@ -187,38 +195,21 @@
 <div class="section" id="completed">
   <div class="section-num">02</div>
   <h2>All Completed Work — S1 through S10</h2>
-
-  <h3>S1–S8 (see v8 for details)</h3>
-  <p>PDF zoom fix, dashboard light theme, Detyrat page + detail panel, teardrop pins, RPT/RDT/RFI/INS/COR/DCO forms, document register + detail page, writing guides, AI placeholders, website v05.</p>
-
-  <h3>S9 — 21 April 2026</h3>
+  <h3>S1–S9 (unchanged from v10)</h3>
+  <p>PDF zoom, dashboard theme, Detyrat, teardrop pins, 8 doc types, register, writing guides, plan thumbnails, NCR, SUB, HSE, RLS fixes, 5-level priority, Gantt, Metrika, Foto page, dashboard redesign.</p>
+  <h3>S10 (late session) — 23–24 April 2026</h3>
   <table>
     <tr><th>Feature</th><th>File(s)</th></tr>
-    <tr><td><strong>P1 bug fix — INS/COR text invisible</strong></td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>NCR — Non-Conformance Report</strong> — orange #EA580C. 6 root-cause cards, corrective/preventive panels, verification block.</td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>SUB — Submittal</strong> — teal #0D9488. Product ID panel, deviations (amber), 4-state approval dropdown.</td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>HSE check section in RDT</strong> — 5 yes/no questions. Incidente=Po opens detail textarea.</td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>Structured "Plani për Nesër"</strong> — Zona / Aktiviteti / Burimet table. Auto-fills from incomplete tasks.</td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>RDT site photos</strong> — multi-upload up to 5. Prints in 3-col grid.</td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>Shkarko Draft / Regjistro &amp; Lësho split</strong> — Draft = print only. Issue = fresh number → DB → print.</td><td><code>raporte/page.tsx</code></td></tr>
-    <tr><td><strong>Supabase RLS fixes</strong> — anetaret, planet, dokumentet, storage policies. No infinite recursion.</td><td>Supabase SQL</td></tr>
-    <tr><td><strong>Plan thumbnails, back button, inline rename, retina PDF</strong></td><td><code>planet/page.tsx</code>, <code>pdf-renderer.tsx</code></td></tr>
-    <tr><td><strong>5-level priority</strong> — Ulët/Urgjent/Lartë/Mesëm removed from dropdowns. Legacy kept in color maps.</td><td>All project pages</td></tr>
-  </table>
-
-  <h3>S10 — 22 April 2026</h3>
-  <table>
-    <tr><th>Feature</th><th>File(s)</th></tr>
-    <tr><td><strong>Foto page built</strong> — date-grouped grid, lightbox, Fieldwire-style detail panel, category + task filters, drag-and-drop multi-upload, keyboard nav (←/→/Esc), download button.</td><td><code>projektet_id_foto_page.tsx</code></td></tr>
-    <tr><td><strong>Foto → task navigation fixed</strong> — "Hap detyrën →" passes <code>?taskId=XXX</code>. Detyrat page reads query param and auto-opens matching task.</td><td><code>projektet_id_foto_page.tsx</code>, <code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Foto upload logs activity</strong> — uploading from Foto page now writes activity entry to task's komentet (same format as task detail uploads).</td><td><code>projektet_id_foto_page.tsx</code></td></tr>
-    <tr><td><strong>Photo URL parsing fix</strong> — foto_urls entries can be plain strings, <code>{url,email,data}</code> objects, or JSON-stringified objects. All three formats now parsed correctly in both foto page and task detail.</td><td><code>projektet_id_foto_page.tsx</code>, <code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Task detail photos now save as objects</strong> — <code>uploadPhotoToTask</code> now stores <code>{url, email, data}</code> matching foto page format. deletePhoto handles all three formats.</td><td><code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Gantt view</strong> — scrollable continuous timeline (1 year span). Drag-to-pan. ◀◀ ◀ SOT ▶ ▶▶ navigation. Weekly column headers with month-start highlights. Today red line. Tasks without dates shown as pill tags below. Clicking bar opens task detail.</td><td><code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Metrika view</strong> — status donut, priority bars, category bars (18 categories), 8-week activity sparkline (created vs completed). Stat cards: gjithsej / mbaruara / vonuara / ditë mbetur. All computed client-side from existing detyrat array.</td><td><code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Lista/Gantt/Metrika view toggle</strong> — 3-button toggle in Detyrat tab header. Switching to Gantt/Metrika closes task detail panel. All views use same detyrat array — no extra queries.</td><td><code>projektet_id_page.tsx</code></td></tr>
-    <tr><td><strong>Dashboard redesigned</strong> — project grid cards (2-col, unique color accent per project, mini donut, progress bar, overdue badge, RFI/COR badges). "My tasks" panel (assigned to current user's email, sorted overdue first). Activity feed (last 12 doc+task events, time-ago labels). Open-items alert strip (only shown when there are items). Sidebar: Dashboard + Njerëzit only — broken nav links removed.</td><td><code>dashboard_page.tsx</code></td></tr>
-    <tr><td><strong>Njerëzit page — global people management</strong> — all members across all projects. Search + filter by project. Role editing (live dropdown, saves to anetaret). Remove member per project. Per-project card grid with "+ Shto" quick invite. Invite modal with project selector + role + tip about registration.</td><td><code>njerezit_page.tsx</code> (new file at <code>src/app/dashboard/njerezit/page.tsx</code>)</td></tr>
+    <tr><td><strong>Profili page</strong> — /dashboard/profili. Photo upload (foto-kantier bucket, avatars/{id}.ext). Name + email + role dropdown (6 roles + Tjetër free text) + phone. Account info. Plan card with Basic/Pro locked features. Upgrade → Pro mailto button.</td><td><code>profili_page.tsx</code> (new)</td></tr>
+    <tr><td><strong>Sidebar profile</strong> — shows avatar photo + full name (emri + mbiemri from profiles table). Clicking navigates to /dashboard/profili. Shows "Admin · Ver profilin" subtitle.</td><td><code>dashboard_page.tsx</code></td></tr>
+    <tr><td><strong>Dashboard data scoping</strong> — loads projects user created PLUS projects they're invited to via anetaret.email (ilike match). Deduplicates by id.</td><td><code>dashboard_page.tsx</code></td></tr>
+    <tr><td><strong>Trial system (3 days)</strong> — inlined getTrialStatus() + PaywallModal in each file (NOT imported from @/lib/trial). Trial banner on dashboard during trial. Red expiry banner after. Gates: new project creation, Njerëzit nav, Gantt/Metrika views, Foto/Raporte/Dokumentet tabs.</td><td><code>dashboard_page.tsx</code>, <code>projektet_id_page.tsx</code>, <code>projektet_id_foto_page.tsx</code></td></tr>
+    <tr><td><strong>anetaret.email column added</strong> — ALTER TABLE anetaret ADD COLUMN email text. Enables invite-by-email workflow without requiring prior registration.</td><td>Supabase SQL</td></tr>
+    <tr><td><strong>Invite modal fixed</strong> — error shows inline with × dismiss button. Form stays visible after error (was replacing form with error). Role options synced: 6 roles in both invite modal and inline role editor.</td><td><code>njerezit_page.tsx</code></td></tr>
+    <tr><td><strong>Assignee dropdown</strong> — "Caktuar tek" replaced free-text input with &lt;select&gt; from anetaret. Shows full name (profiles.emri + mbiemri) with role in parens. Both task detail panel and new task form. Saves email string to caktuar_email.</td><td><code>projektet_id_page.tsx</code></td></tr>
+    <tr><td><strong>Role system</strong> — 6 predefined roles: 👷 Menaxher Projekti · 📐 Inxhinier / Arkitekt · 🔨 Punëtor Kantieri · 📋 Kontraktues · 🏢 Klient · 🔍 Mbikëqyrës. DB values: menaxher, inxhinier, anetar, kontraktues, klient, mbikequyres. Consistent across profili page, njerezit page, invite modal.</td><td>All people-related files</td></tr>
+    <tr><td><strong>Supabase auth fixes</strong> — Site URL: https://kantier.vercel.app. Redirect URL: https://kantier.vercel.app/**. Sign ups enabled. Schema cache refreshed via NOTIFY pgrst.</td><td>Supabase dashboard</td></tr>
+    <tr><td><strong>profiles table RLS</strong> — policies for SELECT/INSERT/UPDATE using auth.uid() = id. Columns: titulli, telefoni, avatar_url, updated_at all added.</td><td>Supabase SQL</td></tr>
   </table>
 </div>
 
@@ -226,118 +217,84 @@
 <div class="section" id="data-model">
   <div class="section-num">03</div>
   <h2>Data Model — Supabase Tables</h2>
-
+  <h3>anetaret (members) — UPDATED S10</h3>
+  <pre><code>id, projekti_id, user_id (nullable), roli, created_at
+email text  ← ADDED S10: enables invite-by-email before registration
+Roles (DB values): menaxher | inxhinier | anetar | kontraktues | klient | mbikequyres</code></pre>
+  <h3>profiles — UPDATED S10</h3>
+  <pre><code>id (= auth.uid), emri, mbiemri
+titulli text    ← ADDED S10 (role/job title)
+telefoni text   ← ADDED S10
+avatar_url text ← ADDED S10 (stored in foto-kantier bucket at avatars/{id}.ext)
+updated_at timestamptz ← ADDED S10
+RLS: SELECT/INSERT/UPDATE all scoped to auth.uid() = id</code></pre>
   <h3>detyrat (tasks)</h3>
   <pre><code>id, titulli, pershkrimi
 statusi: hapur | ne_progres | mbaruar
 prioriteti: prioritet_1 | prioritet_2 | prioritet_3 | verifikuar | mbaruar_det
-           (legacy: ulet | urgjent | larte | mesem — kept in color maps, removed from UI)
-kategoria  (18 categories — see Section 15)
-projekti_id, plan_id (nullable)
-pin_x, pin_y, pin_faqja
-krijuar_nga, caktuar_email  ← free text — P2 bug, needs select dropdown
-data_fillimit, data_afatit  ← both used by Gantt view
-~~data_mbarimit~~ — DB only, hidden from UI forever
-kostoja (€), njerezit_punojne
-foto_urls jsonb[]   ← stores {url, email, data} objects (S10 fix)
-                       Parser: typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)
+kategoria  (18 categories)
+projekti_id, plan_id (nullable), pin_x, pin_y, pin_faqja
+krijuar_nga, caktuar_email  ← now saved from anetaret dropdown (stores email string)
+data_fillimit, data_afatit  ← used by Gantt
+foto_urls jsonb[]   → {url, email, data} objects
 checklist jsonb[]   → [{id, teksti, mbaruar}]
 komentet jsonb[]    → [{id, teksti, email, data, type?}]
-  type: 'activity'  = auto-log (italic gray + pencil icon)
-  no type           = manual comment (chat bubble)</code></pre>
-
-  <h3>projektet (projects)</h3>
-  <pre><code>id, emri, adresa, pershkrimi, statusi, krijuar_nga
-kodi_projektit, klienti, kompania, menaxher_projekti
-data_fillimit_projektit, data_mbarimit_projektit  ← used by Metrika "Ditë mbetur" card
-statusi_projektit: ne_rregull | ne_rrezik | vonuar | perfunduar
-vlera_kontrates (€), siperfaqja (m²), faza</code></pre>
-
-  <h3>dokumentet (document register)</h3>
-  <pre><code>id, projekti_id
-tipi: RPT | RDT | RFI | INS | COR | DCO | NCR | SUB   ← 8 types as of S9
-numri: TYPE-YEAR-CODE-NNN                               → e.g. NCR-2026-PT03-001
-titulli, periudha_nga, periudha_deri
-pergatitur_nga, aprovuar_nga
-statusi: issued                                          ← always 'issued' — set by Regjistro & Lësho
-revisioni: R00–R05
-statusi_workflow: see table below
-form_data jsonb              ← full form field values saved on issue
-activity_log jsonb[]         → [{teksti, email, data, type?}]
-notes text
-doc_references jsonb
-created_at</code></pre>
-
-  <h3>Workflow States per Document Type</h3>
-  <table>
-    <tr><th>Type</th><th>DB values</th><th>Albanian labels</th><th>Initial state</th></tr>
-    <tr><td><span class="chip doc-rpt">RPT</span></td><td>draft → issued</td><td>Draft → Issued</td><td>issued</td></tr>
-    <tr><td><span class="chip doc-rdt">RDT</span></td><td>draft → submitted</td><td>Draft → Submitted</td><td>submitted</td></tr>
-    <tr><td><span class="chip doc-rfi">RFI</span></td><td>draft → open → answered → closed</td><td>Draft → Hapur → Me Përgjigje → Mbyllur</td><td>open</td></tr>
-    <tr><td><span class="chip doc-ins">INS</span></td><td>draft → scheduled → passed → failed → conditional</td><td>Draft → Planifikuar → Kaloi → Dështoi → Me Kushte</td><td>scheduled</td></tr>
-    <tr><td><span class="chip doc-cor">COR</span></td><td>draft → submitted → approved → rejected</td><td>Draft → Dërguar → Aprovuar → Refuzuar</td><td>submitted</td></tr>
-    <tr><td><span class="chip doc-dco">DCO</span></td><td>draft → under_review → issued → superseded</td><td>Draft → Në Shqyrtim → Lëshuar → Zëvendësuar</td><td>under_review</td></tr>
-    <tr><td><span class="chip doc-ncr">NCR</span></td><td>open → under_review → closed → voided</td><td>Hapur → Në Shqyrtim → Mbyllur → Anuluar</td><td>open</td></tr>
-    <tr><td><span class="chip doc-sub">SUB</span></td><td>draft → submitted → under_review → approved → approved_with_comments → rejected</td><td>Draft → Dërguar → Shqyrtim → Aprovuar → Aprovuar me Kushte → Refuzuar</td><td>submitted</td></tr>
-  </table>
-
-  <h3>Other Tables</h3>
-  <pre><code>planet: id, projekti_id, emri, kategoria, pdf_url
-        pershkrimi ← repurposed for sheet number (e.g. "A-201")
-        markup jsonb ← stores {thumbnail: "data:image/jpeg..."} for card previews
-anetaret: id, projekti_id, email, roli
-profiles: id, emri, mbiemri
-Storage buckets: planet-pdf (PUBLIC), foto-kantier (PUBLIC)
-
-⚠ RLS POLICIES FIXED IN S9 — all tables use auth.uid() IS NOT NULL
-  Do NOT add policies that query anetaret from within anetaret (infinite recursion)
-
-⚠ NOT YET APPLIED — Phase 3:
-CREATE TABLE notifikime (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  projekti_id uuid REFERENCES projektet(id),
-  perdoruesi_email text NOT NULL,
-  lloji text NOT NULL,
-  referenca_id uuid,
-  referenca_tipi text,
-  teksti text,
-  lexuar boolean DEFAULT false,
-  created_at timestamptz DEFAULT now()
-);</code></pre>
+  type: 'activity' = auto-log (italic gray + pencil icon)
+  no type = manual comment</code></pre>
+  <h3>trial logic (inline, no DB)</h3>
+  <pre><code>// Inlined in dashboard_page.tsx, projektet_id_page.tsx, projektet_id_foto_page.tsx
+const TRIAL_DAYS = 3
+function getTrialStatus(createdAt: string) {
+  const elapsed = (Date.now() - new Date(createdAt).getTime()) / (1000*60*60*24)
+  const daysLeft = Math.max(0, Math.ceil(TRIAL_DAYS - elapsed))
+  return { isTrialActive: elapsed < TRIAL_DAYS, isPro: false,
+           hasAccess: elapsed < TRIAL_DAYS, daysLeft,
+           trialExpired: elapsed >= TRIAL_DAYS }
+}
+// Phase 4: add profiles.plani column and check it in isPro</code></pre>
+  <h3>Other tables (unchanged)</h3>
+  <pre><code>projektet: id, emri, adresa, krijuar_nga, kodi_projektit, klienti, ...
+dokumentet: id, projekti_id, tipi, numri, statusi_workflow, form_data jsonb, activity_log jsonb[]
+planet: id, projekti_id, emri, pdf_url, markup jsonb ({thumbnail: "data:image/jpeg..."})
+Storage: planet-pdf (PUBLIC), foto-kantier (PUBLIC)
+  avatars/{user.id}.{ext}  ← profile photos</code></pre>
 </div>
 
 <!-- 04 -->
 <div class="section" id="file-map">
   <div class="section-num">04</div>
   <h2>File Map + Naming Convention</h2>
-  <div class="callout callout-amber"><strong>Rule:</strong> All files delivered by Claude use the route path with slashes replaced by underscores. All app files are named page.tsx in VS Code — the route-based delivered name prevents wrong-tab mistakes.</div>
+  <div class="callout callout-amber"><strong>Rule:</strong> Route path → replace <code>/</code> with <code>_</code> → add <code>_page.tsx</code>. Dynamic segments like <code>[id]</code> → <code>id</code>. Never deliver a file just named "page.tsx".</div>
   <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px;">
     <div class="file-row" style="background: var(--bg);"><span class="file-name">Delivered name</span><span class="file-arrow">→</span><span class="file-path">VS Code path</span><span class="file-lines">Lines (S10)</span></div>
-    <div class="file-row"><span class="file-name">dashboard_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/page.tsx</span><span class="file-lines">~515</span></div>
-    <div class="file-row"><span class="file-name">njerezit_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/njerezit/page.tsx</span><span class="file-lines">~436 (new S10)</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/page.tsx</span><span class="file-lines">~1313</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_foto_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/foto/page.tsx</span><span class="file-lines">~527 (S10)</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_planet_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/planet/page.tsx</span><span class="file-lines">1294 (stable S9)</span></div>
-    <div class="file-row"><span class="file-name">pdf-renderer.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/planet/pdf-renderer.tsx</span><span class="file-lines">~94</span></div>
+    <div class="file-row"><span class="file-name">dashboard_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/page.tsx</span><span class="file-lines">~607</span></div>
+    <div class="file-row"><span class="file-name">profili_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/profili/page.tsx</span><span class="file-lines">~310 (new S10)</span></div>
+    <div class="file-row"><span class="file-name">njerezit_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/njerezit/page.tsx</span><span class="file-lines">~443</span></div>
+    <div class="file-row"><span class="file-name">projektet_id_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/page.tsx</span><span class="file-lines">~1331 ⚠ build error</span></div>
+    <div class="file-row"><span class="file-name">projektet_id_foto_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/foto/page.tsx</span><span class="file-lines">~528</span></div>
+    <div class="file-row"><span class="file-name">projektet_id_planet_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/planet/page.tsx</span><span class="file-lines">~1294 (stable S9)</span></div>
     <div class="file-row"><span class="file-name">projektet_id_raporte_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/raporte/page.tsx</span><span class="file-lines">~2358 (stable S9)</span></div>
     <div class="file-row"><span class="file-name">projektet_id_dokumentet_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/dokumentet/page.tsx</span><span class="file-lines">~436</span></div>
     <div class="file-row"><span class="file-name">projektet_id_dokumentet_docid_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/dokumentet/[docId]/page.tsx</span><span class="file-lines">~682</span></div>
-    <div class="file-row"><span class="file-name">projektet_id_detaje_page.tsx</span><span class="file-arrow">→</span><span class="file-path">src/app/dashboard/projektet/[id]/detaje/page.tsx</span><span class="file-lines">unchanged S3</span></div>
   </div>
-  <div class="callout callout-red"><strong>⚠ projektet_id_page.tsx is now ~1313 lines</strong> — contains Gantt, Metrika, GanttView component, MetricsView component, all inline. Always check line count after upload.</div>
-  <div class="callout callout-red"><strong>⚠ raporte/page.tsx is ~2358 lines</strong> — all 8 doc type forms, HSE, structured plan, site photos, Shkarko Draft / Regjistro &amp; Lësho.</div>
+  <h3>New files added S10</h3>
+  <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 16px;">
+    <div class="file-row"><span class="file-name">src/lib/trial.ts</span><span class="file-arrow">→</span><span class="file-path">Trial utility (EXISTS on disk but do NOT import — use inline version)</span><span class="file-lines">~15</span></div>
+    <div class="file-row"><span class="file-name">src/components/PaywallModal.tsx</span><span class="file-arrow">→</span><span class="file-path">Paywall modal (EXISTS on disk but do NOT import — use inline version)</span><span class="file-lines">~50</span></div>
+  </div>
 </div>
 
 <!-- 05 -->
 <div class="section" id="bugs">
   <div class="section-num">05</div>
   <h2>Active Bugs</h2>
-  <div class="callout callout-green"><strong>Fixed in S10:</strong> Foto page 404, photo images not displaying (JSON-stringified URL parsing), "Hap detyrën" navigating to wrong page, foto upload not logging activity, broken sidebar nav links (404 on /detyrat, /planet, /raportet).</div>
+  <div class="callout callout-red"><strong>🔴 BUILD FAILING:</strong> projektet_id_page.tsx has Turbopack parse error. Fix described in Section 00b. Must fix before any other work next session.</div>
   <table>
     <tr><th>Priority</th><th>Bug</th><th>Root Cause</th><th>Fix</th></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>caktuar_email is free text</strong></td><td>anetaret not queried in task detail</td><td>Fetch anetaret in loadData(). Replace input with &lt;select&gt; from anetaret table. Fallback to text input.</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Old documents show DRAFT in PDF</strong></td><td>Pre-S9 docs saved with statusi='draft'</td><td>Update via Supabase dashboard or recreate docs. New issues always set statusi='issued'.</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Planet thumbnails missing on old plans</strong></td><td>Thumbnails only generated on new uploads</td><td>Re-upload plans, or add backfill button.</td></tr>
+    <tr><td><span class="chip chip-p1">P1 🔴</span></td><td><strong>Build failing — template literal in JSX option</strong></td><td>Backtick templates in &lt;option&gt; text content, Turbopack can't parse</td><td>Replace with <code>[a, b].filter(Boolean).join(' ')</code> — see Section 00b</td></tr>
+    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Invited project not appearing on member's dashboard</strong></td><td>ilike query fix deployed but build is failing so not live yet</td><td>Will resolve once build error is fixed</td></tr>
+    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Assignee shows email not full name in task list badge</strong></td><td>Fix deployed but build failing</td><td>Will resolve once build error is fixed</td></tr>
+    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Old documents show DRAFT in PDF</strong></td><td>Pre-S9 docs saved with statusi='draft'</td><td>Recreate docs or update via Supabase dashboard</td></tr>
   </table>
 </div>
 
@@ -345,357 +302,222 @@ CREATE TABLE notifikime (
 <div class="section" id="strategy">
   <div class="section-num">06</div>
   <h2>Strategy &amp; Roadmap</h2>
-  <div class="callout callout-green"><strong>Phase 3 in progress (S10).</strong> Foto page built, Gantt + Metrika views, dashboard redesign, Njerëzit people management, photo URL fixes.</div>
   <table>
-    <tr><th>Phase</th><th>Goal</th><th>Key features</th><th>Status</th></tr>
-    <tr><td><strong>Phase 1</strong></td><td>Core workflow</td><td>RPT, RDT, RFI, INS, COR, DCO · Register · Planet · Detyrat · Writing guides</td><td><span class="chip chip-done">✓ Complete</span></td></tr>
-    <tr><td><strong>Phase 2</strong></td><td>NCR + SUB + HSE + bug fixes</td><td>NCR, SUB, HSE, structured plan, print, RLS, thumbnails, priority cleanup</td><td><span class="chip chip-done">✓ Complete</span></td></tr>
-    <tr><td><strong>Phase 3</strong></td><td>UX + collaboration + AI</td><td>Foto page ✓ · Gantt ✓ · Metrika ✓ · Dashboard ✓ · Njerëzit ✓ · AI daily report · RFI writer · @mentions · Resend email</td><td><span class="chip chip-next">In Progress</span></td></tr>
-    <tr><td><strong>Phase 4</strong></td><td>Client-facing + advanced</td><td>Weekly auto-report · Assignee dropdown · Punch list · Plan markup tools</td><td><span class="chip chip-future">Upcoming</span></td></tr>
-    <tr><td><strong>Phase 5</strong></td><td>Scale</td><td>Semantic search · Photo AI tagging · SSO · White-label</td><td><span class="chip chip-future">Future</span></td></tr>
+    <tr><th>Phase</th><th>Goal</th><th>Status</th></tr>
+    <tr><td><strong>Phase 1+2</strong></td><td>Core workflow — 8 doc types, plans, tasks, writing guides</td><td><span class="chip chip-done">✓ Complete</span></td></tr>
+    <tr><td><strong>Phase 3</strong></td><td>UX + collaboration + monetisation</td><td><span class="chip chip-next">In Progress</span></td></tr>
+    <tr><td><strong>Phase 4</strong></td><td>Stripe payments, proper multi-tenant RLS, weekly auto-report</td><td><span class="chip chip-future">Upcoming</span></td></tr>
+    <tr><td><strong>Phase 5</strong></td><td>AI features, semantic search, photo tagging, SSO</td><td><span class="chip chip-future">Future</span></td></tr>
   </table>
-
-  <h3>Immediate priorities for next session (Phase 3 continued)</h3>
-  <p><strong>1.</strong> <strong>AI Daily Report</strong> — <code>/api/ai-report</code> route, claude-sonnet-4-6, pulls tasks + VisualCrossing weather → Albanian narrative. ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars.<br>
-  <strong>2.</strong> <strong>Assignee dropdown</strong> (P2 bug) — replace free-text caktuar_email with &lt;select&gt; from anetaret table.<br>
-  <strong>3.</strong> <strong>@mentions + notifications</strong> — notifikime table + Supabase Edge Functions + Resend email.</p>
+  <h3>Phase 3 remaining (next session priorities)</h3>
+  <p><strong>1.</strong> Fix build error (Section 00b) — 10 min<br>
+  <strong>2.</strong> Verify invited project shows on member dashboard<br>
+  <strong>3.</strong> AI Daily Report — <code>/api/ai-report</code>, claude-sonnet-4-6, VisualCrossing weather → Albanian narrative<br>
+  <strong>4.</strong> Planet page — user-specific access (member can only see project they're invited to)<br>
+  <strong>5.</strong> @mentions in task comments + notifikime table</p>
 </div>
 
 <!-- 07 -->
-<div class="section" id="collaboration">
+<div class="section" id="features">
   <div class="section-num">07</div>
-  <h2>Collaboration Architecture — @mentions + Notifications</h2>
-  <p>The <code>anetaret</code> table is now fully functional with the Njerëzit page (S10). RLS policies fixed in S9. Phase 3 next step: add notifikime table and trigger-based emails via Resend.</p>
-  <pre><code>-- Phase 3 — NOT YET APPLIED
-CREATE TABLE notifikime (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  projekti_id uuid REFERENCES projektet(id),
-  perdoruesi_email text NOT NULL,
-  lloji text NOT NULL,  -- 'mention' | 'task_assigned' | 'rfi_answer' | 'doc_issued' | 'inspection_due' | 'weekly_report'
-  referenca_id uuid,
-  referenca_tipi text,  -- 'detyre' | 'dokument'
-  teksti text,
-  lexuar boolean DEFAULT false,
-  created_at timestamptz DEFAULT now()
-);</code></pre>
-  <h3>Document workflow notification triggers</h3>
+  <h2>Features to Build</h2>
   <table>
-    <tr><th>Event</th><th>Recipient</th><th>Trigger</th></tr>
-    <tr><td>RFI opened</td><td>menaxher_projekti</td><td>statusi_workflow → 'open'</td></tr>
-    <tr><td>RFI answered</td><td>RFI creator</td><td>statusi_workflow → 'answered'</td></tr>
-    <tr><td>COR submitted</td><td>menaxher_projekti</td><td>statusi_workflow → 'submitted'</td></tr>
-    <tr><td>COR approved/rejected</td><td>COR creator</td><td>statusi_workflow → 'approved'/'rejected'</td></tr>
-    <tr><td>INS due in 48h</td><td>insInspector from form_data</td><td>Cron job checks upcoming INS dates</td></tr>
-    <tr><td>Weekly report</td><td>klienti email from projektet</td><td>Every Friday 17:00 via Edge Function</td></tr>
+    <tr><th>Priority</th><th>Feature</th><th>Notes</th></tr>
+    <tr><td><span class="chip chip-p1">P1</span></td><td><strong>Fix build error</strong></td><td>See Section 00b. 10 min fix.</td></tr>
+    <tr><td><span class="chip chip-p1">P1</span></td><td><strong>AI Daily Report</strong></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian narrative. ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars.</td></tr>
+    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Stripe payments</strong></td><td>€49/project/month. Connect to profiles.plani column. Gate features based on plani value instead of trial days.</td></tr>
+    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>@mentions + notifications</strong></td><td>notifikime table + Supabase Edge Functions + Resend email. See collaboration architecture.</td></tr>
+    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Weekly auto-report email</strong></td><td>Every Friday, auto-generate RPT PDF → email klienti.</td></tr>
+    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Punch list module</strong></td><td>Location on plan, photo, trade, status. Formal closeout PDF.</td></tr>
+    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Meeting Minutes (MTG)</strong></td><td>Attendees, decisions, action items → creates tasks automatically.</td></tr>
   </table>
 </div>
 
 <!-- 08 -->
-<div class="section" id="features">
+<div class="section" id="workflow">
   <div class="section-num">08</div>
-  <h2>Features to Build</h2>
+  <h2>Working with Claude</h2>
+  <div class="callout callout-blue"><strong>Start each session:</strong> Paste URL <strong>https://kantier-ui-reference-document.vercel.app</strong> — Claude fetches full context. State the phase and feature to work on.</div>
+  <h3>Common Mistakes</h3>
   <table>
-    <tr><th>Priority</th><th>Feature</th><th>Notes</th><th>Est.</th></tr>
-    <tr><td><span class="chip chip-p1">P1</span></td><td><strong>AI — Daily Report</strong></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian narrative. PM edits + issues as RDT.</td><td>4h</td></tr>
-    <tr><td><span class="chip chip-p1">P1</span></td><td><strong>Assignee dropdown</strong></td><td>Replace free-text caktuar_email with &lt;select&gt; from anetaret. P2 bug — now that Njerëzit page is built, this is straightforward.</td><td>2h</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>AI — RFI question writer</strong></td><td>Informal description → proper ISO RFI with drawing ref, grid, specific question.</td><td>2h</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>@mentions + notifications</strong></td><td>notifikime table + Supabase Edge Functions + Resend email. See Section 07.</td><td>4h</td></tr>
-    <tr><td><span class="chip chip-p2">P2</span></td><td><strong>Weekly auto-report email</strong></td><td>Every Friday, auto-generate RPT PDF → email klienti. Zero PM effort.</td><td>3h</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Meeting Minutes (MTG)</strong></td><td>Attendees, decisions, action items → creates tasks automatically.</td><td>2h</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>Punch List module</strong></td><td>Separate from tasks. Location on plan, photo, trade, status. Formal closeout PDF.</td><td>4h</td></tr>
-    <tr><td><span class="chip chip-p3">P3</span></td><td><strong>INS checklist templates</strong></td><td>Pre-populated per inspection type. Auto-load when type selected.</td><td>2h</td></tr>
+    <tr><th>Mistake</th><th>Prevention</th></tr>
+    <tr><td>Wrong VS Code tab</td><td>Always check breadcrumb before pasting</td></tr>
+    <tr><td>Template literals in JSX option text</td><td>Use <code>[a, b].filter(Boolean).join(' ')</code></td></tr>
+    <tr><td>Importing from @/lib/trial</td><td>Keep trial logic inlined — the import works locally but caused issues</td></tr>
+    <tr><td>Multiple files uploaded at once</td><td>Upload one at a time, wait for line count</td></tr>
+    <tr><td>Wrong terminal directory</td><td>Must be <code>~/kantier</code> not <code>~/kantier-website</code></td></tr>
+    <tr><td>Forgetting to update this doc</td><td>Update on GitHub after every session</td></tr>
   </table>
 </div>
 
 <!-- 09 -->
-<div class="section" id="workflow">
+<div class="section" id="deploy">
   <div class="section-num">09</div>
-  <h2>Working with Claude</h2>
-  <div class="callout callout-blue"><strong>Start each session:</strong> Paste URL <strong>https://kantier-ui-reference-document.vercel.app</strong> — Claude fetches and has full context. State the phase and which feature to work on.</div>
-  <h3>⚠ Common Mistakes — Never Do These</h3>
-  <table>
-    <tr><th>Mistake</th><th>Consequence</th><th>Prevention</th></tr>
-    <tr><td><strong>Wrong VS Code tab</strong></td><td>Overwrites wrong file silently</td><td>Always check breadcrumb path before pasting</td></tr>
-    <tr><td><strong>Multiple files uploaded at once</strong></td><td>Only the last one arrives</td><td>Upload one at a time, wait for line count confirmation</td></tr>
-    <tr><td><strong>params.id not typed</strong></td><td>Silent Supabase insert failures</td><td>Line 1: <code>const params = useParams()</code> Line 2: <code>const projektId = params.id as string</code></td></tr>
-    <tr><td><strong>sed on TypeScript</strong></td><td>Corrupts special characters</td><td>Never. Use Python string replace or str_replace tool.</td></tr>
-    <tr><td><strong>Wrong terminal directory</strong></td><td>Deploys wrong project</td><td>Must be <code>~/kantier</code> not <code>~/kantier-website</code></td></tr>
-    <tr><td><strong>Opening downloaded file in VS Code</strong></td><td>205 TypeScript errors</td><td>Always paste into the existing page.tsx at the correct path</td></tr>
-    <tr><td><strong>Forgetting to update this doc</strong></td><td>Next session starts without context</td><td>Update on GitHub after every session. Takes 2 minutes.</td></tr>
-  </table>
+  <h2>Deployment Reference</h2>
+  <pre><code>cd ~/kantier && git add . && git commit -m "S11: description" && git push</code></pre>
+  <h3>Supabase SQL applied in S10</h3>
+  <pre><code>-- anetaret email column
+ALTER TABLE anetaret ADD COLUMN IF NOT EXISTS email text;
+
+-- profiles new columns
+ALTER TABLE profiles
+  ADD COLUMN IF NOT EXISTS titulli text,
+  ADD COLUMN IF NOT EXISTS telefoni text,
+  ADD COLUMN IF NOT EXISTS avatar_url text,
+  ADD COLUMN IF NOT EXISTS updated_at timestamptz;
+
+-- profiles RLS
+DROP POLICY IF EXISTS "profiles_update_own" ON profiles;
+DROP POLICY IF EXISTS "profiles_insert_own" ON profiles;
+DROP POLICY IF EXISTS "profiles_select_own" ON profiles;
+CREATE POLICY "profiles_update_own" ON profiles FOR UPDATE TO authenticated USING (auth.uid() = id);
+CREATE POLICY "profiles_insert_own" ON profiles FOR INSERT TO authenticated WITH CHECK (auth.uid() = id);
+CREATE POLICY "profiles_select_own" ON profiles FOR SELECT TO authenticated USING (auth.uid() = id);
+
+-- Schema cache refresh (run if PGRST204 errors appear)
+NOTIFY pgrst, 'reload schema';
+
+-- Auth settings (Supabase dashboard)
+-- Site URL: https://kantier.vercel.app
+-- Redirect URL: https://kantier.vercel.app/**
+-- Sign ups: enabled</code></pre>
 </div>
 
 <!-- 10 -->
-<div class="section" id="deploy">
+<div class="section" id="pricing">
   <div class="section-num">10</div>
-  <h2>Deployment Reference</h2>
-  <h3>Deploy Kantier app</h3>
-  <pre><code>cd ~/kantier
-git add .
-git commit -m "S10: description"
-git push</code></pre>
-  <h3>Deploy Kantier website</h3>
-  <pre><code>cd ~/kantier-website   # different repo!
-git add .
-git commit -m "website vXX"
-git push</code></pre>
-  <h3>Update this reference doc</h3>
-  <pre><code>github.com/aurorababa/KANTIER.-UI-REFERENCE-DOCUMENT
-→ index.html → pencil icon → Ctrl+A → paste → Commit changes
-Vercel deploys in ~60 seconds</code></pre>
-  <h3>Supabase SQL — all applied to date</h3>
-  <pre><code>-- dokumentet columns (S5+S6)
-ALTER TABLE dokumentet
-  ADD COLUMN IF NOT EXISTS statusi_workflow text DEFAULT 'draft',
-  ADD COLUMN IF NOT EXISTS notes text,
-  ADD COLUMN IF NOT EXISTS form_data jsonb DEFAULT '{}'::jsonb,
-  ADD COLUMN IF NOT EXISTS activity_log jsonb DEFAULT '[]'::jsonb,
-  ADD COLUMN IF NOT EXISTS doc_references jsonb DEFAULT '[]'::jsonb;
-
--- RLS fixes applied in S9 (anetaret, planet, dokumentet, storage)
--- Key: all policies use auth.uid() IS NOT NULL — no cross-table queries
-CREATE POLICY "planet_pdf_insert" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'planet-pdf');
-CREATE POLICY "planet_pdf_update" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'planet-pdf');
-CREATE POLICY "planet_pdf_delete" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'planet-pdf');
-CREATE POLICY "foto_kantier_insert" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'foto-kantier');
-
--- Phase 3 — NOT YET APPLIED
-CREATE TABLE notifikime ( ... );</code></pre>
+  <h2>Pricing + Trial System</h2>
+  <h3>Trial (implemented S10)</h3>
+  <p>3-day trial from account creation date (<code>user.created_at</code>). Computed client-side — no DB column. After trial expires, locked features show paywall modal. Trial banner shows on dashboard during active trial.</p>
+  <h3>Locked after trial (Basic free tier)</h3>
+  <p>8 doc types · Gantt view · Metrika view · Foto page · Creating 2nd+ project · Njerëzit nav · Raporte tab · Dokumentet tab</p>
+  <h3>Free forever (Basic)</h3>
+  <p>Dashboard · 1 project · Task list (Lista view) · Planet · Detaje</p>
+  <h3>Plans</h3>
+  <table>
+    <tr><th>Tier</th><th>Price</th><th>Target</th></tr>
+    <tr><td><strong>Basic</strong></td><td>Free (3-day trial of Pro features)</td><td>Solo testing</td></tr>
+    <tr><td><strong>Pro ⭐</strong></td><td>€49/project/month</td><td>Individual architects + contractors</td></tr>
+    <tr><td><strong>Business</strong></td><td>€149/month</td><td>General contractors + PM firms</td></tr>
+    <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Balfin, Fusha, Gjikuria + regional expansion</td></tr>
+  </table>
+  <p><strong>Phase 4:</strong> Add <code>profiles.plani</code> column. Connect to Stripe. Gate features based on plani value instead of trial days.</p>
 </div>
 
 <!-- 11 -->
-<div class="section" id="construction-workflow">
+<div class="section" id="grants">
   <div class="section-num">11</div>
-  <h2>Construction Project Lifecycle — Where Kantier Fits</h2>
-  <table>
-    <tr><th>#</th><th>Phase</th><th>Kantier coverage</th></tr>
-    <tr><td>1</td><td><strong>Pre-Construction</strong> — Contracts, Drawings, Team</td><td>✓ Project + Planet · ✓ RFI · ✓ SUB submittal · ✓ Njerëzit team setup · ○ Baseline Gantt</td></tr>
-    <tr><td>2</td><td><strong>Mobilization</strong> — Site Setup, Team Assignment</td><td>✓ RDT Daily Report · ✓ Detyra + Planet pins · ✓ HSE check in RDT · ✓ Foto page · ○ Equipment log</td></tr>
-    <tr><td>3</td><td><strong>Foundation &amp; Structure</strong> — Inspections Critical</td><td>✓ INS + Checklist + AHJ · ✓ NCR non-conformance · ✓ Gantt timeline · ○ 48h inspection reminder</td></tr>
-    <tr><td>4</td><td><strong>MEP Rough-In</strong> — RFI Explosion Phase</td><td>✓ RFI + COR + DCO · ✓ RFI writing guide · ● AI RFI writer (Phase 3)</td></tr>
-    <tr><td>5</td><td><strong>Envelope &amp; Finishes</strong> — Submittals + Change Orders</td><td>✓ COR + DCO · ✓ SUB material approval · ✓ Metrika progress view</td></tr>
-    <tr><td>6</td><td><strong>Commissioning &amp; Closeout</strong> — Punch List + Handover</td><td>✓ Register + ISO 9001 PDF export · ○ Punch list module · ○ Closeout package</td></tr>
-  </table>
+  <h2>Grants &amp; Funding</h2>
+  <p>Non-dilutive first: Microsoft for Startups (rolling, apply now), WB EDIF (open), EBRD Star Venture (monitor). Then equity: Seedcamp, YC (after traction).</p>
+  <p><strong>Grant narrative:</strong> Albania's construction sector generates €3B+ annual output but operates on paper, WhatsApp, and Excel. Kantier is the first ISO 9001-aligned construction management platform for the Western Balkans — where Procore is unaffordable and Fieldwire is not localised.</p>
 </div>
 
 <!-- 12 -->
-<div class="section" id="pricing">
+<div class="section" id="ai-strategy">
   <div class="section-num">12</div>
-  <h2>Pricing Plans</h2>
-  <p><strong>Philosophy:</strong> Per-project, not per-user. Construction sites have many workers but the person paying is the PM or firm owner. Per-user pricing kills adoption.</p>
+  <h2>AI Strategy</h2>
   <table>
-    <tr><th>Tier</th><th>Price</th><th>Limits</th><th>Includes</th><th>Target</th></tr>
-    <tr><td><strong>Basic</strong></td><td>Free forever</td><td>1 project, 3 users, 10 sheets, 500MB</td><td>Tasks + Planet + basic RPT</td><td>Solo architects + small contractors testing</td></tr>
-    <tr><td><strong>Pro ⭐</strong></td><td>€49/project/month</td><td>Unlimited users + sheets, 10GB</td><td>All 8 doc types · Gantt · Metrika · AI daily report · @mentions · Weekly auto-report · Njerëzit</td><td>Individual architects + contractors with 1–3 projects</td></tr>
-    <tr><td><strong>Business</strong></td><td>€149/month</td><td>Unlimited projects, 50GB</td><td>Everything in Pro + cross-project register + custom logo</td><td>General contractors + PM firms</td></tr>
-    <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Unlimited</td><td>White-label · API · SSO/SAML · Dedicated Supabase · SLA</td><td>Balfin, Fusha, Gjikuria + regional expansion</td></tr>
+    <tr><th>Feature</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Writing Guides</td><td><span class="chip chip-done">✓ Live</span></td><td>All 8 doc types. Zero API cost.</td></tr>
+    <tr><td>AI Daily Report</td><td><span class="chip chip-next">Phase 3 PRO</span></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian narrative.</td></tr>
+    <tr><td>AI RFI Writer</td><td><span class="chip chip-next">Phase 3 PRO</span></td><td>Informal description → proper ISO RFI.</td></tr>
+    <tr><td>Semantic Search</td><td><span class="chip chip-future">Phase 5</span></td><td>pgvector on Supabase.</td></tr>
+    <tr><td>Photo AI Tagging</td><td><span class="chip chip-future">Phase 5</span></td><td>Claude suggests category + trade + task link on upload.</td></tr>
   </table>
+  <pre><code>// AI Daily Report API route — Phase 3
+// src/app/api/ai-report/route.ts
+// model: 'claude-sonnet-4-6', max_tokens: 1000
+// ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars</code></pre>
 </div>
 
 <!-- 13 -->
-<div class="section" id="grants">
+<div class="section" id="doc-analysis">
   <div class="section-num">13</div>
-  <h2>Grants &amp; Funding</h2>
-  <p><strong>Strategy:</strong> Non-dilutive first (EBRD, EU, Microsoft, Anthropic) to extend runway. Then equity (Seedcamp, YC) with traction data.</p>
+  <h2>Document Types — 8 Total</h2>
   <table>
-    <tr><th>Grant</th><th>Amount</th><th>Status</th><th>Notes</th></tr>
-    <tr><td><strong>EBRD Star Venture</strong></td><td>up to €50,000</td><td>Monitor</td><td>Western Balkans tech. Albania NOT in current cycle — monitor monthly.</td></tr>
-    <tr><td><strong>EIC Accelerator</strong></td><td>up to €2.5M</td><td>Requires AI ✓</td><td>Deep tech mandate. Kantier's AI report generation now qualifies.</td></tr>
-    <tr><td><strong>Microsoft for Startups</strong></td><td>up to $150,000</td><td>Apply now</td><td>Rolling applications. Azure credits + no equity. 30 min to apply.</td></tr>
-    <tr><td><strong>Anthropic Startup Program</strong></td><td>API credits</td><td>After AI launch</td><td>Apply once /api/ai-report ships.</td></tr>
-    <tr><td><strong>Google for Startups</strong></td><td>up to $100,000</td><td>Monitor cycle</td><td>Construction tech underserved vertical they actively target.</td></tr>
-    <tr><td><strong>WB EDIF</strong></td><td>Grants + soft loans</td><td>Open now</td><td>EU-funded, Albanian partner banks. Currently open.</td></tr>
-    <tr><td><strong>EU Horizon MSCA</strong></td><td>up to €160,000</td><td>UCL connection</td><td>Frame as research into construction digitization in Western Balkans.</td></tr>
-    <tr><td><strong>Seedcamp / YC / CDL</strong></td><td>€200k–$500k</td><td>After traction</td><td>UCL → CDL Oxford stream. YC remote-friendly. "Albania's first" is a non-obvious bet.</td></tr>
+    <tr><th>Type</th><th>Name</th><th>Color</th><th>Added</th></tr>
+    <tr><td><span class="chip doc-rpt">RPT</span></td><td>Raport Progresi</td><td>#F59E0B</td><td>S3</td></tr>
+    <tr><td><span class="chip doc-rdt">RDT</span></td><td>Raport Ditor + HSE + photos</td><td>#0EA5E9</td><td>S8</td></tr>
+    <tr><td><span class="chip doc-rfi">RFI</span></td><td>Kërkesë Informacioni</td><td>#3B82F6</td><td>S5</td></tr>
+    <tr><td><span class="chip doc-ins">INS</span></td><td>Raport Inspektimi</td><td>#16A34A</td><td>S5</td></tr>
+    <tr><td><span class="chip doc-cor">COR</span></td><td>Ndryshim Kostoje</td><td>#DC2626</td><td>S5</td></tr>
+    <tr><td><span class="chip doc-dco">DCO</span></td><td>Ndryshim Dizajni</td><td>#7C3AED</td><td>S5</td></tr>
+    <tr><td><span class="chip doc-ncr">NCR ✦</span></td><td>Raport Mospërputhje</td><td>#EA580C</td><td>S9</td></tr>
+    <tr><td><span class="chip doc-sub">SUB ✦</span></td><td>Regjistrim Materialesh</td><td>#0D9488</td><td>S9</td></tr>
   </table>
-  <div class="callout callout-blue"><strong>Grant narrative:</strong> "Albania's construction sector generates over €3 billion in annual output but operates entirely on paper, WhatsApp, and Excel. Kantier is the first ISO 9001-aligned construction management platform built for the Western Balkans — where Procore is unaffordable and Fieldwire is not localised. Now with AI-generated daily reports, Gantt planning, and full team management."</div>
 </div>
 
 <!-- 14 -->
-<div class="section" id="ai-strategy">
+<div class="section" id="priorities">
   <div class="section-num">14</div>
-  <h2>AI Strategy</h2>
+  <h2>Priority &amp; Category System</h2>
+  <h3>Roles — 6 predefined</h3>
   <table>
-    <tr><th>Feature</th><th>Status</th><th>Description</th></tr>
-    <tr><td>📖 Writing Guides</td><td><span class="chip chip-done">✓ Live</span></td><td>Collapsible guides on all 8 doc types. Zero API cost.</td></tr>
-    <tr><td>📋 Structured RDT</td><td><span class="chip chip-done">✓ Live</span></td><td>Weather, workers table, HSE check, structured next-day plan. 3 min on site.</td></tr>
-    <tr><td>🤖 AI Daily Report</td><td><span class="chip chip-next">Phase 3 PRO</span></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian narrative.</td></tr>
-    <tr><td>💬 AI RFI Writer</td><td><span class="chip chip-next">Phase 3 PRO</span></td><td>Informal description → proper ISO RFI with drawing ref, grid, specific question.</td></tr>
-    <tr><td>🔍 Semantic Search</td><td><span class="chip chip-future">Phase 4</span></td><td>pgvector on Supabase. Query across tasks, docs, comments.</td></tr>
-    <tr><td>📸 Photo AI Tagging</td><td><span class="chip chip-future">Phase 4</span></td><td>Claude suggests category + trade + task link on photo upload.</td></tr>
+    <tr><th>DB value</th><th>Label</th><th>Icon</th></tr>
+    <tr><td><code>menaxher</code></td><td>Menaxher Projekti</td><td>👷</td></tr>
+    <tr><td><code>inxhinier</code></td><td>Inxhinier / Arkitekt</td><td>📐</td></tr>
+    <tr><td><code>anetar</code></td><td>Punëtor Kantieri</td><td>🔨</td></tr>
+    <tr><td><code>kontraktues</code></td><td>Kontraktues</td><td>📋</td></tr>
+    <tr><td><code>klient</code></td><td>Klient</td><td>🏢</td></tr>
+    <tr><td><code>mbikequyres</code></td><td>Mbikëqyrës</td><td>🔍</td></tr>
   </table>
-  <pre><code>// src/app/api/ai-report/route.ts
-export async function POST(req: Request) {
-  const { projektId, date, weather } = await req.json()
-  const tasks = await supabase.from('detyrat')
-    .select('titulli, statusi, kategoria, caktuar_email')
-    .eq('projekti_id', projektId).neq('statusi', 'mbaruar')
-  const response = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6', max_tokens: 1000,
-    messages: [{ role: 'user', content:
-      `Gjenero raportin ditor për ${date}. Mot: ${weather}.
-       Detyrat aktive: ${JSON.stringify(tasks.data)}.
-       Shkruaj në shqip. Format: punëtorët, puna e kryer, materialet, probleme, plan nesër.`
-    }]
-  })
-  return Response.json({ report: response.content[0].text })
-}
-// ANTHROPIC_API_KEY and VISUAL_CROSSING_KEY stored in Vercel env vars</code></pre>
+  <h3>Priority values</h3>
+  <pre><code>prioritet_1 → P1 Kritik (#DC2626)  prioritet_2 → P2 I lartë (#EA580C)
+prioritet_3 → P3 Normal (#F59E0B)   verifikuar → Verifikuar (#3B82F6)
+mbaruar_det → Mbaruar (#22C55E)     (legacy: ulet/urgjent/larte/mesem — color maps only)</code></pre>
+  <h3>Category acronyms — 18 total</h3>
+  <pre><code>EL=Elektrike · HI=Hidraulike · BE=Beton · SU=Suvatim · LY=Lyerje
+MU=Muraturë · FA=Fasadë · PL=Shtresa pllakash · ME=Instalime metalike
+DR=Dritare & Dyer · CA=Çati · IZ=Izolim · GI=Gips · HV=HVAC
+AR=Arkitekturë · CI=Civile · ST=Strukturale · TJ=Tjetër</code></pre>
 </div>
 
 <!-- 15 -->
-<div class="section" id="doc-analysis">
+<div class="section" id="design">
   <div class="section-num">15</div>
-  <h2>Document Types — Full Analysis</h2>
-  <h3>Current 8 types — S1–S9</h3>
+  <h2>Design Decisions — Locked</h2>
   <table>
-    <tr><th>Type</th><th>Name</th><th>Key fields</th><th>Workflow</th></tr>
-    <tr><td><span class="chip doc-rpt">RPT</span></td><td>Raport Progresi</td><td>Auto from tasks: stats, overdue, cost, assignee table</td><td>→ Issued</td></tr>
-    <tr><td><span class="chip doc-rdt">RDT</span></td><td>Raport Ditor</td><td>Weather, workers, HSE check (5 questions), work done, materials, problems, structured next-day plan (zona/aktiviteti/burimet), site photos (up to 5), active tasks table</td><td>→ Submitted</td></tr>
-    <tr><td><span class="chip doc-rfi">RFI</span></td><td>Kërkesë Informacioni</td><td>Drawing ref, grid, question (blue panel), screenshots, response block</td><td>→ Hapur → Përgjigje → Mbyllur</td></tr>
-    <tr><td><span class="chip doc-ins">INS</span></td><td>Raport Inspektimi</td><td>Checklist Pass/Fail/NA, inspector, AHJ sign-off</td><td>→ Planifikuar → Kaloi</td></tr>
-    <tr><td><span class="chip doc-cor">COR</span></td><td>Ndryshim Kostoje</td><td>Line-item cost table, financial summary, schedule impact</td><td>→ Dërguar → Aprovuar</td></tr>
-    <tr><td><span class="chip doc-dco">DCO</span></td><td>Ndryshim Dizajni</td><td>Before/after panels, affected drawings list, engineer signature</td><td>→ Shqyrtim → Lëshuar</td></tr>
-    <tr><td><span class="chip doc-ncr">NCR</span> ✦ S9</td><td>Raport Mospërputhje</td><td>Description (orange panel), 6 root-cause cards, corrective + preventive action panels, verification block</td><td>Hapur → Shqyrtim → Mbyllur → Anuluar</td></tr>
-    <tr><td><span class="chip doc-sub">SUB</span> ✦ S9</td><td>Regjistrim Materialesh</td><td>Product ID panel (teal), spec section, deviations (amber), 4-state approval dropdown, reviewer notes</td><td>→ Dërguar → Shqyrtim → Aprovuar</td></tr>
-  </table>
-  <h3>Phase 3+ types</h3>
-  <table>
-    <tr><th>Code</th><th>Name</th><th>Purpose</th><th>Phase</th></tr>
-    <tr><td>MTG</td><td>Meeting Minutes</td><td>Attendees, decisions, action items → tasks automatically</td><td>Phase 3</td></tr>
-    <tr><td>TRN</td><td>Transmittal</td><td>Proof of delivery. Auto-generated when issuing docs.</td><td>Phase 3</td></tr>
-    <tr><td>PCH</td><td>Punch List</td><td>Closeout defects. Location on plan, photo, trade, status.</td><td>Phase 4</td></tr>
-  </table>
-  <h3>Comparison vs Procore / Fieldwire / PlanRadar</h3>
-  <table>
-    <tr><th>Feature</th><th>Kantier</th><th>Procore</th><th>Fieldwire</th><th>PlanRadar</th></tr>
-    <tr><td>Language</td><td>🇦🇱 Shqip</td><td>English only</td><td>English only</td><td>No Albanian</td></tr>
-    <tr><td>Price</td><td>€49/project</td><td>$375+/month</td><td>$54/user/mo</td><td>€39/user/mo</td></tr>
-    <tr><td>Plans + Tasks</td><td>✓ Sheet # + thumbnail</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Gantt chart</td><td>✓ S10</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Task metrics</td><td>✓ S10</td><td>✓</td><td>✓</td><td>Limited</td></tr>
-    <tr><td>Photo gallery</td><td>✓ S10</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Team management</td><td>✓ S10</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Daily Log</td><td>✓ RDT + HSE</td><td>✓</td><td>Basic</td><td>Basic</td></tr>
-    <tr><td>RFI</td><td>✓ + writing guide</td><td>✓</td><td>✓</td><td>Limited</td></tr>
-    <tr><td>Inspections</td><td>✓ INS</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Change Orders</td><td>✓ COR</td><td>✓</td><td>✗</td><td>Limited</td></tr>
-    <tr><td>Non-Conformance</td><td>✓ NCR (S9)</td><td>✓</td><td>✗</td><td>Limited</td></tr>
-    <tr><td>Submittal Register</td><td>✓ SUB (S9)</td><td>✓</td><td>✗</td><td>✗</td></tr>
-    <tr><td>ISO 9001 doc control</td><td>✓ All 8 types</td><td>Partial</td><td>✗</td><td>✗</td></tr>
-    <tr><td>AI assistance</td><td>⏳ Phase 3</td><td>✓ AWS AI</td><td>✗</td><td>✗</td></tr>
-    <tr><td>Writing guides</td><td>✓ All types</td><td>✗</td><td>✗</td><td>✗</td></tr>
+    <tr><th>Decision</th><th>Rationale</th></tr>
+    <tr><td>Light theme — white nav, #F4F5F7 bg, #1C2333 ink</td><td>Matches Fieldwire. No dark mode.</td></tr>
+    <tr><td>Trial logic inlined per file</td><td>External @/lib/trial import caused resolution issues in this Turbopack version. Keep inline until resolved.</td></tr>
+    <tr><td>anetaret stores email (not just user_id)</td><td>Enables pre-registration invite workflow. user_id nullable for pending invites.</td></tr>
+    <tr><td>Assignee dropdown from anetaret</td><td>Replaces free-text caktuar_email. Shows full name from profiles join. Stores email string.</td></tr>
+    <tr><td>Profile photo in foto-kantier bucket</td><td>Reuses existing bucket. Path: avatars/{user.id}.{ext}. Upsert on re-upload.</td></tr>
+    <tr><td>Per-project pricing, not per-user</td><td>Construction sites have many workers. Per-user kills adoption.</td></tr>
+    <tr><td>No template literals in JSX option text</td><td>Turbopack 16.2 parse error. Use array join or string concat.</td></tr>
+    <tr><td>Gantt uses 38px/day</td><td>Fixed density, 1-year span centred on today. Drag-to-pan.</td></tr>
+    <tr><td>foto_urls as {url,email,data} objects</td><td>Parser handles all 3 legacy formats (string, object, JSON-string).</td></tr>
+    <tr><td>Sidebar nav: Dashboard + Njerëzit only</td><td>Other routes are project-scoped — 404 as global routes.</td></tr>
   </table>
 </div>
 
 <!-- 16 -->
-<div class="section" id="website">
+<div class="section" id="documents">
   <div class="section-num">16</div>
-  <h2>Website &amp; Marketing</h2>
-  <p>Website v05 deployed S8. No changes in S9–S10.</p>
-  <h3>LinkedIn posts ready to publish</h3>
-  <p><strong>Post 1 (Albanian — problem):</strong> Çdo kontraktor shqiptar e di historinë: ndryshimi kërkohet verbalisht, puna bëhet, mandej klienti thotë "s'e autorizova". Ndryshimi i kostos pa COR të shkruar nuk ekziston ligjërisht. Kantier e bën këtë proces 2 minuta. #Kantier #Ndërtim #Albania</p>
-  <p><strong>Post 2 (Albanian — product):</strong> Nga WhatsApp te dokumentacion ISO 9001 — brenda 30 sekondave. Inspektimi i armatimit: lista ✓, fotot ✓, firma ✓, PDF ✓. #Kantier #ISO9001 #Albania</p>
-  <p><strong>Post 3 (English — investor):</strong> Albania's construction sector: €3B+ annual output. Zero digital documentation tools built for the local market. We built Kantier — ISO 9001 construction management for the Western Balkans. kantier.vercel.app #ConTech #Albania</p>
+  <h2>Document System</h2>
+  <p>Shared ISO 9001 header on all 8 types. Format: <code>TYPE-YEAR-CODE-NNN</code> (e.g. NCR-2026-PT03-001). Each type has own sequence. "Shkarko Draft" = print only. "Regjistro &amp; Lësho" = generate number → save to DB → print.</p>
 </div>
 
 <!-- 17 -->
-<div class="section" id="naming">
-  <div class="section-num">17</div>
-  <h2>File Naming Convention</h2>
-  <p>Route path → replace all <code>/</code> with <code>_</code> → add <code>_page.tsx</code>. Dynamic segments like <code>[id]</code> become <code>id</code> (no brackets). Never deliver a file just named "page.tsx".</p>
-  <p>Example: <code>src/app/dashboard/projektet/[id]/planet/page.tsx</code> → <code>projektet_id_planet_page.tsx</code></p>
-</div>
-
-<!-- 18 -->
-<div class="section" id="priorities">
-  <div class="section-num">18</div>
-  <h2>Priority &amp; Category System</h2>
-  <h3>Priority values — 5 levels (legacy removed from UI in S9)</h3>
-  <table>
-    <tr><th>DB value</th><th>Color</th><th>Label</th><th>Notes</th></tr>
-    <tr><td><code>prioritet_1</code></td><td style="color:#DC2626">■ #DC2626</td><td>P1 — Kritik</td><td></td></tr>
-    <tr><td><code>prioritet_2</code></td><td style="color:#EA580C">■ #EA580C</td><td>P2 — I lartë</td><td></td></tr>
-    <tr><td><code>prioritet_3</code></td><td style="color:#F59E0B">■ #F59E0B</td><td>P3 — Normal</td><td>✓ default for new tasks</td></tr>
-    <tr><td><code>verifikuar</code></td><td style="color:#3B82F6">■ #3B82F6</td><td>Verifikuar</td><td></td></tr>
-    <tr><td><code>mbaruar_det</code></td><td style="color:#16A34A">■ #16A34A</td><td>Mbaruar</td><td></td></tr>
-    <tr><td><code>ulet/urgjent/larte/mesem</code></td><td style="color:#94A3B8">■ legacy</td><td>Removed from UI</td><td>Kept in color maps for old tasks</td></tr>
-  </table>
-  <h3>Category acronyms — 18 total</h3>
-  <pre><code>EL=Elektrike · HI=Hidraulike · BE=Beton · SU=Suvatim · LY=Lyerje
-MU=Muraturë · FA=Fasadë · PL=Shtresa pllakash · ME=Instalime metalike
-DR=Dritare &amp; Dyer · CA=Çati · IZ=Izolim · GI=Gips · HV=HVAC
-AR=Arkitekturë · CI=Civile · ST=Strukturale · TJ=Tjetër</code></pre>
-  <h3>Document type colors</h3>
-  <table>
-    <tr><th>Type</th><th>Color</th><th>Light bg</th><th>Added</th></tr>
-    <tr><td><span class="chip doc-rpt">RPT</span></td><td>#F59E0B</td><td>#FFFBEB</td><td>S3</td></tr>
-    <tr><td><span class="chip doc-rdt">RDT</span></td><td>#0EA5E9</td><td>#F0F9FF</td><td>S8</td></tr>
-    <tr><td><span class="chip doc-rfi">RFI</span></td><td>#3B82F6</td><td>#EFF6FF</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-ins">INS</span></td><td>#16A34A</td><td>#F0FDF4</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-cor">COR</span></td><td>#DC2626</td><td>#FEF2F2</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-dco">DCO</span></td><td>#7C3AED</td><td>#F5F3FF</td><td>S5</td></tr>
-    <tr><td><span class="chip doc-ncr">NCR</span></td><td>#EA580C</td><td>#FFF7ED</td><td>S9 ✦</td></tr>
-    <tr><td><span class="chip doc-sub">SUB</span></td><td>#0D9488</td><td>#F0FDFA</td><td>S9 ✦</td></tr>
-  </table>
-</div>
-
-<!-- 19 -->
-<div class="section" id="design">
-  <div class="section-num">19</div>
-  <h2>Design Decisions — Locked</h2>
-  <table>
-    <tr><th>Decision</th><th>Rationale</th></tr>
-    <tr><td><strong>Light theme everywhere</strong> — white nav, #F4F5F7 bg, #1C2333 ink</td><td>Matches Fieldwire. No dark mode.</td></tr>
-    <tr><td><strong>Teardrop pins + category acronyms</strong> — color = priority</td><td>Type + urgency readable at a glance on crowded plans.</td></tr>
-    <tr><td><strong>Flat dropdowns</strong> — white bg, colored dot, no emoji</td><td>Professional. Emojis render badly in PDFs.</td></tr>
-    <tr><td><strong>komentet stores activity + comments</strong></td><td>No extra table. type:'activity' = pencil icon. No type = chat bubble.</td></tr>
-    <tr><td><strong>TYPE-YEAR-CODE-NNN numbering</strong></td><td>PMBOK standard. Each type has own series.</td></tr>
-    <tr><td><strong>PDF only, no Word export</strong></td><td>Word defeats ISO 9001 document control.</td></tr>
-    <tr><td><strong>Revisions R00–R05</strong></td><td>RPT locked at R00. Others up to R05.</td></tr>
-    <tr><td><strong>Shkarko Draft ≠ Regjistro &amp; Lësho</strong></td><td>Print without committing vs. formal issuance. Procore model.</td></tr>
-    <tr><td><strong>Sheet # in pershkrimi column</strong></td><td>Reuses existing planet.pershkrimi — no migration needed.</td></tr>
-    <tr><td><strong>Thumbnails in markup jsonb</strong></td><td>Generated client-side on upload (PDF.js, scale 0.4, JPEG 70%). Old rows are <code>[]</code> — always check Array.isArray before spreading.</td></tr>
-    <tr><td><strong>devicePixelRatio in pdf-renderer</strong></td><td>Canvas renders at 2× physical pixels on retina. Matches Fieldwire sharpness.</td></tr>
-    <tr><td><strong>5-level priority (not 9)</strong></td><td>Matches Fieldwire. Legacy values kept in color maps for old tasks.</td></tr>
-    <tr><td><strong>Per-project pricing, not per-user</strong></td><td>Construction sites have many workers. Per-user kills adoption.</td></tr>
-    <tr><td><strong>Sidebar: Dashboard + Njerëzit only</strong></td><td>Detyrat/Planet/Raportet are project-scoped. Global sidebar links only to truly global routes to prevent 404s.</td></tr>
-    <tr><td><strong>foto_urls as {url,email,data} objects</strong></td><td>Enables Foto page metadata (who uploaded, when). Parser handles all 3 legacy formats (string, object, JSON-string).</td></tr>
-    <tr><td><strong>Gantt uses pixel-per-day (38px)</strong></td><td>Fixed density, continuous canvas. 1-year span centred on today. Drag-to-pan matches Fieldwire UX.</td></tr>
-  </table>
-</div>
-
-<!-- 20 -->
-<div class="section" id="documents">
-  <div class="section-num">20</div>
-  <h2>Document System</h2>
-  <p><strong>Shared ISO 9001 header — all 8 types.</strong> Every issued document has: Document Number (fresh sequential), Type, Revision, Status (always ISSUED), Prepared by, Approved by, Date Issued.</p>
-  <p><strong>Document numbering:</strong> Format <code>TYPE-YEAR-CODE-NNN</code> (e.g. <code>NCR-2026-PT03-001</code>). Code = kodi_projektit (max 8 chars). Each type has its own sequence. Number generated fresh at issue time by counting existing docs of that type.</p>
-</div>
-
-<!-- 21 -->
 <div class="section" id="test-project">
-  <div class="section-num">21</div>
-  <h2>Test Project — Net Zero House</h2>
-  <p><strong>Projekt_Test03</strong> on kantier.vercel.app. USA wood-frame net zero house, 93 drawings. kodi_projektit: PT03. Klienti: NET ZERO_USA. Firma: Baba Construction. Menaxher: Baba Aurora.</p>
+  <div class="section-num">17</div>
+  <h2>Test Project &amp; Accounts</h2>
+  <h3>Projekt_Test03 — Net Zero House, USA</h3>
+  <p>93 drawings. kodi_projektit: PT03. Klienti: NET ZERO_USA. Firma: Baba Construction.</p>
+  <h3>Supabase accounts</h3>
   <table>
-    <tr><th>Phase</th><th>Plan sheet</th><th>Key tasks</th><th>Categories</th></tr>
-    <tr><td>1 — Site &amp; foundation</td><td>F-101</td><td>Survey, excavation, footings, foundation wall</td><td>CI, BE, ST</td></tr>
-    <tr><td>2 — Slab &amp; basement</td><td>F-101</td><td>Vapor barrier, slab pour, plumbing rough-in, pressure test</td><td>IZ, BE, HI</td></tr>
-    <tr><td>3 — First floor framing</td><td>F-102</td><td>TJI joists, LVL beams, subfloor, wall framing</td><td>ST, DR</td></tr>
-    <tr><td>4 — Second floor &amp; roof</td><td>A-108</td><td>Second floor deck, walls, roof trusses, sheathing</td><td>ST, CA</td></tr>
-    <tr><td>5 — Weathertight envelope</td><td>A-201</td><td>Windows, fiber cement siding, air barrier, blower door test</td><td>DR, FA, IZ</td></tr>
-    <tr><td>6 — MEP rough-in</td><td>P-102</td><td>Plumbing, electrical, HVAC, solar panel blocking</td><td>HI, EL, HV</td></tr>
-    <tr><td>7 — Insulation &amp; drywall</td><td>A-301</td><td>Cavity insulation, pre-drywall inspection, drywall, paint</td><td>IZ, AR, GI, LY</td></tr>
-    <tr><td>8 — Commissioning</td><td>A-105</td><td>Plumbing fixtures, electrical panel, final blower door, punch list</td><td>HI, EL, IZ, AR</td></tr>
+    <tr><th>Email</th><th>Role</th><th>Notes</th></tr>
+    <tr><td>aurora-ark@hotmail.com</td><td>Admin / Owner</td><td>Main account. Created Projekt_Test03.</td></tr>
+    <tr><td>aurora.ark@gmail.com</td><td>Inxhinier / Arkitekt</td><td>Test account. Invited to Projekt_Test03 via anetaret.</td></tr>
   </table>
+  <p><strong>Known issue:</strong> Test account may not see Projekt_Test03 on dashboard yet — pending build fix deployment.</p>
 </div>
 
 </main>
 </div>
 
 <footer>
-  KANTIER. · UI Reference Document v10 · 22 April 2026 · S1–S10 Complete · Albania's first construction site management SaaS
+  KANTIER. · UI Reference Document v11 · 24 April 2026 · S1–S10 Complete · Build error pending fix
 </footer>
 
 </body>
