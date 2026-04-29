@@ -3,297 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kantier UI Reference v13</title>
+<title>Kantier UI Reference v14</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #1C2333; --amber: #F59E0B; --amber2: #D97706;
-    --bg: #F4F5F7; --white: #ffffff; --border: #E5E4DF;
-    --muted: #6B7280; --green: #16A34A; --blue: #2563EB;
-    --red: #DC2626; --orange: #EA580C; --purple: #7C3AED;
-    --teal: #0D9488;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Barlow', system-ui, sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; }
+:root{
+  --ink:#0F172A;--ink2:#1E293B;
+  --amber:#F59E0B;--amber2:#D97706;--amber-lt:#FEF3C7;
+  --slate:#64748B;--muted:#94A3B8;--border:#E2E8F0;
+  --surface:#F8FAFC;--white:#fff;
+  --green:#16A34A;--green-lt:#DCFCE7;
+  --blue:#3B82F6;--blue-lt:#EFF6FF;
+  --red:#DC2626;--red-lt:#FEF2F2;
+  --purple:#7C3AED;--purple-lt:#F5F3FF;
+  --teal:#0D9488;--teal-lt:#CCFBF1;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--ink);line-height:1.6;font-size:14px;}
 
-  /* NAV */
-  .sidenav { position: fixed; top: 0; left: 0; width: 220px; height: 100vh; background: var(--ink); overflow-y: auto; padding: 20px 0 40px; z-index: 100; }
-  .sidenav .brand { padding: 0 20px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px; }
-  .sidenav .brand-name { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 900; color: white; letter-spacing: -.01em; }
-  .sidenav .brand-name span { color: var(--amber); }
-  .sidenav .brand-sub { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: .08em; text-transform: uppercase; margin-top: 2px; }
-  .sidenav .status-pills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
-  .sidenav .pill { font-size: 9px; padding: 2px 7px; border-radius: 99px; font-weight: 600; letter-spacing: .04em; }
-  .pill-green { background: rgba(22,163,74,.2); color: #4ADE80; }
-  .pill-amber { background: rgba(245,158,11,.2); color: #FCD34D; }
-  .pill-blue { background: rgba(37,99,235,.2); color: #93C5FD; }
-  .nav-group { padding: 0 12px; margin-bottom: 8px; }
-  .nav-group-label { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.3); padding: 0 8px; margin-bottom: 4px; }
-  .nav-group a { display: block; padding: 5px 8px; border-radius: 6px; font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; transition: all .15s; }
-  .nav-group a:hover, .nav-group a.active { background: rgba(255,255,255,0.1); color: white; }
-  .nav-group a .sec-num { display: inline-block; width: 18px; font-size: 10px; color: var(--amber); font-weight: 700; margin-right: 4px; }
-  .nav-new { background: rgba(245,158,11,.15) !important; color: var(--amber) !important; }
+/* LAYOUT */
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+aside{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--ink2);padding:0;border-right:1px solid rgba(255,255,255,.07);}
+main{padding:48px 56px;max-width:1000px;}
 
-  /* MAIN */
-  .main { margin-left: 220px; padding: 40px 48px; max-width: 1100px; }
+/* SIDEBAR */
+.aside-header{padding:20px 20px 16px;border-bottom:1px solid rgba(255,255,255,.07);}
+.aside-logo{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.aside-logo-icon{width:28px;height:28px;background:var(--amber);border-radius:6px;display:flex;align-items:center;justify-content:center;}
+.aside-logo-text{font-size:15px;font-weight:700;color:white;letter-spacing:-.01em;}
+.aside-logo-text span{color:var(--amber);}
+.aside-meta{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.02em;}
+.aside-badges{display:flex;flex-wrap:wrap;gap:6px;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.07);}
+.badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:.04em;}
+.badge-green{background:var(--green-lt);color:var(--green);}
+.badge-amber{background:var(--amber-lt);color:var(--amber2);}
+.badge-blue{background:var(--blue-lt);color:var(--blue);}
+.aside-nav{padding:12px 0;}
+.aside-section{padding:8px 20px 4px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);}
+.aside-nav a{display:flex;align-items:center;gap:10px;padding:7px 20px;font-size:12px;color:rgba(255,255,255,.5);text-decoration:none;transition:all .15s;border-left:2px solid transparent;}
+.aside-nav a:hover{color:white;background:rgba(255,255,255,.05);}
+.aside-nav a.active{color:var(--amber);border-left-color:var(--amber);background:rgba(245,158,11,.08);}
+.aside-nav a .num{font-size:10px;color:rgba(255,255,255,.2);font-family:'JetBrains Mono',monospace;min-width:20px;}
 
-  /* SECTIONS */
-  .section { margin-bottom: 64px; scroll-margin-top: 32px; }
-  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
-  .section-num { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 900; color: var(--amber); line-height: 1; }
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
-  .section-date { font-size: 11px; color: var(--muted); margin-left: auto; }
-  .new-badge { font-size: 10px; font-weight: 700; background: var(--amber); color: white; padding: 2px 8px; border-radius: 99px; letter-spacing: .04em; margin-left: 8px; }
+/* CONTENT */
+section{margin-bottom:56px;}
+.section-header{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--border);}
+.section-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--muted);min-width:28px;}
+.section-title{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;}
+.section-tag{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;margin-left:auto;}
+.tag-new{background:#FEF3C7;color:#92400E;}
+.tag-s12{background:var(--blue-lt);color:var(--blue);}
+.tag-stable{background:var(--green-lt);color:var(--green);}
+.tag-critical{background:var(--red-lt);color:var(--red);}
 
-  /* TABLES */
-  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
-  th { background: var(--ink); color: white; padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
-  td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  tr:last-child td { border-bottom: none; }
-  tr:nth-child(even) td { background: #fafaf8; }
-  td code { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: #F1EFE8; padding: 1px 5px; border-radius: 3px; }
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:var(--surface);padding:9px 12px;text-align:left;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);border-bottom:2px solid var(--border);}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#FAFBFC;}
+td code{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--surface);padding:2px 6px;border-radius:4px;color:var(--ink2);}
 
-  /* CARDS */
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
-  .card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .card-num { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 900; color: var(--amber); }
-  .card-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .card-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-  .card-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
+/* CODE BLOCKS */
+pre{background:var(--ink2);color:#E2E8F0;padding:20px 24px;border-radius:10px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.7;margin:12px 0;}
+code{font-family:'JetBrains Mono',monospace;font-size:12px;}
 
-  /* TAGS */
-  .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; letter-spacing: .04em; margin-right: 4px; }
-  .tag-green { background: #DCFCE7; color: #166534; }
-  .tag-amber { background: #FEF3C7; color: #92400E; }
-  .tag-blue { background: #DBEAFE; color: #1E40AF; }
-  .tag-red { background: #FEE2E2; color: #991B1B; }
-  .tag-purple { background: #EDE9FE; color: #5B21B6; }
-  .tag-teal { background: #CCFBF1; color: #134E4A; }
-  .tag-gray { background: #F3F4F6; color: #374151; }
+/* CARDS */
+.card{background:white;border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:12px 0;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:12px 0;}
+.card-sm{background:white;border:1px solid var(--border);border-radius:8px;padding:14px 18px;}
+.card-val{font-size:22px;font-weight:700;color:var(--ink);font-family:'JetBrains Mono',monospace;}
+.card-label{font-size:11px;color:var(--slate);margin-top:3px;}
 
-  /* ALERTS */
-  .alert { padding: 12px 16px; border-radius: 8px; margin: 12px 0; font-size: 13px; border-left: 3px solid; }
-  .alert-amber { background: #FFFBEB; border-color: var(--amber); }
-  .alert-green { background: #F0FDF4; border-color: var(--green); }
-  .alert-red { background: #FEF2F2; border-color: var(--red); }
-  .alert-blue { background: #EFF6FF; border-color: var(--blue); }
-  .alert strong { font-weight: 700; }
+/* CALLOUTS */
+.callout{border-radius:8px;padding:14px 18px;margin:12px 0;display:flex;gap:12px;align-items:flex-start;}
+.callout-warn{background:#FFFBEB;border:1px solid #FDE68A;}
+.callout-info{background:var(--blue-lt);border:1px solid #BFDBFE;}
+.callout-success{background:var(--green-lt);border:1px solid #BBF7D0;}
+.callout-danger{background:var(--red-lt);border:1px solid #FECACA;}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.callout-body{font-size:13px;line-height:1.6;}
+.callout-body strong{display:block;font-weight:600;margin-bottom:2px;}
 
-  /* CODE */
-  pre { background: #1C2333; color: #E2E8F0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 12px; line-height: 1.6; margin: 12px 0; font-family: 'JetBrains Mono', 'Fira Code', monospace; }
-  code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: #F1EFE8; padding: 1px 5px; border-radius: 3px; }
+/* RULE PILLS */
+.rules{display:flex;flex-direction:column;gap:8px;}
+.rule{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border-radius:8px;background:white;border:1px solid var(--border);}
+.rule-no{background:var(--red-lt);color:var(--red);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;}
+.rule-yes{background:var(--green-lt);color:var(--green);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;}
+.rule-text{font-size:13px;line-height:1.5;}
 
-  /* RULE LIST */
-  .rule-list { list-style: none; margin: 12px 0; }
-  .rule-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; display: flex; gap: 10px; }
-  .rule-list li:last-child { border-bottom: none; }
-  .rule-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+/* ROUTE CARDS */
+.route-grid{display:flex;flex-direction:column;gap:10px;}
+.route-card{background:white;border:1px solid var(--border);border-radius:8px;padding:14px 18px;}
+.route-path{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--blue);margin-bottom:6px;}
+.route-desc{font-size:13px;color:var(--slate);line-height:1.55;}
 
-  /* FUNNEL */
-  .funnel { display: flex; flex-direction: column; gap: 2px; margin: 16px 0; }
-  .funnel-step { padding: 14px 20px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 14px; }
-  .funnel-step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; color: var(--amber); line-height: 1; flex-shrink: 0; width: 28px; }
-  .funnel-step-content { flex: 1; }
-  .funnel-step-title { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
-  .funnel-step-body { font-size: 12px; color: var(--muted); }
-  .funnel-arrow { text-align: center; color: var(--muted); font-size: 12px; }
+/* STATUS DOTS */
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;}
+.dot-green{background:var(--green);}
+.dot-amber{background:var(--amber);}
+.dot-red{background:var(--red);}
+.dot-blue{background:var(--blue);}
 
-  /* CHECKLIST */
-  .checklist { list-style: none; margin: 12px 0; }
-  .checklist li { padding: 6px 0; font-size: 13px; display: flex; gap: 8px; align-items: flex-start; }
-  .check-done { color: var(--green); font-weight: 700; flex-shrink: 0; }
-  .check-todo { color: var(--amber); font-weight: 700; flex-shrink: 0; }
-  .check-pending { color: var(--muted); flex-shrink: 0; }
-
-  /* TWO COL */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
-  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
-  .col-block { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
-  .col-block h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 10px; }
-  .col-block ul { list-style: none; }
-  .col-block ul li { padding: 4px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
-  .col-block ul li:last-child { border-bottom: none; }
-
-  h3 { font-size: 15px; font-weight: 700; margin: 20px 0 10px; }
-  h4 { font-size: 13px; font-weight: 600; margin: 14px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
-  p { margin: 8px 0; font-size: 13px; line-height: 1.65; }
-  hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-
-  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@700;800;900&display=swap');
+/* MISC */
+h3{font-size:15px;font-weight:600;color:var(--ink);margin:20px 0 10px;letter-spacing:-.01em;}
+h4{font-size:13px;font-weight:600;color:var(--ink);margin:14px 0 8px;}
+p{font-size:13px;color:var(--slate);line-height:1.7;margin-bottom:10px;}
+ul,ol{padding-left:20px;font-size:13px;color:var(--slate);line-height:1.8;}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;}
+.highlight{background:var(--amber-lt);padding:1px 5px;border-radius:3px;font-weight:500;color:#92400E;}
+.new-badge{background:var(--amber);color:var(--ink);font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;margin-left:6px;}
+.mobile-tag{background:#EDE9FE;color:#6D28D9;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;margin-left:6px;}
 </style>
 </head>
 <body>
+<div class="shell">
 
-<!-- SIDENAV -->
-<nav class="sidenav">
-  <div class="brand">
-    <div class="brand-name">KANTIER<span>.</span></div>
-    <div class="brand-sub">UI Reference v13 · 25 Apr 2026</div>
-    <div class="status-pills">
-      <span class="pill pill-green">✓ Build Passing</span>
-      <span class="pill pill-green">✓ S11 Complete</span>
-      <span class="pill pill-amber">S12 Planning</span>
-      <span class="pill pill-amber">🚀 GTM Active</span>
+<!-- SIDEBAR -->
+<aside>
+  <div class="aside-header">
+    <div class="aside-logo">
+      <div class="aside-logo-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C2333" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <span class="aside-logo-text">KANTIER<span>.</span></span>
+    </div>
+    <div class="aside-meta">UI Reference v14 · 27 Apr 2026</div>
+  </div>
+  <div class="aside-badges">
+    <span class="badge badge-green">✓ Build Passing</span>
+    <span class="badge badge-green">✓ S11 Complete</span>
+    <span class="badge badge-amber">S12 Planning</span>
+    <span class="badge badge-green">✓ Waitlist Live</span>
+    <span class="badge badge-green">✓ Email Working</span>
+    <span class="badge badge-blue">Website v09</span>
+  </div>
+  <nav class="aside-nav">
+    <div class="aside-section">Start Here</div>
+    <a href="#claude"><span class="num">00</span>Instructions for Claude</a>
+    <a href="#state"><span class="num">01</span>Current State</a>
+    <div class="aside-section">Platform</div>
+    <a href="#overview"><span class="num">02</span>Platform Overview</a>
+    <a href="#s11"><span class="num">03</span>S11 Completed</a>
+    <a href="#filemap"><span class="num">04</span>File Map</a>
+    <a href="#datamodel"><span class="num">05</span>Data Model</a>
+    <div class="aside-section">Next Steps</div>
+    <a href="#roadmap"><span class="num">06</span>S12 Roadmap</a>
+    <a href="#mobile"><span class="num">07</span>Mobile & iPad Priority ★</a>
+    <a href="#permissions"><span class="num">08</span>Permission System</a>
+    <a href="#planet"><span class="num">09</span>Planet Improvements</a>
+    <a href="#features"><span class="num">10</span>Features Queue</a>
+    <div class="aside-section">Website</div>
+    <a href="#website"><span class="num">11</span>Website v09 ★</a>
+    <a href="#gtm"><span class="num">12</span>GTM Strategy</a>
+    <div class="aside-section">Business</div>
+    <a href="#pricing"><span class="num">13</span>Pricing + Trial</a>
+    <a href="#fundraising"><span class="num">14</span>Fundraising Plan</a>
+    <a href="#grants"><span class="num">15</span>Grants</a>
+    <a href="#ai"><span class="num">16</span>AI Strategy</a>
+    <div class="aside-section">Reference</div>
+    <a href="#rules"><span class="num">17</span>Critical Rules</a>
+    <a href="#bugs"><span class="num">18</span>Active Bugs</a>
+    <a href="#sql"><span class="num">19</span>SQL Applied S11</a>
+    <a href="#design"><span class="num">20</span>Design Decisions</a>
+    <a href="#docs"><span class="num">21</span>Document Types</a>
+    <a href="#roles"><span class="num">22</span>Roles & Categories</a>
+    <a href="#testproject"><span class="num">23</span>Test Accounts</a>
+    <a href="#deploy"><span class="num">24</span>Deploy</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+<!-- 00 -->
+<section id="claude">
+  <div class="section-header">
+    <span class="section-num">00</span>
+    <span class="section-title">Instructions for Claude — Read First</span>
+    <span class="section-tag tag-critical">REQUIRED</span>
+  </div>
+
+  <div class="callout callout-info">
+    <span class="callout-icon">🤖</span>
+    <div class="callout-body">
+      <strong>Working Method</strong>
+      Claude delivers complete files named with the convention in Section 04. Aurora applies <strong>Cmd+A → Delete → Paste → Cmd+S</strong> in the correct VS Code tab. Always verify the breadcrumb path before pasting. Deploy: <code>cd ~/kantier && git add . && git commit -m "..." && git push</code>
     </div>
   </div>
 
-  <div class="nav-group">
-    <div class="nav-group-label">Start Here</div>
-    <a href="#claude"><span class="sec-num">00</span>Instructions for Claude</a>
-    <a href="#state"><span class="sec-num">01</span>Current State</a>
+  <div class="callout callout-warn">
+    <span class="callout-icon">⚠️</span>
+    <div class="callout-body">
+      <strong>TURBOPACK RULE — Never Break</strong>
+      Never use template literals (<code>`${var}`</code>) directly inside JSX children of <code>&lt;option&gt;</code> tags. Use array join instead: <code>{[a.profiles?.emri, a.profiles?.mbiemri].filter(Boolean).join(' ') || a.email?.split('@')[0]}</code>
+    </div>
   </div>
-  <div class="nav-group">
-    <div class="nav-group-label">Platform</div>
-    <a href="#overview"><span class="sec-num">02</span>Platform Overview</a>
-    <a href="#s11"><span class="sec-num">03</span>S11 Completed</a>
-    <a href="#filemap"><span class="sec-num">04</span>File Map</a>
-    <a href="#datamodel"><span class="sec-num">05</span>Data Model</a>
+
+  <h3>What is Kantier?</h3>
+  <p>Albania's first construction site management SaaS built by <strong>Aurora Baba</strong> (architect, UCL London, no coding background). Stack: <strong>Next.js 16.2 + Supabase + Vercel</strong>. Claude acts as a <strong>PMP-accredited construction PM</strong> familiar with Procore, Fieldwire, PlanRadar.</p>
+  <p>Contact: <strong>ucju019@ucl.ac.uk</strong></p>
+
+  <h3>Critical Rules</h3>
+  <div class="rules">
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text"><code>Never call loadData() after field saves</code> — Race condition, dates snap back. Update local state with setSelectedTask + setDetyrat instead.</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text"><code>Date inputs save on onChange, not onBlur</code> — onBlur races with loadData() re-fetch.</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text"><code>No sed on TypeScript files</code> — sed breaks on special chars. Use str_replace tool only.</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text"><code>No template literals in JSX &lt;option&gt; text</code> — Turbopack build fails.</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text"><code>confirm() is blocked on Vercel</code> — Use inline state-based confirmation UI instead.</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text"><code>Multiple file uploads at once</code> — overwrite each other. Wait for line count confirmation.</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text"><code>params.id must be typed</code> — <code>const projektId = params.id as string</code>. Never inline.</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text"><code>RLS policies use user_id = auth.uid()</code> — Email-based RLS fails silently.</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text"><code>Trial logic is inlined in each file</code> — Do NOT import from @/lib/trial.</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text"><code>foto_urls parser</code> — <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text"><code>PDF only, no Word export</code> — Word is editable, defeats ISO 9001 document control.</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text"><code>profiles RLS allows all authenticated reads</code> — CREATE POLICY "profiles_read_all" ON profiles FOR SELECT TO authenticated USING (true);</span></div>
   </div>
-  <div class="nav-group">
-    <div class="nav-group-label">Next Steps</div>
-    <a href="#roadmap"><span class="sec-num">06</span>S12 Roadmap</a>
-    <a href="#permissions"><span class="sec-num">07</span>Permission System</a>
-    <a href="#planet"><span class="sec-num">08</span>Planet Improvements</a>
-    <a href="#features"><span class="sec-num">09</span>Features Queue</a> <!-- was 08 renumbered -->
+</section>
+
+<!-- 01 -->
+<section id="state">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Current State — 27 April 2026</span>
+    <span class="section-tag tag-stable">STABLE</span>
   </div>
-  <div class="nav-group">
-    <div class="nav-group-label">Business</div>
-    <a href="#pricing"><span class="sec-num">10</span>Pricing + Trial</a>
-    <a href="#fundraising"><span class="sec-num">11</span>Fundraising Plan</a>
-    <a href="#grants"><span class="sec-num">12</span>Grants</a>
-    <a href="#ai"><span class="sec-num">13</span>AI Strategy</a>
+
+  <div class="callout callout-success">
+    <span class="callout-icon">✅</span>
+    <div class="callout-body">
+      <strong>Build Passing · S11 Deployed · Waitlist Live · Email Working · Website v09 Live</strong>
+      S11 fixed JSX corruption, RLS policies, member access, assignee names, invite flow, Safari select styling, planet page assignee, and confirm() delete bug. Waitlist live on Supabase with Resend confirmation emails working end-to-end. Website rebuilt as compact, mobile-first v09.
+    </div>
   </div>
-  <div class="nav-group">
-    <div class="nav-group-label">Reference</div>
-    <a href="#rules"><span class="sec-num">14</span>Critical Rules</a>
-    <a href="#bugs"><span class="sec-num">15</span>Active Bugs</a>
-    <a href="#sql"><span class="sec-num">16</span>SQL Applied S11</a>
-    <a href="#design"><span class="sec-num">17</span>Design Decisions</a>
-    <a href="#docs"><span class="sec-num">18</span>Document Types</a>
-    <a href="#roles"><span class="sec-num">19</span>Roles & Categories</a>
-    <a href="#testproject"><span class="sec-num">20</span>Test Accounts</a>
-    <a href="#deploy"><span class="sec-num">21</span>Deploy</a>
-    <a href="#gtm" class="nav-new"><span class="sec-num">22</span>GTM · 25 Apr 2026 ★</a>
+
+  <table>
+    <tr><th>Account</th><th>Role</th><th>Access</th></tr>
+    <tr><td><code>aurora-ark@hotmail.com</code></td><td>Admin / Owner</td><td>Created Projekt_Test03. Full access to all 3 projects.</td></tr>
+    <tr><td><code>aurora.ark@gmail.com</code></td><td>Inxhinier / Arkitekt</td><td>Invited to Projekt_Test03. Can see project, tasks, plans, documents, activity feed.</td></tr>
+  </table>
+</section>
+
+<!-- 02 -->
+<section id="overview">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Platform Overview</span>
+    <span class="section-tag tag-stable">STABLE</span>
   </div>
-</nav>
 
-<!-- MAIN CONTENT -->
-<main class="main">
-
-  <!-- 00 -->
-  <section class="section" id="claude">
-    <div class="section-header">
-      <span class="section-num">00</span>
-      <span class="section-title">Instructions for Claude — Read First</span>
+  <div class="route-grid">
+    <div class="route-card">
+      <div class="route-path">/dashboard</div>
+      <div class="route-desc">Project grid (2-col, color accent, mini donut). "My tasks" panel. Activity feed. Open-items alert. Trial banner. Shows projects created by user OR invited to via anetaret. Sidebar: Dashboard + Njerëzit + project shortcuts. Profile avatar + full name.</div>
     </div>
-    <div class="alert alert-amber"><strong>🤖 Working Method:</strong> Claude delivers complete files named with the convention in Section 04. Aurora applies <strong>Cmd+A → Delete → Paste → Cmd+S</strong> in the correct VS Code tab. Always verify the breadcrumb path before pasting. Deploy: <code>cd ~/kantier && git add . && git commit -m "..." && git push</code></div>
-    <div class="alert alert-red"><strong>⚠️ TURBOPACK RULE — Never Break:</strong> Never use template literals (<code>`${var}`</code>) directly inside JSX children of <code>&lt;option&gt;</code> tags. Use array join instead: <code>{[a.profiles?.emri, a.profiles?.mbiemri].filter(Boolean).join(' ') || a.email?.split('@')[0]}</code></div>
-    <h3>What is Kantier?</h3>
-    <p>Albania's first construction site management SaaS built by Aurora Baba (architect, UCL London, no coding background). Stack: Next.js 16.2 + Supabase + Vercel. Claude acts as a <strong>PMP-accredited construction PM</strong> familiar with Procore, Fieldwire, PlanRadar.</p>
-    <h3>Critical Rules</h3>
-    <table>
-      <tr><th>Rule</th><th>Reason</th></tr>
-      <tr><td><code>Never call loadData() after field saves</code></td><td>Race condition — dates snap back. Update local state with setSelectedTask + setDetyrat instead.</td></tr>
-      <tr><td><code>Date inputs save on onChange, not onBlur</code></td><td>onBlur races with loadData() re-fetch.</td></tr>
-      <tr><td><code>File naming convention is mandatory</code></td><td>See Section 04. Route-based name prevents wrong-tab mistakes.</td></tr>
-      <tr><td><code>params.id must be typed</code></td><td><code>const projektId = params.id as string</code>. Never inline.</td></tr>
-      <tr><td><code>No sed on TypeScript files</code></td><td>sed breaks on special chars. Use str_replace tool only.</td></tr>
-      <tr><td><code>Upload files one at a time</code></td><td>Multiple uploads overwrite each other. Wait for line count confirmation.</td></tr>
-      <tr><td><code>PDF only, no Word export</code></td><td>Word is editable — defeats ISO 9001 document control.</td></tr>
-      <tr><td><code>No template literals in JSX option text</code></td><td>Turbopack build fails. Use <code>[a, b].filter(Boolean).join(' ')</code></td></tr>
-      <tr><td><code>foto_urls stores objects, not plain strings</code></td><td>Parse with: <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></td></tr>
-      <tr><td><code>Trial logic is inlined in each file</code></td><td>Do NOT import from @/lib/trial — import caused resolution issues in this Turbopack version.</td></tr>
-      <tr><td><code>confirm() is blocked on Vercel</code></td><td>Use inline state-based confirmation UI instead of browser confirm() dialog.</td></tr>
-      <tr><td><code>RLS policies use user_id = auth.uid()</code></td><td>Email-based RLS fails silently. Always match on user_id. Trigger auto-fills user_id on anetaret insert.</td></tr>
-      <tr><td><code>profiles RLS allows all authenticated reads</code></td><td>CREATE POLICY "profiles_read_all" ON profiles FOR SELECT TO authenticated USING (true);</td></tr>
-    </table>
-  </section>
-
-  <!-- 01 -->
-  <section class="section" id="state">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <span class="section-title">Current State — 25 April 2026</span>
+    <div class="route-card">
+      <div class="route-path">/dashboard/profili</div>
+      <div class="route-desc">Profile page — photo upload, name, email (read-only), role dropdown (6 predefined + "Tjetër" free text), phone. Account info section. Plan card (Basic/Pro). Upgrade → Pro button (mailto).</div>
     </div>
-    <div class="alert alert-green"><strong>✅ Build Passing · S11 Deployed · Collaboration Working · GTM Infrastructure Live</strong><br>S11 fixed JSX corruption, RLS policies, member access, assignee names, invite flow, Safari select styling, planet page assignee, and confirm() delete bug. Two test accounts collaborating successfully on Projekt_Test03. Waitlist system live on Supabase.</div>
-    <table>
-      <tr><th>Account</th><th>Role</th><th>Access</th></tr>
-      <tr><td><code>aurora-ark@hotmail.com</code></td><td>Admin / Owner</td><td>Created Projekt_Test03. Full access to all 3 projects.</td></tr>
-      <tr><td><code>aurora.ark@gmail.com</code></td><td>Inxhinier / Arkitekt</td><td>Invited to Projekt_Test03. Can see project, tasks, plans, documents, activity feed.</td></tr>
-    </table>
-  </section>
-
-  <!-- 02 -->
-  <section class="section" id="overview">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-title">Platform Overview</span>
+    <div class="route-card">
+      <div class="route-path">/dashboard/njerezit</div>
+      <div class="route-desc">Global people page. Member table shows full name primary + email secondary + avatar initials. Inline role editor. Inline confirmation delete. Task count scoped to owned projects. "+ Shto Anëtar" writes to anetaret with trigger auto-filling user_id.</div>
     </div>
-    <table>
-      <tr><th>Route</th><th>Description</th></tr>
-      <tr><td><code>/dashboard</code></td><td>Project grid (2-col, color accent, mini donut). "My tasks" panel. Activity feed. Open-items alert. Trial banner. Shows projects created by user OR invited to via anetaret. Sidebar: Dashboard + Njerëzit + project shortcuts. Profile avatar + full name.</td></tr>
-      <tr><td><code>/dashboard/profili</code></td><td>Profile page — photo upload, name, email (read-only), role dropdown (6 predefined + "Tjetër" free text), phone. Account info section. Plan card (Basic/Pro). Upgrade → Pro button (mailto).</td></tr>
-      <tr><td><code>/dashboard/njerezit</code></td><td>Global people page. Member table shows full name primary + email secondary + avatar initials. Inline role editor. Inline confirmation delete. Task count scoped to owned projects. "+ Shto Anëtar" writes to anetaret with trigger auto-filling user_id.</td></tr>
-      <tr><td><code>/dashboard/projektet/[id]</code></td><td>Detyrat — Lista/Gantt/Metrika toggle. Assignee shows "Aurora Baba · Inxhinier" format. Task comments, photos, checklist synced between accounts. Activity log records all changes. Trial paywall gates: Gantt, Metrika, Foto, Raporte, Dokumentet.</td></tr>
-      <tr><td><code>/dashboard/projektet/[id]/planet</code></td><td>Plan viewer — retina PDF, teardrop pins, task detail panel. Assignee dropdown from anetaret. New task + edit task both show "Name · Role" dropdown.</td></tr>
-      <tr><td><code>/dashboard/projektet/[id]/foto</code></td><td>Photo gallery — date-grouped grid, lightbox, task panel, activity logging, drag-drop upload. Paywall gates access when trial expired.</td></tr>
-      <tr><td><code>/dashboard/projektet/[id]/raporte</code></td><td>8 doc types: RPT · RDT · RFI · INS · COR · DCO · NCR · SUB. ISO 9001 cover. Draft + Issue flow.</td></tr>
-      <tr><td><code>/dashboard/projektet/[id]/dokumentet</code></td><td>Document register — all 8 types, filter by type + status, inline workflow dropdowns, doc → detail page.</td></tr>
-      <tr><td><code>/dashboard/projektet/[id]/detaje</code></td><td>Project details — PMBOK fields. Stable since S3.</td></tr>
-    </table>
-  </section>
-
-  <!-- 03 -->
-  <section class="section" id="s11">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <span class="section-title">S11 Completed Work — 24 April 2026</span>
+    <div class="route-card">
+      <div class="route-path">/dashboard/projektet/[id]</div>
+      <div class="route-desc">Detyrat — Lista/Gantt/Metrika toggle. Assignee shows "Aurora Baba · Inxhinier" format. Task comments, photos, checklist synced between accounts. Activity log records all changes. Trial paywall gates: Gantt, Metrika, Foto, Raporte, Dokumentet.</div>
     </div>
-    <table>
-      <tr><th>Feature</th><th>File(s)</th><th>Status</th></tr>
-      <tr><td><strong>JSX corruption fix</strong> — repaired corrupted line 1164 in projektet_id_page.tsx. All 31 TypeScript errors resolved.</td><td><code>projektet_id_page.tsx</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>RLS policies</strong> — DROP + recreate projektet_member_read and detyrat_member_read using user_id = auth.uid()</td><td>Supabase SQL</td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Auto-fill trigger</strong> — Postgres trigger fills anetaret.user_id automatically on INSERT by matching email to auth.users.</td><td>Supabase SQL</td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>DELETE RLS policy</strong> — project owners can delete members. anetaret_delete policy added.</td><td>Supabase SQL</td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>profiles_read_all policy</strong> — authenticated users can read all profiles.</td><td>Supabase SQL</td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Member name display</strong> — Njerëzit page shows full name primary + email secondary + correct initials.</td><td><code>njerezit_page.tsx</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Assignee names</strong> — "Caktuar tek" dropdown shows "Aurora Baba · Inxhinier" format.</td><td><code>projektet_id_page.tsx</code>, <code>projektet_id_planet_page.tsx</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>inviteMember now real</strong> — actually inserts into anetaret, checks duplicates, reloads data.</td><td><code>projektet_id_page.tsx</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Inline delete confirmation</strong> — replaced browser confirm() with inline "Jeni i sigurt? Po · Jo" pill.</td><td><code>njerezit_page.tsx</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Safari select fix</strong> — added -webkit-appearance: none to globals.css.</td><td><code>globals.css</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Task collaboration</strong> — detyrat UPDATE + INSERT RLS policies added.</td><td>Supabase SQL</td><td><span class="tag tag-green">✓ Done</span></td></tr>
-      <tr><td><strong>Planet assignee dropdown</strong> — both new task modal and existing task edit panel use member dropdown.</td><td><code>projektet_id_planet_page.tsx</code></td><td><span class="tag tag-green">✓ Done</span></td></tr>
-    </table>
-  </section>
-
-  <!-- 04 -->
-  <section class="section" id="filemap">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <span class="section-title">File Map + Naming Convention</span>
+    <div class="route-card">
+      <div class="route-path">/dashboard/projektet/[id]/planet</div>
+      <div class="route-desc">Plan viewer — retina PDF, teardrop pins, task detail panel. Assignee dropdown from anetaret. New task + edit task both show "Name · Role" dropdown.</div>
     </div>
-    <p><strong>Rule:</strong> Route path → replace <code>/</code> with <code>_</code> → add <code>_page.tsx</code>. Dynamic segments like <code>[id]</code> → <code>id</code>. Never deliver a file just named "page.tsx".</p>
-    <table>
-      <tr><th>Delivered Name</th><th>VS Code Path</th><th>Lines</th></tr>
-      <tr><td><code>dashboard_page.tsx</code></td><td>src/app/dashboard/page.tsx</td><td>~620</td></tr>
-      <tr><td><code>profili_page.tsx</code></td><td>src/app/dashboard/profili/page.tsx</td><td>~310</td></tr>
-      <tr><td><code>njerezit_page.tsx</code></td><td>src/app/dashboard/njerezit/page.tsx</td><td>~501</td></tr>
-      <tr><td><code>projektet_id_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/page.tsx</td><td>~1374</td></tr>
-      <tr><td><code>projektet_id_foto_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/foto/page.tsx</td><td>~528</td></tr>
-      <tr><td><code>projektet_id_planet_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/planet/page.tsx</td><td>~1320</td></tr>
-      <tr><td><code>projektet_id_raporte_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/raporte/page.tsx</td><td>~2358</td></tr>
-      <tr><td><code>projektet_id_dokumentet_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/dokumentet/page.tsx</td><td>~436</td></tr>
-      <tr><td><code>projektet_id_dokumentet_docid_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/dokumentet/[docId]/page.tsx</td><td>~682</td></tr>
-      <tr><td><code>globals.css</code></td><td>src/app/globals.css</td><td>~88</td></tr>
-    </table>
-  </section>
-
-  <!-- 05 -->
-  <section class="section" id="datamodel">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <span class="section-title">Data Model — Supabase Tables</span>
+    <div class="route-card">
+      <div class="route-path">/dashboard/projektet/[id]/foto</div>
+      <div class="route-desc">Photo gallery — date-grouped grid, lightbox, task panel, activity logging, drag-drop upload. Paywall gates access when trial expired.</div>
     </div>
-    <pre>-- anetaret (members) — Updated S11
+    <div class="route-card">
+      <div class="route-path">/dashboard/projektet/[id]/raporte</div>
+      <div class="route-desc">8 doc types: RPT · RDT · RFI · INS · COR · DCO · NCR · SUB. ISO 9001 cover. Draft + Issue flow.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-path">/dashboard/projektet/[id]/dokumentet</div>
+      <div class="route-desc">Document register — all 8 types, filter by type + status, inline workflow dropdowns, doc → detail page.</div>
+    </div>
+    <div class="route-card">
+      <div class="route-path">/dashboard/projektet/[id]/detaje</div>
+      <div class="route-desc">Project details — PMBOK fields. Stable since S3.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="s11">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-title">S11 Completed Work — 24 April 2026</span>
+    <span class="section-tag tag-stable">DONE</span>
+  </div>
+  <table>
+    <tr><th>Feature</th><th>File(s)</th><th>Status</th></tr>
+    <tr><td><strong>JSX corruption fix</strong> — repaired corrupted line 1164 in projektet_id_page.tsx. All 31 TypeScript errors resolved.</td><td><code>projektet_id_page.tsx</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>RLS policies</strong> — DROP + recreate projektet_member_read and detyrat_member_read using user_id = auth.uid()</td><td>Supabase SQL</td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Auto-fill trigger</strong> — Postgres trigger fills anetaret.user_id automatically on INSERT by matching email to auth.users.</td><td>Supabase SQL</td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>DELETE RLS policy</strong> — project owners can delete members. anetaret_delete policy added.</td><td>Supabase SQL</td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>profiles_read_all policy</strong> — authenticated users can read all profiles.</td><td>Supabase SQL</td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Member name display</strong> — Njerëzit page shows full name primary + email secondary + correct initials.</td><td><code>njerezit_page.tsx</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Assignee names</strong> — "Caktuar tek" dropdown shows "Aurora Baba · Inxhinier" format.</td><td><code>projektet_id_page.tsx</code>, <code>projektet_id_planet_page.tsx</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>inviteMember now real</strong> — actually inserts into anetaret, checks duplicates, reloads data.</td><td><code>projektet_id_page.tsx</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Inline delete confirmation</strong> — replaced browser confirm() with inline "Jeni i sigurt? Po · Jo" pill.</td><td><code>njerezit_page.tsx</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Safari select fix</strong> — added -webkit-appearance: none to globals.css.</td><td><code>globals.css</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Task collaboration</strong> — detyrat UPDATE + INSERT RLS policies added.</td><td>Supabase SQL</td><td><span class="dot dot-green"></span>Done</td></tr>
+    <tr><td><strong>Planet assignee dropdown</strong> — both new task modal and existing task edit panel use member dropdown.</td><td><code>projektet_id_planet_page.tsx</code></td><td><span class="dot dot-green"></span>Done</td></tr>
+  </table>
+</section>
+
+<!-- 04 -->
+<section id="filemap">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <span class="section-title">File Map + Naming Convention</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-icon">📁</span>
+    <div class="callout-body"><strong>Rule:</strong> Route path → replace <code>/</code> with <code>_</code> → add <code>_page.tsx</code>. Dynamic segments like <code>[id]</code> → <code>id</code>. Never deliver a file just named "page.tsx".</div>
+  </div>
+  <table>
+    <tr><th>Delivered Name</th><th>VS Code Path</th><th>Lines</th></tr>
+    <tr><td><code>dashboard_page.tsx</code></td><td>src/app/dashboard/page.tsx</td><td>~620</td></tr>
+    <tr><td><code>profili_page.tsx</code></td><td>src/app/dashboard/profili/page.tsx</td><td>~310</td></tr>
+    <tr><td><code>njerezit_page.tsx</code></td><td>src/app/dashboard/njerezit/page.tsx</td><td>~501</td></tr>
+    <tr><td><code>projektet_id_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/page.tsx</td><td>~1374</td></tr>
+    <tr><td><code>projektet_id_foto_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/foto/page.tsx</td><td>~528</td></tr>
+    <tr><td><code>projektet_id_planet_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/planet/page.tsx</td><td>~1320</td></tr>
+    <tr><td><code>projektet_id_raporte_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/raporte/page.tsx</td><td>~2358</td></tr>
+    <tr><td><code>projektet_id_dokumentet_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/dokumentet/page.tsx</td><td>~436</td></tr>
+    <tr><td><code>projektet_id_dokumentet_docid_page.tsx</code></td><td>src/app/dashboard/projektet/[id]/dokumentet/[docId]/page.tsx</td><td>~682</td></tr>
+    <tr><td><code>globals.css</code></td><td>src/app/globals.css</td><td>~88</td></tr>
+  </table>
+</section>
+
+<!-- 05 -->
+<section id="datamodel">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <span class="section-title">Data Model — Supabase Tables</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+<pre>-- anetaret (members) — Updated S11
 id, projekti_id, roli, created_at
 email text          ← invite-by-email
 user_id uuid        ← FK to auth.users(id), nullable for pending invites
@@ -311,7 +369,7 @@ RLS: SELECT all authenticated (S11) · INSERT/UPDATE scoped to auth.uid() = id
 id, titulli, pershkrimi
 statusi: hapur | ne_progres | mbaruar
 prioriteti: prioritet_1 | prioritet_2 | prioritet_3 | verifikuar | mbaruar_det
-kategoria  (18 categories — see Section 19)
+kategoria  (18 categories — see Section 22)
 projekti_id, plan_id (nullable), pin_x, pin_y, pin_faqja
 krijuar_nga, caktuar_email   ← stores email string from member dropdown
 data_fillimit, data_afatit   ← used by Gantt
@@ -337,125 +395,319 @@ projektet: id, emri, adresa, krijuar_nga, kodi_projektit, klienti, ...
 dokumentet: id, projekti_id, tipi, numri, statusi_workflow, form_data jsonb, activity_log jsonb[]
 planet: id, projekti_id, emri, pdf_url, markup jsonb ({thumbnail: "data:image/jpeg..."})
 Storage: planet-pdf (PUBLIC), foto-kantier (PUBLIC)</pre>
-  </section>
+</section>
 
-  <!-- 06 -->
-  <section class="section" id="roadmap">
-    <div class="section-header">
-      <span class="section-num">06</span>
-      <span class="section-title">S12 Roadmap — Next Session</span>
-    </div>
-    <div class="alert alert-blue">Agreed priorities before permissions: Planet page improvements → Raporte page improvements → Task linking → then permission system → then fundraising/visibility plan.</div>
-    <table>
-      <tr><th>Priority</th><th>Feature</th><th>Notes</th></tr>
-      <tr><td><span class="tag tag-red">P1</span></td><td>"Të miat" filter tab on Detyrat</td><td>Add a filter tab alongside Hapura/Në Progres/Mbaruara that shows only tasks assigned to the current user. One file change, 30 min.</td></tr>
-      <tr><td><span class="tag tag-red">P1</span></td><td>Planet page — PDF improvements</td><td>Better zoom controls, sheet navigation between PDF pages, pin clustering when zoomed out, filter pins by category/status/assignee.</td></tr>
-      <tr><td><span class="tag tag-red">P1</span></td><td>Task linking (detyrat)</td><td>Link tasks to each other — "Varet nga" (blocked by) and "Lidhet me" (related to) relationships. Shows in task detail panel.</td></tr>
-      <tr><td><span class="tag tag-red">P1</span></td><td>Raporte page improvements</td><td>AI Daily Report (claude-sonnet-4-6 + VisualCrossing weather → Albanian RDT narrative). Auto-pull tasks completed today.</td></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>Permission system (S12c)</td><td>4-level access: Menaxher · Inxhinier · Punëtor/Kontraktues · Klient. See Section 07.</td></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>Invite email via Resend</td><td>When member added in Njerëzit, send branded email. Like Fieldwire.</td></tr>
-      <tr><td><span class="tag tag-gray">P3</span></td><td>Stripe payments</td><td>€49/project/month. Connect to profiles.plani column. Gate features on plani value.</td></tr>
-      <tr><td><span class="tag tag-gray">P3</span></td><td>@mentions + notifications</td><td>notifikime table + Supabase Edge Functions + Resend email.</td></tr>
-    </table>
-  </section>
+<!-- 06 -->
+<section id="roadmap">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <span class="section-title">S12 Roadmap — Next Session</span>
+    <span class="section-tag tag-s12">S12</span>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-icon">📋</span>
+    <div class="callout-body">Agreed priorities: <strong>Mobile &amp; iPad responsiveness first</strong> (field crew use) → Planet improvements → "Të miat" filter → Raporte improvements → then permissions → then fundraising visibility.</div>
+  </div>
+  <table>
+    <tr><th>Priority</th><th>Feature</th><th>Notes</th></tr>
+    <tr><td><span style="background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P0</span></td><td><strong>Mobile &amp; iPad responsive platform</strong> <span class="new-badge">NEW</span> <span class="mobile-tag">MOBILE</span></td><td>All platform pages need touch-friendly layout. Field crew on iPhone/iPad on site. See Section 07 for full spec.</td></tr>
+    <tr><td><span style="background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P1</span></td><td><strong>"Të miat" filter tab on Detyrat</strong></td><td>Filter tab alongside Hapura/Në Progres/Mbaruara showing only current user's tasks. One file change, ~30 min.</td></tr>
+    <tr><td><span style="background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P1</span></td><td><strong>Planet page improvements</strong></td><td>Better zoom, sheet navigation, pin clustering, filter by category/status/assignee.</td></tr>
+    <tr><td><span style="background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P1</span></td><td><strong>Task linking</strong></td><td>"Varet nga" (blocked by) and "Lidhet me" (related to) relationships. Shows in task detail panel.</td></tr>
+    <tr><td><span style="background:#FEF2F2;color:#DC2626;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P1</span></td><td><strong>AI Daily Report</strong></td><td>/api/ai-report, claude-sonnet-4-6, tasks + VisualCrossing weather → Albanian RDT narrative.</td></tr>
+    <tr><td><span style="background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P2</span></td><td><strong>Permission system</strong></td><td>4-level access: Menaxher · Inxhinier · Punëtor/Kontraktues · Klient. See Section 08.</td></tr>
+    <tr><td><span style="background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P2</span></td><td><strong>Invite email via Resend</strong></td><td>When member added in Njerëzit, send branded invite email. Like Fieldwire.</td></tr>
+    <tr><td><span style="background:#EFF6FF;color:#3B82F6;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P3</span></td><td><strong>Stripe payments</strong></td><td>€49/project/month. Connect to profiles.plani column.</td></tr>
+    <tr><td><span style="background:#EFF6FF;color:#3B82F6;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">P3</span></td><td><strong>@mentions + notifications</strong></td><td>notifikime table + Supabase Edge Functions + Resend email.</td></tr>
+  </table>
+</section>
 
-  <!-- 07 -->
-  <section class="section" id="permissions">
-    <div class="section-header">
-      <span class="section-num">07</span>
-      <span class="section-title">Permission System — Design (S12c)</span>
-    </div>
-    <table>
-      <tr><th>Roli</th><th>Detyrat</th><th>Planet</th><th>Dokumentet</th><th>Detaje Projekti</th><th>Njerëzit</th></tr>
-      <tr><td><strong>menaxher</strong></td><td>✓ Full</td><td>✓ Full</td><td>✓ Draft + Issue</td><td>✓ Edit</td><td>✓ Invite/Remove</td></tr>
-      <tr><td><strong>inxhinier</strong></td><td>✓ Full</td><td>✓ Full</td><td>◑ Read + Draft</td><td>◑ Read only</td><td>✗ View only</td></tr>
-      <tr><td><strong>anetar / kontraktues</strong></td><td>◑ Own tasks only</td><td>◑ View only</td><td>✗ No access</td><td>✗ No access</td><td>✗ No access</td></tr>
-      <tr><td><strong>klient</strong></td><td>◑ View only</td><td>◑ View only</td><td>◑ Issued docs only</td><td>◑ Read only</td><td>✗ No access</td></tr>
-    </table>
-  </section>
+<!-- 07 — NEW -->
+<section id="mobile">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <span class="section-title">Mobile &amp; iPad Priority <span class="new-badge">NEW S12</span></span>
+    <span class="section-tag tag-s12">P0 NEXT</span>
+  </div>
 
-  <!-- 08 -->
-  <section class="section" id="planet">
-    <div class="section-header">
-      <span class="section-num">08</span>
-      <span class="section-title">Planet Page — Improvements Queue</span>
+  <div class="callout callout-warn">
+    <span class="callout-icon">📱</span>
+    <div class="callout-body">
+      <strong>Why this is P0</strong>
+      Construction site crews work on-site with iPhones and iPads. They need to: open tasks, update status, upload photos, view plans, and log daily reports — all from a phone or tablet in direct sunlight, sometimes with gloves. The platform must be fully functional on mobile, not just "viewable."
     </div>
-    <table>
-      <tr><th>Feature</th><th>Priority</th><th>Notes</th></tr>
-      <tr><td>Filter pins by category / status / assignee</td><td><span class="tag tag-red">P1</span></td><td>Dropdown filter panel</td></tr>
-      <tr><td>Better zoom controls</td><td><span class="tag tag-red">P1</span></td><td>+/− buttons, fit-to-screen, double-click to zoom in</td></tr>
-      <tr><td>Sheet navigation (multi-page PDF)</td><td><span class="tag tag-red">P1</span></td><td>Navigate between floor plan pages within the same PDF</td></tr>
-      <tr><td>Pin count badge on thumbnail</td><td><span class="tag tag-amber">P2</span></td><td>Show number of open tasks on each sheet thumbnail</td></tr>
-      <tr><td>Pin clustering</td><td><span class="tag tag-amber">P2</span></td><td>When zoomed out, group nearby pins into a count bubble</td></tr>
-      <tr><td>Markup tools</td><td><span class="tag tag-gray">P3</span></td><td>Draw arrows, circles, rectangles on the plan. Save to markup jsonb.</td></tr>
-    </table>
-  </section>
+  </div>
 
-  <!-- 09 -->
-  <section class="section" id="features">
-    <div class="section-header">
-      <span class="section-num">09</span>
-      <span class="section-title">Features Queue</span>
-    </div>
-    <table>
-      <tr><th>Priority</th><th>Feature</th><th>Est.</th></tr>
-      <tr><td><span class="tag tag-red">P1</span></td><td>AI Daily Report — /api/ai-report, claude-sonnet-4-6, tasks + VisualCrossing weather → Albanian narrative</td><td>4h</td></tr>
-      <tr><td><span class="tag tag-red">P1</span></td><td>Assignee dropdown — replace free-text caktuar_email with &lt;select&gt; from anetaret</td><td>2h</td></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>AI RFI question writer — informal description → proper ISO RFI format</td><td>2h</td></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>@mentions + notifications — notifikime table + Edge Functions + Resend email</td><td>4h</td></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>Weekly auto-report email — Every Friday, auto-generate RPT PDF → email klienti</td><td>3h</td></tr>
-      <tr><td><span class="tag tag-gray">P3</span></td><td>Meeting Minutes (MTG) — Attendees, decisions, action items → creates tasks automatically</td><td>2h</td></tr>
-      <tr><td><span class="tag tag-gray">P3</span></td><td>Punch List module — Location on plan, photo, trade, status. Formal closeout PDF.</td><td>4h</td></tr>
-    </table>
-  </section>
+  <h3>Breakpoints to Support</h3>
+  <table>
+    <tr><th>Device</th><th>Width</th><th>Priority</th><th>Key Use Cases</th></tr>
+    <tr><td>iPhone (SE–16 Pro Max)</td><td>375–430px</td><td><span class="dot dot-red"></span>Critical</td><td>Task updates, photo uploads, status changes on site</td></tr>
+    <tr><td>iPad Mini / Air</td><td>768–820px</td><td><span class="dot dot-red"></span>Critical</td><td>Plan viewing with pins, Gantt overview, daily reports</td></tr>
+    <tr><td>iPad Pro 12.9"</td><td>1024px</td><td><span class="dot dot-amber"></span>High</td><td>Full platform — site supervisor dashboard</td></tr>
+    <tr><td>Desktop</td><td>1280px+</td><td><span class="dot dot-green"></span>Working</td><td>PM office work — already functional</td></tr>
+  </table>
 
-  <!-- 10 -->
-  <section class="section" id="pricing">
-    <div class="section-header">
-      <span class="section-num">10</span>
-      <span class="section-title">Pricing + Trial System</span>
-    </div>
-    <table>
-      <tr><th>Tier</th><th>Price</th><th>Target</th></tr>
-      <tr><td><strong>Basic</strong></td><td>Free (3-day trial of Pro)</td><td>Solo testing, small contractors</td></tr>
-      <tr><td><strong>Pro ⭐</strong></td><td>€49/project/month</td><td>Individual architects + contractors</td></tr>
-      <tr><td><strong>Business</strong></td><td>€149/month</td><td>General contractors + PM firms</td></tr>
-      <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Balfin, Fusha, Gjikuria + regional expansion</td></tr>
-    </table>
-    <h3>Locked after trial (Basic free tier)</h3>
-    <p>8 doc types · Gantt view · Metrika view · Foto page · Creating 2nd+ project · Njerëzit nav · Raporte tab · Dokumentet tab</p>
-    <h3>Free forever (Basic)</h3>
-    <p>Dashboard · 1 project · Task list (Lista view) · Planet · Detaje</p>
-  </section>
+  <h3>Per-Page Mobile Requirements</h3>
+  <table>
+    <tr><th>Page</th><th>Mobile Changes Needed</th></tr>
+    <tr><td><strong>Dashboard</strong></td><td>Sidebar collapses to bottom nav bar or hamburger. Project cards stack to 1-col. "My tasks" panel becomes collapsible accordion.</td></tr>
+    <tr><td><strong>Detyrat (Task list)</strong></td><td>Lista view is the only view on mobile (hide Gantt/Metrika toggle). Task cards stack full-width. Task detail opens as a bottom sheet / full-screen overlay, not a side panel. Large tap targets (48px min). Photo upload uses native camera.</td></tr>
+    <tr><td><strong>Planet (Plan viewer)</strong></td><td>Pinch-to-zoom on the PDF canvas. Pins are larger (touch-friendly, min 44px tap area). Task panel slides up from bottom. Sidebar thumbnails become a horizontal scroll strip at the top.</td></tr>
+    <tr><td><strong>Foto (Photos)</strong></td><td>Grid becomes 2-col on mobile. Lightbox goes full-screen. Upload button is sticky at bottom. Use native camera / gallery picker.</td></tr>
+    <tr><td><strong>Raporte (Reports)</strong></td><td>Form fields stack to 1-col. PDF preview opens in new tab (native PDF viewer on iOS). Submit button is sticky at bottom.</td></tr>
+    <tr><td><strong>Dokumentet</strong></td><td>Table becomes card list. Status badges and action buttons are full-width.</td></tr>
+    <tr><td><strong>Njerëzit</strong></td><td>Table → card list with name, role, avatar. Add member button is sticky at bottom.</td></tr>
+  </table>
 
-  <!-- 11 -->
-  <section class="section" id="fundraising">
-    <div class="section-header">
-      <span class="section-num">11</span>
-      <span class="section-title">Fundraising + Visibility Plan</span>
+  <h3>Navigation Pattern — Mobile</h3>
+  <div class="callout callout-info">
+    <span class="callout-icon">💡</span>
+    <div class="callout-body">
+      Recommended: <strong>Bottom tab bar</strong> for mobile (like Fieldwire iOS). Tabs: Dashboard · Tasks · Plans · Photos · More. The current left sidebar should be hidden on mobile and replaced with a bottom nav + hamburger for secondary pages. This matches what field workers expect from a mobile app.
     </div>
-    <div class="alert alert-blue"><strong>Grant narrative:</strong> Albania's construction sector generates €3B+ annual output but operates on paper, WhatsApp, and Excel. Kantier is the first ISO 9001-aligned construction management platform for the Western Balkans — where Procore costs $375/user/month and Fieldwire has no Albanian localisation. Built by a UCL-trained architect with real site experience. Uses Claude AI to auto-generate daily site reports in Albanian from task data + weather — eliminating 2 hours of daily paperwork per PM.</div>
-    <table>
-      <tr><th>Program</th><th>Amount</th><th>Status</th><th>Notes</th></tr>
-      <tr><td><strong>Startup Albania</strong></td><td>—</td><td><span class="tag tag-amber">Applied</span></td><td>Already submitted. Awaiting response.</td></tr>
-      <tr><td><strong>AWS Activate Founders</strong></td><td>$1,000 credits</td><td><span class="tag tag-amber">Submitted 24 Apr</span></td><td>5–7 business day review.</td></tr>
-      <tr><td><strong>Anthropic Startup Program</strong></td><td>Up to $25,000 API credits</td><td><span class="tag tag-blue">Apply Next</span></td><td>anthropic.com/startups. Strong fit — Claude used for AI Daily Report.</td></tr>
-      <tr><td><strong>Google for Startups Bootstrap</strong></td><td>$2,000 GCP + $10k Anthropic</td><td><span class="tag tag-blue">Apply This Week</span></td><td>startup.google.com/cloud. Bootstrapped tier.</td></tr>
-      <tr><td><strong>Microsoft for Startups</strong></td><td>Up to $150k Azure credits</td><td><span class="tag tag-gray">Needs investor</span></td><td>Requires investor referral.</td></tr>
-      <tr><td><strong>South Central Ventures (ENIF)</strong></td><td>€500k–5M equity</td><td><span class="tag tag-gray">After traction</span></td><td>Western Balkans B2B tech VC. sc-ventures.com. Key unlock for Microsoft + AWS + Google investor paths.</td></tr>
-      <tr><td><strong>EBRD Star Venture</strong></td><td>€50k + mentorship</td><td><span class="tag tag-gray">After traction</span></td><td>Albania eligible. Apply after first paying customer.</td></tr>
-      <tr><td><strong>EIC Accelerator</strong></td><td>€2.5M</td><td><span class="tag tag-gray">Phase 5</span></td><td>After significant traction + revenue.</td></tr>
-    </table>
-  </section>
+  </div>
 
-  <!-- 12 -->
-  <section class="section" id="grants">
-    <div class="section-header">
-      <span class="section-num">12</span>
-      <span class="section-title">Grants — Application Texts</span>
+  <h3>Touch UX Rules</h3>
+  <ul>
+    <li>Minimum tap target: <strong>44×44px</strong> (Apple HIG). All buttons, links, task rows.</li>
+    <li>No hover-only interactions — all hover states must have a tap equivalent.</li>
+    <li>Bottom sheets instead of side panels for task/document detail on mobile.</li>
+    <li>Sticky action buttons at bottom of screen (not top) — reachable with thumb.</li>
+    <li>Font sizes minimum <strong>16px</strong> for body text on mobile (prevents iOS auto-zoom on inputs).</li>
+    <li>Input fields: font-size 16px minimum to prevent iOS zoom-on-focus.</li>
+    <li>Drag-and-drop upload: fall back to <code>&lt;input type="file" capture="environment"&gt;</code> for camera access.</li>
+    <li>Gantt view: hide on mobile (too dense). Show "Gantt available on desktop" message.</li>
+  </ul>
+
+  <h3>globals.css Additions Needed</h3>
+<pre>/* Mobile nav */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .bottom-nav { display: flex; }
+  .task-detail-panel { 
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 85vh; border-radius: 16px 16px 0 0;
+    transform: translateY(100%); transition: transform .3s;
+  }
+  .task-detail-panel.open { transform: translateY(0); }
+  .main-content { padding: 16px; }
+  input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
+}</pre>
+</section>
+
+<!-- 08 -->
+<section id="permissions">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <span class="section-title">Permission System — Design (S12c)</span>
+    <span class="section-tag tag-s12">S12</span>
+  </div>
+  <table>
+    <tr><th>Roli</th><th>Detyrat</th><th>Planet</th><th>Dokumentet</th><th>Detaje Projekti</th><th>Njerëzit</th></tr>
+    <tr><td><strong>menaxher</strong></td><td>✓ Full</td><td>✓ Full</td><td>✓ Draft + Issue</td><td>✓ Edit</td><td>✓ Invite/Remove</td></tr>
+    <tr><td><strong>inxhinier</strong></td><td>✓ Full</td><td>✓ Full</td><td>◑ Read + Draft</td><td>◑ Read only</td><td>✗ View only</td></tr>
+    <tr><td><strong>anetar / kontraktues</strong></td><td>◑ Own tasks only</td><td>◑ View only</td><td>✗ No access</td><td>✗ No access</td><td>✗ No access</td></tr>
+    <tr><td><strong>klient</strong></td><td>◑ View only</td><td>◑ View only</td><td>◑ Issued docs only</td><td>◑ Read only</td><td>✗ No access</td></tr>
+  </table>
+</section>
+
+<!-- 09 -->
+<section id="planet">
+  <div class="section-header">
+    <span class="section-num">09</span>
+    <span class="section-title">Planet Page — Improvements Queue</span>
+    <span class="section-tag tag-s12">S12</span>
+  </div>
+  <table>
+    <tr><th>Feature</th><th>Priority</th><th>Notes</th></tr>
+    <tr><td>Filter pins by category / status / assignee</td><td>P1</td><td>Dropdown filter panel</td></tr>
+    <tr><td>Better zoom controls</td><td>P1</td><td>+/− buttons, fit-to-screen, double-click to zoom in</td></tr>
+    <tr><td>Pinch-to-zoom on mobile/iPad <span class="mobile-tag">MOBILE</span></td><td>P1</td><td>Native touch gesture support on canvas</td></tr>
+    <tr><td>Larger pins on mobile <span class="mobile-tag">MOBILE</span></td><td>P1</td><td>Min 44px tap area. Bottom sheet for task detail.</td></tr>
+    <tr><td>Sheet navigation (multi-page PDF)</td><td>P1</td><td>Navigate between floor plan pages within the same PDF</td></tr>
+    <tr><td>Horizontal thumbnail strip on mobile <span class="mobile-tag">MOBILE</span></td><td>P1</td><td>Replace sidebar thumbnails with horizontal scroll strip</td></tr>
+    <tr><td>Pin count badge on thumbnail</td><td>P2</td><td>Show number of open tasks on each sheet thumbnail</td></tr>
+    <tr><td>Pin clustering</td><td>P2</td><td>When zoomed out, group nearby pins into a count bubble</td></tr>
+    <tr><td>Markup tools</td><td>P3</td><td>Draw arrows, circles, rectangles. Save to markup jsonb.</td></tr>
+  </table>
+</section>
+
+<!-- 10 -->
+<section id="features">
+  <div class="section-header">
+    <span class="section-num">10</span>
+    <span class="section-title">Features Queue</span>
+    <span class="section-tag tag-s12">S12+</span>
+  </div>
+  <table>
+    <tr><th>Priority</th><th>Feature</th><th>Est.</th></tr>
+    <tr><td>P0</td><td><strong>Mobile &amp; iPad responsive</strong> — all platform pages <span class="mobile-tag">MOBILE</span></td><td>1–2 sessions</td></tr>
+    <tr><td>P1</td><td>AI Daily Report — /api/ai-report, claude-sonnet-4-6, tasks + VisualCrossing weather → Albanian narrative</td><td>4h</td></tr>
+    <tr><td>P1</td><td>"Të miat" filter tab on Detyrat — tasks assigned to current user</td><td>30min</td></tr>
+    <tr><td>P2</td><td>AI RFI question writer — informal description → proper ISO RFI format</td><td>2h</td></tr>
+    <tr><td>P2</td><td>@mentions + notifications — notifikime table + Edge Functions + Resend email</td><td>4h</td></tr>
+    <tr><td>P2</td><td>Weekly auto-report email — Every Friday, auto-generate RPT PDF → email klienti</td><td>3h</td></tr>
+    <tr><td>P3</td><td>Meeting Minutes (MTG) — Attendees, decisions, action items → creates tasks automatically</td><td>2h</td></tr>
+    <tr><td>P3</td><td>Punch List module — Location on plan, photo, trade, status. Formal closeout PDF.</td><td>4h</td></tr>
+  </table>
+</section>
+
+<!-- 11 — NEW -->
+<section id="website">
+  <div class="section-header">
+    <span class="section-num">11</span>
+    <span class="section-title">Website — v09 <span class="new-badge">UPDATED</span></span>
+    <span class="section-tag tag-new">27 Apr 2026</span>
+  </div>
+
+  <div class="callout callout-success">
+    <span class="callout-icon">✅</span>
+    <div class="callout-body">
+      <strong>Registration pipeline fully working end-to-end</strong>
+      Supabase waitlist table → Webhook → clever-worker Edge Function → Resend → confirmation email received. Tested and confirmed 27 Apr 2026.
     </div>
-    <h3>Anthropic Startup Program</h3>
-    <pre>Company: Kantier | Website: kantier.vercel.app
+  </div>
+
+  <h3>Infrastructure</h3>
+  <table>
+    <tr><th>Component</th><th>Detail</th><th>Status</th></tr>
+    <tr><td>Supabase project</td><td><code>fgelxehsxbqzdshdqtyj</code></td><td><span class="dot dot-green"></span>Live</td></tr>
+    <tr><td>Anon JWT key</td><td><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZWx4ZWhzeGJxemRzaGRxdHlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwOTczNzEsImV4cCI6MjA4OTY3MzM3MX0.OdujrL49DvBZgXNKlQBR6jJMdPc1CoFL04s-lkTDTXg</code></td><td><span class="dot dot-green"></span>Working</td></tr>
+    <tr><td>Edge Function</td><td><code>clever-worker</code> — sends confirmation email via Resend</td><td><span class="dot dot-green"></span>Live</td></tr>
+    <tr><td>Webhook</td><td><code>waitlist_confirmation</code> on waitlist INSERT → triggers clever-worker</td><td><span class="dot dot-green"></span>Live</td></tr>
+    <tr><td>Email sender</td><td><code>Kantier &lt;onboarding@resend.dev&gt;</code></td><td><span class="dot dot-green"></span>Working</td></tr>
+    <tr><td>Contact email</td><td><code>ucju019@ucl.ac.uk</code></td><td><span class="dot dot-green"></span>Set</td></tr>
+  </table>
+
+  <h3>Key Fix: API Key</h3>
+  <div class="callout callout-warn">
+    <span class="callout-icon">🔑</span>
+    <div class="callout-body">
+      <strong>The sb_publishable_ key does NOT work for direct REST API calls</strong>. The website must use the legacy <strong>anon JWT key</strong> (starts with <code>eyJ</code>) from Supabase → Settings → API → "Legacy anon, service_role API keys" tab. The <code>sb_publishable_</code> format only works with the Supabase JS SDK, not raw fetch() calls.
+    </div>
+  </div>
+
+  <h3>Website v09 Changes (27 Apr 2026)</h3>
+  <table>
+    <tr><th>Change</th><th>Detail</th></tr>
+    <tr><td><strong>Bug fix: showPage()</strong></td><td>Function was truncated mid-line — modal HTML was injected inside the &lt;script&gt; tag, crashing all JS. Fixed and completed.</td></tr>
+    <tr><td><strong>showTab() added</strong></td><td>Was called by platform tab buttons but never defined. Added.</td></tr>
+    <tr><td><strong>Correct anon key</strong></td><td>Replaced sb_publishable_ with the eyJ JWT key. Both forms now POST to Supabase correctly.</td></tr>
+    <tr><td><strong>Real error messages</strong></td><td>Error handler now shows actual Supabase error + HTTP status (e.g. "Invalid API key (HTTP 401)").</td></tr>
+    <tr><td><strong>Compact homepage</strong></td><td>Removed duplicate inline registration form. Hero is now centered, mobile-first. Removed photo strip.</td></tr>
+    <tr><td><strong>Trust strip</strong></td><td>4-pillar strip: ISO 9001, 100% Shqip, Web+Mobil, Gati shpejt.</td></tr>
+    <tr><td><strong>Problem section</strong></td><td>2-col: problem list + 3 market stat cards (1.9M m², €1B+, 0 competitors).</td></tr>
+    <tr><td><strong>Value columns</strong></td><td>3 compact cards: Koordino ekipin / Ndjek progresin / Reduko riskun.</td></tr>
+    <tr><td><strong>Hamburger menu</strong></td><td>Mobile menu now works — hamburger button opens full-screen drawer with all 6 nav links.</td></tr>
+    <tr><td><strong>Light drawer</strong></td><td>Mobile drawer is white/light scheme, clean uppercase text, no emojis.</td></tr>
+    <tr><td><strong>Centering fixed</strong></td><td>Hero rebuilt as pure flexbox column, centered on all screen sizes.</td></tr>
+    <tr><td><strong>Contact email</strong></td><td>ucju019@ucl.ac.uk shown in footer under "Kontakt".</td></tr>
+    <tr><td><strong>Mobile modal</strong></td><td>Waitlist modal fields stack to 1-col on mobile, padding reduces.</td></tr>
+  </table>
+
+  <h3>Deploy Website</h3>
+  <pre>cd ~/kantier-website
+git add .
+git commit -m "website v09: mobile menu, compact homepage, registration fix"
+git push</pre>
+
+  <h3>Webhook Authorization Fix</h3>
+  <p>The <code>waitlist_confirmation</code> webhook had an outdated Authorization header. Updated to use the current anon JWT key. Go to: <strong>Supabase → Integrations → Database Webhooks → waitlist_confirmation → Edit</strong> and verify the Authorization header value.</p>
+</section>
+
+<!-- 12 -->
+<section id="gtm">
+  <div class="section-header">
+    <span class="section-num">12</span>
+    <span class="section-title">Go-To-Market Strategy</span>
+    <span class="section-tag tag-new">25 Apr 2026</span>
+  </div>
+
+  <h3>The Four-Stage Funnel</h3>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0;">
+    <div class="card-sm" style="border-top:3px solid var(--amber);">
+      <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">1 — Announce</div>
+      <div style="font-size:12px;color:var(--slate);">Website + LinkedIn. "Albania's First" claim planted everywhere.</div>
+    </div>
+    <div class="card-sm" style="border-top:3px solid var(--blue);">
+      <div style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">2 — Questionnaire</div>
+      <div style="font-size:12px;color:var(--slate);">Google Forms. 200 responses = grant narrative + qualified leads.</div>
+    </div>
+    <div class="card-sm" style="border-top:3px solid var(--green);">
+      <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">3 — Waitlist</div>
+      <div style="font-size:12px;color:var(--slate);">Supabase. Segmented by role: contractor / architect / investor.</div>
+    </div>
+    <div class="card-sm" style="border-top:3px solid var(--purple);">
+      <div style="font-size:11px;font-weight:700;color:var(--purple);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">4 — Beta</div>
+      <div style="font-size:12px;color:var(--slate);">Invite first 50–100 contractors. Use <code>notified</code> column to track.</div>
+    </div>
+  </div>
+
+  <h3>Pending Actions</h3>
+  <table>
+    <tr><th>Status</th><th>Action</th></tr>
+    <tr><td><span class="dot dot-green"></span>Done</td><td>Waitlist table + RLS in Supabase</td></tr>
+    <tr><td><span class="dot dot-green"></span>Done</td><td>Resend account + Edge Function + Webhook + email test</td></tr>
+    <tr><td><span class="dot dot-green"></span>Done</td><td>Website v09 built — compact, mobile-first, registration working</td></tr>
+    <tr><td><span class="dot dot-amber"></span>Pending</td><td>Deploy v09 to kantier-website.vercel.app</td></tr>
+    <tr><td><span class="dot dot-amber"></span>Pending</td><td>Run Google Forms script v5 → get form URL → post to LinkedIn</td></tr>
+    <tr><td><span class="dot dot-amber"></span>Pending</td><td>Buy kantier.al domain → add to Resend → update Edge Function sender to hello@kantier.al</td></tr>
+    <tr><td><span class="dot dot-amber"></span>Pending</td><td>Reach 200 questionnaire responses → export as grant narrative data</td></tr>
+    <tr><td><span class="dot dot-amber"></span>Pending</td><td>Build waitlist to 50+ signups → begin beta invites</td></tr>
+  </table>
+</section>
+
+<!-- 13 -->
+<section id="pricing">
+  <div class="section-header">
+    <span class="section-num">13</span>
+    <span class="section-title">Pricing + Trial System</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+  <table>
+    <tr><th>Tier</th><th>Price</th><th>Target</th></tr>
+    <tr><td><strong>Basic</strong></td><td>Free (3-day trial of Pro)</td><td>Solo testing, small contractors</td></tr>
+    <tr><td><strong>Pro ⭐</strong></td><td>€49/project/month</td><td>Individual architects + contractors</td></tr>
+    <tr><td><strong>Business</strong></td><td>€149/month</td><td>General contractors + PM firms</td></tr>
+    <tr><td><strong>Enterprise</strong></td><td>Custom</td><td>Balfin, Fusha, Gjikuria + regional expansion</td></tr>
+  </table>
+  <h3>Locked after trial (Basic free tier)</h3>
+  <p>8 doc types · Gantt view · Metrika view · Foto page · Creating 2nd+ project · Njerëzit nav · Raporte tab · Dokumentet tab</p>
+  <h3>Free forever (Basic)</h3>
+  <p>Dashboard · 1 project · Task list (Lista view) · Planet · Detaje</p>
+</section>
+
+<!-- 14 -->
+<section id="fundraising">
+  <div class="section-header">
+    <span class="section-num">14</span>
+    <span class="section-title">Fundraising + Visibility Plan</span>
+  </div>
+  <div class="callout callout-info">
+    <span class="callout-icon">🎯</span>
+    <div class="callout-body"><strong>Grant narrative:</strong> Albania's construction sector generates €3B+ annual output but operates on paper, WhatsApp, and Excel. Kantier is the first ISO 9001-aligned construction management platform for the Western Balkans — where Procore costs $375/user/month and Fieldwire has no Albanian localisation. Built by a UCL-trained architect with real site experience. Uses Claude AI to auto-generate daily site reports in Albanian from task data + weather — eliminating 2 hours of daily paperwork per PM.</div>
+  </div>
+  <table>
+    <tr><th>Program</th><th>Amount</th><th>Status</th><th>Notes</th></tr>
+    <tr><td><strong>Startup Albania</strong></td><td>—</td><td><span class="dot dot-amber"></span>Applied</td><td>Already submitted. Awaiting response.</td></tr>
+    <tr><td><strong>AWS Activate Founders</strong></td><td>$1,000 credits</td><td><span class="dot dot-amber"></span>Submitted 24 Apr</td><td>5–7 business day review.</td></tr>
+    <tr><td><strong>Anthropic Startup Program</strong></td><td>Up to $25,000 API credits</td><td><span class="dot dot-red"></span>Apply Next</td><td>anthropic.com/startups. Strong fit — Claude used for AI Daily Report.</td></tr>
+    <tr><td><strong>Google for Startups Bootstrap</strong></td><td>$2,000 GCP + $10k Anthropic</td><td><span class="dot dot-red"></span>Apply This Week</td><td>startup.google.com/cloud. Bootstrapped tier.</td></tr>
+    <tr><td><strong>Microsoft for Startups</strong></td><td>Up to $150k Azure credits</td><td><span class="dot dot-red"></span>Needs investor</td><td>Requires investor referral.</td></tr>
+    <tr><td><strong>South Central Ventures (ENIF)</strong></td><td>€500k–5M equity</td><td><span class="dot dot-blue"></span>After traction</td><td>Western Balkans B2B tech VC. sc-ventures.com.</td></tr>
+    <tr><td><strong>EBRD Star Venture</strong></td><td>€50k + mentorship</td><td><span class="dot dot-blue"></span>After traction</td><td>Albania eligible. Apply after first paying customer.</td></tr>
+    <tr><td><strong>EIC Accelerator</strong></td><td>€2.5M</td><td><span class="dot dot-blue"></span>Phase 5</td><td>After significant traction + revenue.</td></tr>
+  </table>
+</section>
+
+<!-- 15 -->
+<section id="grants">
+  <div class="section-header">
+    <span class="section-num">15</span>
+    <span class="section-title">Grants — Application Texts</span>
+  </div>
+  <h3>Anthropic Startup Program</h3>
+  <pre>Company: Kantier | Website: kantier.vercel.app
 
 What are you building:
 Albania's first construction site management SaaS. ISO 9001 document control,
@@ -472,71 +724,72 @@ PMs review and issue as ISO 9001 documents. Also used for RFI writing guides
 and document drafting assistance.
 
 Stage: Live product, bootstrapped, pre-revenue.</pre>
-    <h3>Market Research as Grant Narrative (25 Apr 2026)</h3>
-    <p>The market research questionnaire (Google Forms, 17 sections, 200+ target responses) generates quantified data for grant applications: exactly how much Albanian construction projects lose annually from undocumented errors and version control failures. This data is the EBRD and EIC proof layer.</p>
-  </section>
+</section>
 
-  <!-- 13 -->
-  <section class="section" id="ai">
-    <div class="section-header">
-      <span class="section-num">13</span>
-      <span class="section-title">AI Strategy</span>
-    </div>
-    <table>
-      <tr><th>Feature</th><th>Status</th><th>Notes</th></tr>
-      <tr><td>Writing Guides</td><td><span class="tag tag-green">✓ Live</span></td><td>All 8 doc types. Zero API cost.</td></tr>
-      <tr><td>AI Daily Report</td><td><span class="tag tag-amber">S12 P1</span></td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian RDT narrative.</td></tr>
-      <tr><td>AI RFI Writer</td><td><span class="tag tag-gray">Phase 3</span></td><td>Informal description → proper ISO RFI format.</td></tr>
-      <tr><td>Semantic Search</td><td><span class="tag tag-gray">Phase 5</span></td><td>pgvector on Supabase.</td></tr>
-      <tr><td>Photo AI Tagging</td><td><span class="tag tag-gray">Phase 5</span></td><td>Claude suggests category + trade + task link on upload.</td></tr>
-    </table>
-    <pre>// AI Daily Report API route — src/app/api/ai-report/route.ts
+<!-- 16 -->
+<section id="ai">
+  <div class="section-header">
+    <span class="section-num">16</span>
+    <span class="section-title">AI Strategy</span>
+  </div>
+  <table>
+    <tr><th>Feature</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Writing Guides</td><td><span class="dot dot-green"></span>Live</td><td>All 8 doc types. Zero API cost.</td></tr>
+    <tr><td>AI Daily Report</td><td><span class="dot dot-amber"></span>S12 P1</td><td>/api/ai-report. claude-sonnet-4-6. Tasks + VisualCrossing weather → Albanian RDT narrative.</td></tr>
+    <tr><td>AI RFI Writer</td><td><span class="dot dot-blue"></span>Phase 3</td><td>Informal description → proper ISO RFI format.</td></tr>
+    <tr><td>Semantic Search</td><td><span class="dot dot-blue"></span>Phase 5</td><td>pgvector on Supabase.</td></tr>
+    <tr><td>Photo AI Tagging</td><td><span class="dot dot-blue"></span>Phase 5</td><td>Claude suggests category + trade + task link on upload.</td></tr>
+  </table>
+<pre>// AI Daily Report API route — src/app/api/ai-report/route.ts
 // model: 'claude-sonnet-4-6', max_tokens: 1000
 // ANTHROPIC_API_KEY + VISUAL_CROSSING_KEY in Vercel env vars
 // Pulls: tasks completed today + tasks overdue + weather for project location
 // Outputs: Albanian narrative → auto-fills RDT form fields</pre>
-  </section>
+</section>
 
-  <!-- 14 -->
-  <section class="section" id="rules">
-    <div class="section-header">
-      <span class="section-num">14</span>
-      <span class="section-title">Critical Rules</span>
-    </div>
-    <p>See Section 00 for the full rules table. Key ones repeated here for quick reference:</p>
-    <ul class="rule-list">
-      <li><span class="rule-icon">🚫</span><div>Never use template literals in JSX &lt;option&gt; text — Turbopack build fails</div></li>
-      <li><span class="rule-icon">🚫</span><div>Never call loadData() after field saves — race condition</div></li>
-      <li><span class="rule-icon">🚫</span><div>Never use browser confirm() — blocked on Vercel</div></li>
-      <li><span class="rule-icon">🚫</span><div>Never use sed on TypeScript files — breaks special chars</div></li>
-      <li><span class="rule-icon">✅</span><div>Always type params.id: <code>const projektId = params.id as string</code></div></li>
-      <li><span class="rule-icon">✅</span><div>Always use user_id = auth.uid() in RLS policies</div></li>
-      <li><span class="rule-icon">✅</span><div>foto_urls parser: <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></div></li>
-    </ul>
-  </section>
+<!-- 17 -->
+<section id="rules">
+  <div class="section-header">
+    <span class="section-num">17</span>
+    <span class="section-title">Critical Rules</span>
+    <span class="section-tag tag-critical">READ ALWAYS</span>
+  </div>
+  <p>See Section 00 for the full rules table. Key ones repeated here:</p>
+  <div class="rules">
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text">Never use template literals in JSX &lt;option&gt; text — Turbopack build fails</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text">Never call loadData() after field saves — race condition</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text">Never use browser confirm() — blocked on Vercel</span></div>
+    <div class="rule"><span class="rule-no">NO</span><span class="rule-text">Never use sed on TypeScript files — breaks special chars</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text">Always type params.id: <code>const projektId = params.id as string</code></span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text">Always use user_id = auth.uid() in RLS policies</span></div>
+    <div class="rule"><span class="rule-yes">YES</span><span class="rule-text">foto_urls parser: <code>typeof v==='string' && v.startsWith('{') ? JSON.parse(v).url : (v?.url||v)</code></span></div>
+  </div>
+</section>
 
-  <!-- 15 -->
-  <section class="section" id="bugs">
-    <div class="section-header">
-      <span class="section-num">15</span>
-      <span class="section-title">Active Bugs</span>
-    </div>
-    <div class="alert alert-green">✅ No critical bugs — build passing. All S11 bugs resolved.</div>
-    <table>
-      <tr><th>Priority</th><th>Bug</th><th>Status</th></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>Task count shows 3 instead of 2 for aurora.ark — may be correct data. Verify by checking detyrat for project 54f667dd.</td><td>Investigate</td></tr>
-      <tr><td><span class="tag tag-gray">P3</span></td><td>Old documents show DRAFT in PDF — pre-S9 docs saved with statusi='draft'. Recreate docs or update via Supabase dashboard.</td><td>Low priority</td></tr>
-      <tr><td><span class="tag tag-amber">P2</span></td><td>Website v07 — inline form success state needs label hiding fix. Some cross-page CTA buttons may not trigger modal correctly.</td><td>Fix in next website deploy</td></tr>
-    </table>
-  </section>
+<!-- 18 -->
+<section id="bugs">
+  <div class="section-header">
+    <span class="section-num">18</span>
+    <span class="section-title">Active Bugs</span>
+  </div>
+  <div class="callout callout-success">
+    <span class="callout-icon">✅</span>
+    <div class="callout-body">No critical bugs — build passing. All S11 bugs resolved.</div>
+  </div>
+  <table>
+    <tr><th>Priority</th><th>Bug</th><th>Status</th></tr>
+    <tr><td>P2</td><td>Task count shows 3 instead of 2 for aurora.ark — may be correct data. Verify by checking detyrat for project 54f667dd.</td><td><span class="dot dot-amber"></span>Investigate</td></tr>
+    <tr><td>P3</td><td>Old documents show DRAFT in PDF — pre-S9 docs saved with statusi='draft'. Recreate docs or update via Supabase dashboard.</td><td><span class="dot dot-blue"></span>Low priority</td></tr>
+  </table>
+</section>
 
-  <!-- 16 -->
-  <section class="section" id="sql">
-    <div class="section-header">
-      <span class="section-num">16</span>
-      <span class="section-title">SQL Applied — S11 + Waitlist</span>
-    </div>
-    <pre>-- S11 RLS policies
+<!-- 19 -->
+<section id="sql">
+  <div class="section-header">
+    <span class="section-num">19</span>
+    <span class="section-title">SQL Applied — S11 + Waitlist</span>
+  </div>
+<pre>-- S11 RLS policies
 DROP POLICY IF EXISTS "projektet_member_read" ON projektet;
 CREATE POLICY "projektet_member_read" ON projektet FOR SELECT TO authenticated
 USING (krijuar_nga = auth.uid() OR id IN (SELECT projekti_id FROM anetaret WHERE user_id = auth.uid()));
@@ -586,276 +839,128 @@ create table waitlist (
 );
 alter table waitlist enable row level security;
 create policy "anyone can join waitlist" on waitlist for insert with check (true);</pre>
-  </section>
+</section>
 
-  <!-- 17 -->
-  <section class="section" id="design">
-    <div class="section-header">
-      <span class="section-num">17</span>
-      <span class="section-title">Design Decisions — Locked</span>
-    </div>
-    <table>
-      <tr><th>Decision</th><th>Rationale</th></tr>
-      <tr><td>Light theme — white nav, #F4F5F7 bg, #1C2333 ink</td><td>Matches Fieldwire. No dark mode.</td></tr>
-      <tr><td>Trial logic is inlined per file</td><td>External @/lib/trial import caused resolution issues in this Turbopack version.</td></tr>
-      <tr><td>anetaret stores email (not just user_id)</td><td>Enables pre-registration invite workflow.</td></tr>
-      <tr><td>Assignee dropdown from anetaret</td><td>Shows "Aurora Baba · Inxhinier" format. Stores email string. memberOptionLabel() helper.</td></tr>
-      <tr><td>RLS uses user_id = auth.uid()</td><td>Email-based RLS failed silently.</td></tr>
-      <tr><td>-webkit-appearance: none on all selects globally</td><td>Removes Safari 3D gradient bubble. Applied in globals.css.</td></tr>
-      <tr><td>Inline confirmation instead of confirm()</td><td>Browser confirm() is blocked on Vercel sandbox.</td></tr>
-      <tr><td>Per-project pricing, not per-user</td><td>Construction sites have many workers. Per-user kills adoption.</td></tr>
-      <tr><td>Gantt uses 38px/day</td><td>Fixed density, 1-year span centred on today. Drag-to-pan.</td></tr>
-      <tr><td>foto_urls as {url,email,data} objects</td><td>Parser handles all 3 legacy formats (string, object, JSON-string).</td></tr>
-      <tr><td>Sidebar nav: Dashboard + Njerëzit only</td><td>Other routes are project-scoped — 404 as global routes.</td></tr>
-    </table>
-  </section>
+<!-- 20 -->
+<section id="design">
+  <div class="section-header">
+    <span class="section-num">20</span>
+    <span class="section-title">Design Decisions — Locked</span>
+    <span class="section-tag tag-stable">LOCKED</span>
+  </div>
+  <table>
+    <tr><th>Decision</th><th>Rationale</th></tr>
+    <tr><td>Light theme — white nav, #F4F5F7 bg, #1C2333 ink</td><td>Matches Fieldwire. No dark mode.</td></tr>
+    <tr><td>Trial logic is inlined per file</td><td>External @/lib/trial import caused resolution issues in this Turbopack version.</td></tr>
+    <tr><td>anetaret stores email (not just user_id)</td><td>Enables pre-registration invite workflow.</td></tr>
+    <tr><td>Assignee dropdown from anetaret</td><td>Shows "Aurora Baba · Inxhinier" format. Stores email string. memberOptionLabel() helper.</td></tr>
+    <tr><td>RLS uses user_id = auth.uid()</td><td>Email-based RLS failed silently.</td></tr>
+    <tr><td>-webkit-appearance: none on all selects globally</td><td>Removes Safari 3D gradient bubble. Applied in globals.css.</td></tr>
+    <tr><td>Inline confirmation instead of confirm()</td><td>Browser confirm() is blocked on Vercel sandbox.</td></tr>
+    <tr><td>Per-project pricing, not per-user</td><td>Construction sites have many workers. Per-user kills adoption.</td></tr>
+    <tr><td>Gantt uses 38px/day</td><td>Fixed density, 1-year span centred on today. Drag-to-pan.</td></tr>
+    <tr><td>foto_urls as {url,email,data} objects</td><td>Parser handles all 3 legacy formats (string, object, JSON-string).</td></tr>
+    <tr><td>Sidebar nav: Dashboard + Njerëzit only</td><td>Other routes are project-scoped — 404 as global routes.</td></tr>
+    <tr><td>Bottom nav bar on mobile <span class="new-badge">NEW</span></td><td>Field crew expect mobile-app navigation. Sidebar hidden on &lt;768px.</td></tr>
+    <tr><td>Bottom sheets for task detail on mobile <span class="new-badge">NEW</span></td><td>Side panels don't work on phone. Bottom sheet slides up from bottom edge.</td></tr>
+  </table>
+</section>
 
-  <!-- 18 -->
-  <section class="section" id="docs">
-    <div class="section-header">
-      <span class="section-num">18</span>
-      <span class="section-title">Document Types — 8 Total</span>
-    </div>
-    <table>
-      <tr><th>Code</th><th>Name</th><th>Color</th><th>Added</th></tr>
-      <tr><td><strong>RPT</strong></td><td>Raport Progresi</td><td>#F59E0B</td><td>S3</td></tr>
-      <tr><td><strong>RDT</strong></td><td>Raport Ditor + HSE + photos</td><td>#0EA5E9</td><td>S8</td></tr>
-      <tr><td><strong>RFI</strong></td><td>Kërkesë Informacioni</td><td>#3B82F6</td><td>S5</td></tr>
-      <tr><td><strong>INS</strong></td><td>Raport Inspektimi</td><td>#16A34A</td><td>S5</td></tr>
-      <tr><td><strong>COR</strong></td><td>Ndryshim Kostoje</td><td>#DC2626</td><td>S5</td></tr>
-      <tr><td><strong>DCO</strong></td><td>Ndryshim Dizajni</td><td>#7C3AED</td><td>S5</td></tr>
-      <tr><td><strong>NCR ✦</strong></td><td>Raport Mospërputhje</td><td>#EA580C</td><td>S9</td></tr>
-      <tr><td><strong>SUB ✦</strong></td><td>Regjistrim Materialesh</td><td>#0D9488</td><td>S9</td></tr>
-    </table>
-  </section>
+<!-- 21 -->
+<section id="docs">
+  <div class="section-header">
+    <span class="section-num">21</span>
+    <span class="section-title">Document Types — 8 Total</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+  <table>
+    <tr><th>Code</th><th>Name</th><th>Color</th><th>Added</th></tr>
+    <tr><td><strong style="color:#F59E0B;">RPT</strong></td><td>Raport Progresi</td><td>#F59E0B</td><td>S3</td></tr>
+    <tr><td><strong style="color:#0EA5E9;">RDT</strong></td><td>Raport Ditor + HSE + photos</td><td>#0EA5E9</td><td>S8</td></tr>
+    <tr><td><strong style="color:#3B82F6;">RFI</strong></td><td>Kërkesë Informacioni</td><td>#3B82F6</td><td>S5</td></tr>
+    <tr><td><strong style="color:#16A34A;">INS</strong></td><td>Raport Inspektimi</td><td>#16A34A</td><td>S5</td></tr>
+    <tr><td><strong style="color:#DC2626;">COR</strong></td><td>Ndryshim Kostoje</td><td>#DC2626</td><td>S5</td></tr>
+    <tr><td><strong style="color:#7C3AED;">DCO</strong></td><td>Ndryshim Dizajni</td><td>#7C3AED</td><td>S5</td></tr>
+    <tr><td><strong style="color:#EA580C;">NCR ✦</strong></td><td>Raport Mospërputhje</td><td>#EA580C</td><td>S9</td></tr>
+    <tr><td><strong style="color:#0D9488;">SUB ✦</strong></td><td>Regjistrim Materialesh</td><td>#0D9488</td><td>S9</td></tr>
+  </table>
+</section>
 
-  <!-- 19 -->
-  <section class="section" id="roles">
-    <div class="section-header">
-      <span class="section-num">19</span>
-      <span class="section-title">Roles & Category System</span>
-    </div>
-    <h3>Roles — 6 predefined</h3>
-    <table>
-      <tr><th>DB value</th><th>Label</th><th>Icon</th></tr>
-      <tr><td><code>menaxher</code></td><td>Menaxher Projekti</td><td>👷</td></tr>
-      <tr><td><code>inxhinier</code></td><td>Inxhinier / Arkitekt</td><td>📐</td></tr>
-      <tr><td><code>anetar</code></td><td>Punëtor Kantieri</td><td>🔨</td></tr>
-      <tr><td><code>kontraktues</code></td><td>Kontraktues</td><td>📋</td></tr>
-      <tr><td><code>klient</code></td><td>Klient</td><td>🏢</td></tr>
-      <tr><td><code>mbikequyres</code></td><td>Mbikëqyrës</td><td>🔍</td></tr>
-    </table>
-    <h3>Category acronyms — 18 total</h3>
-    <pre>EL=Elektrike  HI=Hidraulike  BE=Beton     SU=Suvatim   LY=Lyerje
+<!-- 22 -->
+<section id="roles">
+  <div class="section-header">
+    <span class="section-num">22</span>
+    <span class="section-title">Roles &amp; Category System</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+  <h3>Roles — 6 predefined</h3>
+  <table>
+    <tr><th>DB value</th><th>Label</th><th>Icon</th></tr>
+    <tr><td><code>menaxher</code></td><td>Menaxher Projekti</td><td>👷</td></tr>
+    <tr><td><code>inxhinier</code></td><td>Inxhinier / Arkitekt</td><td>📐</td></tr>
+    <tr><td><code>anetar</code></td><td>Punëtor Kantieri</td><td>🔨</td></tr>
+    <tr><td><code>kontraktues</code></td><td>Kontraktues</td><td>📋</td></tr>
+    <tr><td><code>klient</code></td><td>Klient</td><td>🏢</td></tr>
+    <tr><td><code>mbikequyres</code></td><td>Mbikëqyrës</td><td>🔍</td></tr>
+  </table>
+  <h3>Category acronyms — 18 total</h3>
+  <pre>EL=Elektrike  HI=Hidraulike  BE=Beton     SU=Suvatim   LY=Lyerje
 MU=Muraturë   FA=Fasadë      PL=Shtresa   ME=Metalike  DR=Dritare & Dyer
 CA=Çati       IZ=Izolim      GI=Gips      HV=HVAC      AR=Arkitekturë
 CI=Civile     ST=Strukturale TJ=Tjetër</pre>
-  </section>
+</section>
 
-  <!-- 20 -->
-  <section class="section" id="testproject">
-    <div class="section-header">
-      <span class="section-num">20</span>
-      <span class="section-title">Test Project & Accounts</span>
-    </div>
-    <p><strong>Projekt_Test03</strong> — Net Zero House, USA. 93 drawings. kodi_projektit: PT03. Klienti: NET ZERO_USA. Firma: Baba Construction. 21 detyra, 18 hapura, 2 në progres, 1 mbaruar.</p>
-    <table>
-      <tr><th>Account</th><th>Pass</th><th>Role</th></tr>
-      <tr><td><code>aurora-ark@hotmail.com</code></td><td>Owner</td><td>Admin — created all 3 test projects</td></tr>
-      <tr><td><code>aurora.ark@gmail.com</code></td><td>Member</td><td>Inxhinier / Arkitekt — invited to Projekt_Test03</td></tr>
-    </table>
-  </section>
+<!-- 23 -->
+<section id="testproject">
+  <div class="section-header">
+    <span class="section-num">23</span>
+    <span class="section-title">Test Project &amp; Accounts</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+  <p><strong>Projekt_Test03</strong> — Net Zero House, USA. 93 drawings. kodi_projektit: PT03. Klienti: NET ZERO_USA. Firma: Baba Construction. 21 detyra, 18 hapura, 2 në progres, 1 mbaruar.</p>
+  <table>
+    <tr><th>Account</th><th>Pass</th><th>Role</th></tr>
+    <tr><td><code>aurora-ark@hotmail.com</code></td><td>Owner</td><td>Admin — created all 3 test projects</td></tr>
+    <tr><td><code>aurora.ark@gmail.com</code></td><td>Member</td><td>Inxhinier / Arkitekt — invited to Projekt_Test03</td></tr>
+  </table>
+</section>
 
-  <!-- 21 -->
-  <section class="section" id="deploy">
-    <div class="section-header">
-      <span class="section-num">21</span>
-      <span class="section-title">Deploy Reference</span>
-    </div>
-    <div class="two-col">
-      <div class="col-block">
-        <h4>Deploy Platform (kantier.vercel.app)</h4>
-        <pre style="font-size:11px;margin-top:8px;">cd ~/kantier
+<!-- 24 -->
+<section id="deploy">
+  <div class="section-header">
+    <span class="section-num">24</span>
+    <span class="section-title">Deploy Reference</span>
+    <span class="section-tag tag-stable">STABLE</span>
+  </div>
+  <h3>Deploy Platform (kantier.vercel.app)</h3>
+  <pre>cd ~/kantier
 git add .
 git commit -m "S12: description"
 git push</pre>
-      </div>
-      <div class="col-block">
-        <h4>Deploy Website (kantier-website.vercel.app)</h4>
-        <pre style="font-size:11px;margin-top:8px;">cd ~/kantier-website
+
+  <h3>Deploy Website (kantier-website.vercel.app)</h3>
+  <pre>cd ~/kantier-website
 git add .
 git commit -m "website vXX"
 git push</pre>
-      </div>
-    </div>
-    <div class="col-block" style="margin-top:12px;">
-      <h4>Update this Reference Doc</h4>
-      <p style="font-size:12px;margin-bottom:8px;">github.com/aurorababa/KANTIER.-UI-REFERENCE-DOCUMENT → index.html → pencil icon → Ctrl+A → paste → Commit changes. Vercel deploys in ~60 seconds.</p>
-    </div>
-  </section>
 
-  <!-- 22 — NEW GTM SECTION -->
-  <section class="section" id="gtm">
-    <div class="section-header">
-      <span class="section-num">22</span>
-      <span class="section-title">Go-To-Market — Session 25 Apr 2026 <span class="new-badge">NEW</span></span>
-      <span class="section-date">25 April 2026</span>
-    </div>
+  <h3>Update this Reference Doc</h3>
+  <p>github.com/aurorababa/KANTIER.-UI-REFERENCE-DOCUMENT → index.html → pencil icon → Ctrl+A → paste → Commit changes. Vercel deploys in ~60 seconds.</p>
 
-    <div class="alert alert-amber">
-      <strong>Strategy pivot:</strong> Announce the platform directly. Use the market research questionnaire as the <em>proof layer</em> — "we spoke to the industry before writing a single line of product code." The claim "Albania's First Construction Site Management Platform" is planted across all touchpoints.
-    </div>
-
-    <h3>The Four-Stage Funnel</h3>
-    <div class="funnel">
-      <div class="funnel-step">
-        <div class="funnel-step-num">1</div>
-        <div class="funnel-step-content">
-          <div class="funnel-step-title">Announce — "Albania's First Construction Site Management Platform"</div>
-          <div class="funnel-step-body">kantier-website.vercel.app updated with the claim, waitlist form, and "Regjistro Interesin" CTA. LinkedIn post published with bold claim. No login button, no "Shiko platformën" — one CTA only.</div>
-        </div>
-      </div>
-      <div class="funnel-arrow">↓</div>
-      <div class="funnel-step">
-        <div class="funnel-step-num">2</div>
-        <div class="funnel-step-content">
-          <div class="funnel-step-title">Questionnaire — "Help us build the right thing"</div>
-          <div class="funnel-step-body">Google Forms shared as market research, not product launch. 200 responses = grant narrative. Every response is a qualified lead + market validation data point. Form title: "Ndihmoni të ndërtojmë platformën e parë shqiptare të kantierit."</div>
-        </div>
-      </div>
-      <div class="funnel-arrow">↓</div>
-      <div class="funnel-step">
-        <div class="funnel-step-num">3</div>
-        <div class="funnel-step-content">
-          <div class="funnel-step-title">Waitlist — Supabase, segmented by role</div>
-          <div class="funnel-step-body">Every signup tagged: contractor / architect / investor. Auth locked behind waitlist. Confirmation email fires automatically via Edge Function + Resend. Launch order: contractors first (they generate content), architects second.</div>
-        </div>
-      </div>
-      <div class="funnel-arrow">↓</div>
-      <div class="funnel-step">
-        <div class="funnel-step-num">4</div>
-        <div class="funnel-step-content">
-          <div class="funnel-step-title">Beta launch — email segmented waitlist</div>
-          <div class="funnel-step-body">Invite first 50–100 contractors by email when product ready. Survey data shapes onboarding — you already know their pain before they log in. Use <code>notified</code> column to track who's been invited.</div>
-        </div>
-      </div>
-    </div>
-
-    <h3>Infrastructure Built This Session</h3>
-    <div class="two-col">
-      <div class="col-block">
-        <h4>Supabase Waitlist</h4>
-        <ul>
-          <li>Table: <code>waitlist</code> created ✅</li>
-          <li>RLS: public insert policy ✅</li>
-          <li>Fields: email, full_name, role, company, project_size, referral_source, notified ✅</li>
-          <li>Project ID: <code>fgelxehsxbqzdshdqtyj</code></li>
-          <li>Anon key: <code>sb_publishable_0hAtB5y24W…</code></li>
-        </ul>
-      </div>
-      <div class="col-block">
-        <h4>Email (Resend + Edge Function)</h4>
-        <ul>
-          <li>Resend account: aurora.ark@gmail.com ✅</li>
-          <li>API key: <code>re_SDTrKYi4_7nanqJPmcii…</code> ✅</li>
-          <li>Sending from: <code>Kantier &lt;onboarding@resend.dev&gt;</code></li>
-          <li>Edge Function: <code>clever-worker</code> ✅</li>
-          <li>Webhook: <code>waitlist_confirmation</code> on INSERT ✅</li>
-          <li>Test confirmed: email "Jeni në listë — Kantier" received ✅</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="alert alert-green" style="margin-top:16px;">
-      <strong>✅ End-to-end test passed:</strong> Inserted row into waitlist table → webhook fired → Edge Function called Resend → "Jeni në listë — Kantier" email received at aurora.ark@gmail.com within 30 seconds.
-    </div>
-
-    <h3>Website v07 — Changes Made</h3>
-    <table>
-      <tr><th>Change</th><th>Detail</th></tr>
-      <tr><td>Hero badge</td><td>"Albania's First Construction Site Management Platform"</td></tr>
-      <tr><td>Hero headline</td><td>"E Para në Shqipëri"</td></tr>
-      <tr><td>Nav</td><td>Removed "Hyrje" button. Nav CTA → "Regjistro Interesin →"</td></tr>
-      <tr><td>Hero buttons</td><td>Removed "Shiko platformën". One CTA only: "Regjistrohu falas →"</td></tr>
-      <tr><td>Waitlist section</td><td>New dedicated section below hero — white card, inline form (name, email, role), success state, 4 trust badges</td></tr>
-      <tr><td>Modal waitlist</td><td>All 7 CTA buttons across all pages open waitlist modal — writes to Supabase</td></tr>
-      <tr><td>Inline form</td><td>Direct Supabase REST insert, success state, duplicate email handling</td></tr>
-      <tr><td>File</td><td><code>kantier_website_v07.html</code> — upload to Vercel to deploy</td></tr>
-    </table>
-
-    <div class="alert alert-amber" style="margin-top:12px;">
-      <strong>⚠️ Pending fixes in website:</strong> Blank space between hero and problem section (CSS gap). Inline form label hiding on success state. Verify all page CTAs correctly call openWaitlist().
-    </div>
-
-    <h3>Market Research Questionnaire v5</h3>
-    <table>
-      <tr><th>Detail</th><th>Value</th></tr>
-      <tr><td>Title</td><td>"Ndihmoni të ndërtojmë platformën e parë shqiptare të kantierit"</td></tr>
-      <tr><td>Framing</td><td>"Help us build the right thing" — not a cold survey</td></tr>
-      <tr><td>Segments</td><td>Kontraktor/PM (26 questions, 6 sections) · Arkitekt/Projektues (19 questions, 5 sections)</td></tr>
-      <tr><td>New questions added</td><td>Project value, annual budget, financial loss from poor documentation, version control failures, clash detection, daily reports, RFI management, resource scheduling, task completion confirmation</td></tr>
-      <tr><td>Sections with descriptions</td><td>Every section has a description explaining what we're trying to learn. Every section ends with an open optional question.</td></tr>
-      <tr><td>RFI & NCR</td><td>Explained in plain Albanian at every section where they appear</td></tr>
-      <tr><td>CTA at end</td><td>Email capture + "do you want the research report?" — feeds waitlist</td></tr>
-      <tr><td>Albania's First claim</td><td>In form title, description, thank you message, CTA page, and confirmation email</td></tr>
-      <tr><td>Script file</td><td><code>Kantier_GoogleForms_Script_v5.js</code> — paste into Apps Script and Run</td></tr>
-      <tr><td>Google Sheet</td><td>Auto-created on run: "Kantier — Rezultatet e Anketës 2025"</td></tr>
-    </table>
-
-    <h3>LinkedIn Post Template (ready to publish)</h3>
-    <div class="col-block" style="margin-top:8px;">
-      <h4>Albanian — Market Research share</h4>
-      <p style="font-size:13px;line-height:1.7;">Po ndërtojmë platformën e parë shqiptare të menaxhimit të kantierit.<br><br>Para se të shkruajmë edhe një rresht kodi, duam të dëgjojmë industrinë — kontraktorët, arkitektët dhe menaxherët e projekteve që e njohin realitetin e kantierit shqiptar.<br><br>5 minuta nga koha juaj na ndihmon të ndërtojmë diçka që vlen realisht.<br><br>→ [LINK FORMËS GOOGLE]<br><br>#Kantier #Ndërtim #Albania #ConTech</p>
-    </div>
-
-    <h3>Pending Actions Checklist</h3>
-    <ul class="checklist">
-      <li><span class="check-done">✓</span>Waitlist table created in Supabase</li>
-      <li><span class="check-done">✓</span>RLS policy applied (public insert)</li>
-      <li><span class="check-done">✓</span>Resend account + API key created</li>
-      <li><span class="check-done">✓</span>Edge Function (clever-worker) deployed</li>
-      <li><span class="check-done">✓</span>Webhook (waitlist_confirmation) connected</li>
-      <li><span class="check-done">✓</span>End-to-end email test confirmed</li>
-      <li><span class="check-done">✓</span>Website v07 built with waitlist form + claim</li>
-      <li><span class="check-done">✓</span>Google Forms script v5 written</li>
-      <li><span class="check-todo">→</span>Upload kantier_website_v07.html to Vercel</li>
-      <li><span class="check-todo">→</span>Fix website: blank space, modal confirmation state, cross-page CTAs</li>
-      <li><span class="check-todo">→</span>Run Kantier_GoogleForms_Script_v5.js in Apps Script → get form URL</li>
-      <li><span class="check-todo">→</span>Post LinkedIn announcement + questionnaire link</li>
-      <li><span class="check-pending">○</span>Buy kantier.al domain → add to Resend → update Edge Function sender to hello@kantier.al</li>
-      <li><span class="check-pending">○</span>Reach 200 questionnaire responses → export as grant narrative data</li>
-      <li><span class="check-pending">○</span>Build waitlist to 50+ signups → begin beta invites</li>
-    </ul>
-
-    <h3>Key Resources</h3>
-    <table>
-      <tr><th>Resource</th><th>URL / Path</th></tr>
-      <tr><td>Platform</td><td>https://kantier.vercel.app/dashboard</td></tr>
-      <tr><td>Website (current live)</td><td>https://kantier-website.vercel.app</td></tr>
-      <tr><td>UI Reference Doc</td><td>https://kantier-ui-reference-document.vercel.app</td></tr>
-      <tr><td>Supabase dashboard</td><td>https://supabase.com/dashboard/project/fgelxehsxbqzdshdqtyj</td></tr>
-      <tr><td>Resend dashboard</td><td>https://resend.com/api-keys</td></tr>
-      <tr><td>Edge Function URL</td><td>https://fgelxehsxbqzdshdqtyj.supabase.co/functions/v1/clever-worker</td></tr>
-      <tr><td>Google Forms Script v5</td><td>Kantier_GoogleForms_Script_v5.js (delivered this session)</td></tr>
-      <tr><td>Website v07</td><td>kantier_website_v07.html (delivered this session)</td></tr>
-    </table>
-
-  </section>
+  <h3>Key Resources</h3>
+  <table>
+    <tr><th>Resource</th><th>URL</th></tr>
+    <tr><td>Platform</td><td><a href="https://kantier.vercel.app/dashboard">kantier.vercel.app/dashboard</a></td></tr>
+    <tr><td>Website (live)</td><td><a href="https://kantier-website.vercel.app">kantier-website.vercel.app</a></td></tr>
+    <tr><td>UI Reference Doc</td><td><a href="https://kantier-ui-reference-document.vercel.app">kantier-ui-reference-document.vercel.app</a></td></tr>
+    <tr><td>Supabase dashboard</td><td><a href="https://supabase.com/dashboard/project/fgelxehsxbqzdshdqtyj">supabase.com/dashboard/project/fgelxehsxbqzdshdqtyj</a></td></tr>
+    <tr><td>Resend dashboard</td><td><a href="https://resend.com/api-keys">resend.com/api-keys</a></td></tr>
+    <tr><td>Edge Function URL</td><td><code>https://fgelxehsxbqzdshdqtyj.supabase.co/functions/v1/clever-worker</code></td></tr>
+    <tr><td>Contact</td><td><a href="mailto:ucju019@ucl.ac.uk">ucju019@ucl.ac.uk</a></td></tr>
+  </table>
+</section>
 
 </main>
-
-<script>
-// Highlight active nav link based on scroll
-const sections = document.querySelectorAll('.section');
-const navLinks = document.querySelectorAll('.sidenav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 60) current = s.id; });
-  navLinks.forEach(a => {
-    a.classList.remove('active');
-    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
-  });
-});
-</script>
+</div>
 </body>
 </html>
