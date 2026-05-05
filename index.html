@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kantier UI Reference v15</title>
+<title>Kantier UI Reference v16</title>
 <script defer src="/_vercel/insights/script.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
@@ -134,7 +134,7 @@ hr { border:none; border-top:1px solid var(--border); margin:24px 0; }
 <nav>
   <div class="nav-logo">
     <div class="name">KANTIER.</div>
-    <div class="version">UI Reference v15 · 04 May 2026</div>
+    <div class="version">UI Reference v16 · 05 May 2026</div>
   </div>
 
   <div class="nav-section">
@@ -154,10 +154,12 @@ hr { border:none; border-top:1px solid var(--border); margin:24px 0; }
   <div class="nav-section">
     <div class="nav-section-label">Next Steps</div>
     <a href="#roadmap"><span class="num">06</span> S12 Roadmap</a>
-    <a href="#mobile"><span class="num">07</span> Mobile & iPad ★ <span class="badge badge-red">P0</span></a>
+    <a href="#mobile"><span class="num">07</span> Mobile & iPad ★ <span class="badge badge-green">✓ Done</span></a>
     <a href="#permissions"><span class="num">08</span> Permission System</a>
     <a href="#planet"><span class="num">09</span> Planet Improvements</a>
-    <a href="#features"><span class="num">10</span> Features Queue</a>
+    <a href="#foto"><span class="num">10</span> Foto Features ★ <span class="badge badge-green">✓ Done</span></a>
+    <a href="#thread"><span class="num">10b</span> WhatsApp Thread ★ <span class="badge badge-green">✓ Done</span></a>
+    <a href="#features"><span class="num">11</span> Features Queue S13+</a>
   </div>
 
   <div class="nav-section">
@@ -229,7 +231,7 @@ hr { border:none; border-top:1px solid var(--border); margin:24px 0; }
 <section id="state">
   <div class="section-header">
     <span class="section-num">01</span>
-    <span class="section-title">Current State — 04 May 2026</span>
+    <span class="section-title">Current State — 05 May 2026</span>
     <span class="section-tag badge-green">STABLE</span>
   </div>
 
@@ -237,12 +239,12 @@ hr { border:none; border-top:1px solid var(--border); margin:24px 0; }
     <div class="status-card">
       <div class="status-card-label">Build</div>
       <div class="status-card-val" style="color:var(--green)">✓</div>
-      <div class="status-card-sub">S11 Passing</div>
+      <div class="status-card-sub">S12 Deployed</div>
     </div>
     <div class="status-card">
-      <div class="status-card-label">Website</div>
-      <div class="status-card-val" style="color:var(--green)">v10</div>
-      <div class="status-card-sub">Live + Analytics</div>
+      <div class="status-card-label">Mobile/iPad</div>
+      <div class="status-card-val" style="color:var(--green)">✓</div>
+      <div class="status-card-sub">All pages done</div>
     </div>
     <div class="status-card">
       <div class="status-card-label">Waitlist</div>
@@ -257,7 +259,7 @@ hr { border:none; border-top:1px solid var(--border); margin:24px 0; }
   </div>
 
   <div class="callout callout-green">
-    ✅ <strong>S11 Deployed · Waitlist Live · Email Working · Website v10 Live · Vercel Analytics Active · Questionnaire v8.1 Live · Google Forms Script v8.1 Ready</strong>
+    ✅ <strong>S12 KOMPLETUAR — 05 May 2026:</strong> Mobile/iPad responsive (të gjitha faqet) · Planet pinch-to-zoom + jump-to-pin · Foto Fieldwire-style lightbox · WhatsApp thread · Upload pa task · Emri (jo email) në thread · Plan thumbnail lighter · Foto→Planet navigation · Berlin Innovation Fellowship applied
   </div>
 
   <table>
@@ -460,55 +462,33 @@ Storage: planet-pdf (PUBLIC), foto-kantier (PUBLIC)</pre>
 <section id="mobile">
   <div class="section-header">
     <span class="section-num">07</span>
-    <span class="section-title">Mobile & iPad Priority</span>
-    <span class="section-tag badge-red">P0 NEXT</span>
+    <span class="section-title">Mobile & iPad — S12 KOMPLETUAR</span>
+    <span class="section-tag badge-green">✓ DONE</span>
   </div>
-  <div class="callout callout-red">
-    <div class="callout-title">📱 Why P0</div>
-    Construction site crews work on-site with iPhones and iPads. They need to open tasks, update status, upload photos, view plans, and log daily reports — all from a phone or tablet in direct sunlight, sometimes with gloves.
+  <div class="callout callout-green">
+    ✅ Të gjitha 10 skedarët e platformës janë mobile-optimizuar dhe deployed.
   </div>
   <table>
-    <tr><th>Device</th><th>Width</th><th>Priority</th><th>Key Use Cases</th></tr>
-    <tr><td>iPhone (SE–16 Pro Max)</td><td>375–430px</td><td>Critical</td><td>Task updates, photo uploads, status changes on site</td></tr>
-    <tr><td>iPad Mini / Air</td><td>768–820px</td><td>Critical</td><td>Plan viewing with pins, Gantt overview, daily reports</td></tr>
-    <tr><td>iPad Pro 12.9"</td><td>1024px</td><td>High</td><td>Full platform — site supervisor dashboard</td></tr>
-    <tr><td>Desktop</td><td>1280px+</td><td>Working</td><td>PM office work — already functional</td></tr>
+    <tr><th>Skedar</th><th>Ndryshimet</th><th>Status</th></tr>
+    <tr><td>globals.css</td><td>Bottom nav, bottom sheets, FAB, touch targets 44px, overscroll-behavior: none (iPad black area fix)</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>dashboard/page.tsx</td><td>Bottom nav 5 tabs, hamburger drawer, FAB "+ Projekt", 2-col stats, project cards 1-col</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>projektet/[id]/page.tsx</td><td>Task detail → bottom sheet, Gantt hidden + message, nav tabs scroll, modals → bottom sheets</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>njerezit/page.tsx</td><td>Table → cards, invite modal → bottom sheet, search wraps</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>profili/page.tsx</td><td>16px inputs, camera capture on avatar, name grid 1-col on small screens</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>planet/page.tsx</td><td>Pinch-to-zoom (non-passive touch), pan 1-gisht, jump-to-pin, toolbar → bottom bar, task panel → bottom sheet</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>pdf-renderer.tsx</td><td>Renders 1 herë me scale=1, CSS transform() handles zoom — no flicker</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>foto/page.tsx</td><td>3-col grid, swipe lightbox, Fieldwire-style info panel, upload modal centered</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>raporte/page.tsx</td><td>Doc type tabs scroll horizontal, filter bar wraps, 16px inputs</td><td style="color:var(--green)">✓</td></tr>
+    <tr><td>dokumentet/page.tsx + [docId]/page.tsx</td><td>Table → cards, filter scroll, doc body stacks, sidebar below on mobile</td><td style="color:var(--green)">✓</td></tr>
   </table>
-  <h3>Per-Page Mobile Requirements</h3>
-  <table>
-    <tr><th>Page</th><th>Mobile Changes Needed</th></tr>
-    <tr><td>Dashboard</td><td>Sidebar collapses to bottom nav bar or hamburger. Project cards stack to 1-col. "My tasks" panel becomes collapsible accordion.</td></tr>
-    <tr><td>Detyrat</td><td>Lista view only on mobile (hide Gantt/Metrika). Task cards full-width. Task detail opens as bottom sheet. Large tap targets (48px min). Native camera for photo upload.</td></tr>
-    <tr><td>Planet</td><td>Pinch-to-zoom on PDF canvas. Pins larger (44px tap area). Task panel slides up from bottom. Sidebar thumbnails → horizontal scroll strip at top.</td></tr>
-    <tr><td>Foto</td><td>Grid becomes 2-col. Lightbox full-screen. Upload button sticky at bottom. Native camera/gallery picker.</td></tr>
-    <tr><td>Raporte</td><td>Form fields stack to 1-col. PDF preview opens in new tab. Submit button sticky at bottom.</td></tr>
-    <tr><td>Dokumentet</td><td>Table → card list. Status badges and action buttons full-width.</td></tr>
-    <tr><td>Njerëzit</td><td>Table → card list with name, role, avatar. Add member button sticky at bottom.</td></tr>
-  </table>
-  <h3>globals.css Additions Needed</h3>
-  <pre>@media (max-width: 768px) {
-  .sidebar { display: none; }
-  .bottom-nav { display: flex; }
-  .task-detail-panel {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    height: 85vh; border-radius: 16px 16px 0 0;
-    transform: translateY(100%); transition: transform .3s;
-  }
-  .task-detail-panel.open { transform: translateY(0); }
-  .main-content { padding: 16px; }
-  input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
-}</pre>
-  <div class="callout callout-blue">
-    💡 <strong>Recommended navigation pattern:</strong> Bottom tab bar (like Fieldwire iOS). Tabs: Dashboard · Tasks · Plans · Photos · More. Current left sidebar hidden on mobile.
-  </div>
 </section>
 
 <!-- 08 PERMISSIONS -->
 <section id="permissions">
   <div class="section-header">
     <span class="section-num">08</span>
-    <span class="section-title">Permission System — Design (S12c)</span>
-    <span class="section-tag badge-amber">S12</span>
+    <span class="section-title">Permission System — Design (S13)</span>
+    <span class="section-tag badge-amber">S13</span>
   </div>
   <table>
     <tr><th>Roli</th><th>Detyrat</th><th>Planet</th><th>Dokumentet</th><th>Detaje Projekti</th><th>Njerëzit</th></tr>
@@ -523,40 +503,100 @@ Storage: planet-pdf (PUBLIC), foto-kantier (PUBLIC)</pre>
 <section id="planet">
   <div class="section-header">
     <span class="section-num">09</span>
-    <span class="section-title">Planet Page — Improvements Queue</span>
-    <span class="section-tag badge-amber">S12</span>
+    <span class="section-title">Planet — S12 Done + S13 Queue</span>
+    <span class="section-tag badge-amber">S13</span>
   </div>
   <table>
-    <tr><th>Feature</th><th>Priority</th><th>Notes</th></tr>
-    <tr><td>Filter pins by category / status / assignee</td><td>P1</td><td>Dropdown filter panel</td></tr>
-    <tr><td>Better zoom controls</td><td>P1</td><td>+/− buttons, fit-to-screen, double-click to zoom</td></tr>
-    <tr><td>Pinch-to-zoom on mobile/iPad</td><td>P1</td><td>Native touch gesture support on canvas</td></tr>
-    <tr><td>Larger pins on mobile</td><td>P1</td><td>Min 44px tap area. Bottom sheet for task detail.</td></tr>
-    <tr><td>Sheet navigation (multi-page PDF)</td><td>P1</td><td>Navigate between floor plan pages within same PDF</td></tr>
-    <tr><td>Horizontal thumbnail strip on mobile</td><td>P1</td><td>Replace sidebar thumbnails with horizontal scroll strip</td></tr>
-    <tr><td>Pin count badge on thumbnail</td><td>P2</td><td>Show number of open tasks on each sheet thumbnail</td></tr>
-    <tr><td>Pin clustering</td><td>P2</td><td>When zoomed out, group nearby pins into count bubble</td></tr>
-    <tr><td>Markup tools</td><td>P3</td><td>Draw arrows, circles, rectangles. Save to markup jsonb.</td></tr>
+    <tr><th>Feature</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Pinch-to-zoom + pan (iPad/iPhone)</td><td style="color:var(--green)">✓ S12</td><td>Non-passive touch listeners, preventDefault works</td></tr>
+    <tr><td>No flicker on zoom</td><td style="color:var(--green)">✓ S12</td><td>PDFRenderer renders once at scale=1, CSS transform() handles zoom</td></tr>
+    <tr><td>Jump-to-pin from task list</td><td style="color:var(--green)">✓ S12</td><td>Click task in right panel → camera pans to center pin</td></tr>
+    <tr><td>Click plan thumbnail → opens planet at exact pin</td><td style="color:var(--green)">✓ S12</td><td>planId + taskId + pinX + pinY + pinPage in URL query params</td></tr>
+    <tr><td>Plan thumbnail lighter (Fieldwire-style)</td><td style="color:var(--green)">✓ S12</td><td>Greyscale 160-255 range, white background, plan name + number below</td></tr>
+    <tr><td>WhatsApp thread in task panel</td><td style="color:var(--green)">✓ S12</td><td>Foto + komentet + activity kronologjikisht, foto → opens Foto page lightbox</td></tr>
+    <tr><td>Emri (jo email) në thread</td><td style="color:var(--green)">✓ S12</td><td>displayName() helper — kërkon anetaret me profiles(emri, mbiemri)</td></tr>
+    <tr><td>Filter pins by category / status / assignee</td><td>S13</td><td>Dropdown filter panel</td></tr>
+    <tr><td>PDF markup on task thread</td><td>S13</td><td>Upload PDF → view inline → draw/annotate with canvas layer</td></tr>
+    <tr><td>Pin clustering</td><td>S13</td><td>Group nearby pins when zoomed out</td></tr>
   </table>
 </section>
 
-<!-- 10 FEATURES -->
-<section id="features">
+<!-- 10 FOTO -->
+<section id="foto">
   <div class="section-header">
     <span class="section-num">10</span>
-    <span class="section-title">Features Queue</span>
-    <span class="section-tag badge-amber">S12+</span>
+    <span class="section-title">Foto Page — S12 Features</span>
+    <span class="section-tag badge-green">✓ DONE</span>
   </div>
   <table>
-    <tr><th>Priority</th><th>Feature</th><th>Est.</th></tr>
-    <tr><td>P0</td><td>Mobile & iPad responsive — all platform pages</td><td>1–2 sessions</td></tr>
-    <tr><td>P1</td><td>AI Daily Report — /api/ai-report, claude-sonnet-4-6, tasks + VisualCrossing weather → Albanian narrative</td><td>4h</td></tr>
-    <tr><td>P1</td><td>"Të miat" filter tab on Detyrat</td><td>30min</td></tr>
-    <tr><td>P2</td><td>AI RFI question writer — informal description → proper ISO RFI format</td><td>2h</td></tr>
-    <tr><td>P2</td><td>@mentions + notifications — notifikime table + Edge Functions + Resend email</td><td>4h</td></tr>
-    <tr><td>P2</td><td>Weekly auto-report email — Every Friday, auto-generate RPT PDF → email klienti</td><td>3h</td></tr>
-    <tr><td>P3</td><td>Meeting Minutes (MTG) — Attendees, decisions, action items → creates tasks automatically</td><td>2h</td></tr>
-    <tr><td>P3</td><td>Punch List module — Location on plan, photo, trade, status. Formal closeout PDF.</td><td>4h</td></tr>
+    <tr><th>Feature</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Fieldwire-style lightbox</td><td style="color:var(--green)">✓ S12</td><td>Imazh majtas (100% height) + info panel djathtas (320px): Ngarkoi, Data, Ora, Task card</td></tr>
+    <tr><td>Date grouping i saktë</td><td style="color:var(--green)">✓ S12</td><td>Fotot pa fushë data → "Pa datë". parseData() i rishkruar — 3 raste: object, JSON string, ISO string</td></tr>
+    <tr><td>Upload pa task</td><td style="color:var(--green)">✓ S12</td><td>"📁 Pa detyrë" si opsion default. Fotot ruhen në projektet.foto_urls (SQL: ALTER TABLE projektet ADD COLUMN foto_urls jsonb)</td></tr>
+    <tr><td>Modal i centruar</td><td style="color:var(--green)">✓ S12</td><td>alignItems: center (jo flex-end). Mobile: globals.css .modal-inner → bottom sheet</td></tr>
+    <tr><td>Swipe lightbox</td><td style="color:var(--green)">✓ S12</td><td>touchStartX ref, 50px threshold, onTouchEnd navigates left/right</td></tr>
+    <tr><td>Foto click → hap Foto page</td><td style="color:var(--green)">✓ S12</td><td>Nga task panel (Detyrat + Planet): router.push('/foto?openUrl=...&taskId=...'). Foto page reads searchParams dhe hap lightbox automatikisht</td></tr>
+    <tr><td>Tags section</td><td>S13</td><td>Placeholder i shtuar. Funksionalitet i ardhshëm</td></tr>
+    <tr><td>EXIF metadata</td><td>S13</td><td>exifr library (3KB). Lexon datën e kamerës para upload → ruhet si capturedAt në objekt</td></tr>
+  </table>
+  <div class="callout callout-amber">
+    ⚠️ <strong>SQL i domosdoshëm për upload pa task:</strong><br>
+    <span class="inline-code">ALTER TABLE projektet ADD COLUMN IF NOT EXISTS foto_urls jsonb DEFAULT '[]'::jsonb;</span>
+  </div>
+</section>
+
+<!-- 10b THREAD -->
+<section id="thread">
+  <div class="section-header">
+    <span class="section-num">10b</span>
+    <span class="section-title">WhatsApp Thread — Task Activity</span>
+    <span class="section-tag badge-green">✓ DONE</span>
+  </div>
+  <div class="callout callout-green">
+    ✅ I njëjtë në Detyrat page dhe Planet task panel. Konsistencë e plotë.
+  </div>
+  <h3>Struktura e Thread-it</h3>
+  <p>Të gjitha entries (foto + komentet + activity log) bashkohen dhe renditen kronologjikisht:</p>
+  <table>
+    <tr><th>Tipi</th><th>Shfaqja</th><th>Ngjyra avatar</th></tr>
+    <tr><td>Foto upload</td><td>Bubble me thumbnail 140×100px, emri + data sipër, × për delete, klik → hap Foto page lightbox</td><td>Amber (#FEF3C7)</td></tr>
+    <tr><td>Comment (manual)</td><td>Chat bubble me border-radius 0 7px 7px 7px — si WhatsApp</td><td>Blue (#EFF6FF)</td></tr>
+    <tr><td>Activity (auto-log)</td><td>Rresht i hollë italic gri — ndryshime statusi, prioriteti, checklist</td><td>Gri e lehtë</td></tr>
+  </table>
+  <h3>displayName() helper</h3>
+  <pre>function displayName(email: string): string {
+  const a = anetaret.find(m => m.email === email)
+  if (a?.profiles?.emri && a?.profiles?.mbiemri) return `${a.profiles.emri} ${a.profiles.mbiemri}`
+  if (a?.profiles?.emri) return a.profiles.emri
+  return email.split('@')[0]  // fallback
+}</pre>
+  <div class="callout callout-blue">
+    💡 <strong>Attach options:</strong> 📷 Foto (capture="environment" — kamera direkt) · 📎 Skedar (image/*, .pdf, .doc, .docx, .xlsx) · DWG/DXF <strong>NUK</strong> pranohen (as Fieldwire dhe Procore).
+  </div>
+  <h3>S13 — PDF Inline Viewer + Markup</h3>
+  <p>Kur ngarkohet PDF tek task thread, shfaqet inline (si Procore). Canvas layer mbi PDF → vizato, shëno, shigjetë. Ruhet si markup jsonb.</p>
+</section>
+
+<!-- 11 FEATURES -->
+<section id="features">
+  <div class="section-header">
+    <span class="section-num">11</span>
+    <span class="section-title">Features Queue — S13+</span>
+    <span class="section-tag badge-amber">S13+</span>
+  </div>
+  <table>
+    <tr><th>Priority</th><th>Feature</th><th>Status</th><th>Est.</th></tr>
+    <tr><td>✓</td><td>Mobile & iPad responsive — all platform pages</td><td style="color:var(--green)">S12 Done</td><td>—</td></tr>
+    <tr><td>✓</td><td>Planet: pinch-to-zoom, pan, jump-to-pin, no flicker</td><td style="color:var(--green)">S12 Done</td><td>—</td></tr>
+    <tr><td>✓</td><td>Foto: Fieldwire lightbox, date fix, upload pa task, WhatsApp thread</td><td style="color:var(--green)">S12 Done</td><td>—</td></tr>
+    <tr><td>P0</td><td>"Të miat" filter tab on Detyrat</td><td>S13</td><td>30min</td></tr>
+    <tr><td>P1</td><td>AI Daily Report — /api/ai-report, claude-sonnet-4-6, tasks + VisualCrossing weather → Albanian RDT narrative</td><td>S13</td><td>4h</td></tr>
+    <tr><td>P1</td><td>EXIF metadata — exifr library, capturedAt from camera before upload</td><td>S13</td><td>1h</td></tr>
+    <tr><td>P1</td><td>PDF inline viewer on task thread + markup (draw, annotate, arrow)</td><td>S13</td><td>1 session</td></tr>
+    <tr><td>P2</td><td>Permission system — 4 levels (menaxher, inxhinier, anetar, klient)</td><td>S13</td><td>1 session</td></tr>
+    <tr><td>P2</td><td>Invite email via Resend — branded invite when member added</td><td>S13</td><td>2h</td></tr>
+    <tr><td>P2</td><td>AI RFI writer — informal description → proper ISO RFI format</td><td>S13</td><td>2h</td></tr>
+    <tr><td>P3</td><td>Stripe payments — €49/project/month</td><td>After beta</td><td>—</td></tr>
   </table>
 </section>
 
@@ -842,6 +882,7 @@ notified: false</pre>
   </div>
   <table>
     <tr><th>Program</th><th>Amount</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Berlin Innovation Fellowship</td><td>TBD</td><td style="color:var(--amber)">Applied ★ NEW</td><td>Applied 05 May 2026. Innovation program Berlin.</td></tr>
     <tr><td>Startup Albania</td><td>—</td><td style="color:var(--amber)">Applied</td><td>Already submitted. Awaiting response.</td></tr>
     <tr><td>AWS Activate Founders</td><td>$1,000 credits</td><td style="color:var(--amber)">Submitted 24 Apr</td><td>5–7 business day review.</td></tr>
     <tr><td>Anthropic Startup Program</td><td>Up to $25,000 API credits</td><td style="color:var(--red)">Apply Next</td><td>anthropic.com/startups. Strong fit — Claude used for AI Daily Report.</td></tr>
